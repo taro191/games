@@ -3,6 +3,29 @@
   window.__STANDALONE = true;
   function wsUrl() { return (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + location.pathname.replace(/[^/]*$/, '') + 'ws'; }
 
+  /* ช่องทางสำรองเมื่อโฮสต์ไม่รองรับ WebSocket: รับข้อมูลทาง Server-Sent Events และส่งทาง POST
+     หน้าตาเหมือน WebSocket (readyState, send, close, onopen/onmessage/onclose) เพื่อใช้แทนกันได้ */
+  function SseSock() {
+    var s = this, base = location.pathname.replace(/[^/]*$/, ''), id = null, q = Promise.resolve();
+    var es = new EventSource(base + 'rt/open');
+    s.readyState = 0;
+    function down() { if (s.readyState === 3) return; s.readyState = 3; try { es.close(); } catch (e) {} if (s.onclose) s.onclose(); }
+    es.onmessage = function (ev) {
+      var m; try { m = JSON.parse(ev.data); } catch (e) { return; }
+      if (m && m.t === 'conn') { id = m.id; s.readyState = 1; if (s.onopen) s.onopen(); return; }
+      if (s.onmessage) s.onmessage({ data: ev.data });
+    };
+    es.onerror = down;
+    s.send = function (str) {
+      if (s.readyState !== 1) return;
+      q = q.then(function () {
+        return fetch(base + 'rt/send?c=' + id, { method: 'POST', body: str, headers: { 'Content-Type': 'text/plain' }, keepalive: true })
+          .then(function (r) { if (r.status === 404) down(); }, function () {});
+      });
+    };
+    s.close = down;
+  }
+
   function join(name) {
     return new Promise(function (resolve, reject) {
       var st = { me: '', peers: {}, pres: {}, hp: [], hm: {}, closed: false, tries: 0, ws: null, ready: false };
@@ -22,10 +45,11 @@
       function only(id) { return snap().filter(function (p) { return p.peer === id; }); }
 
       function connect() {
-        var ws = new WebSocket(wsUrl());
+        var ws = st.sse ? new SseSock() : new WebSocket(wsUrl());
         st.ws = ws;
         ws.onopen = function () { ws.send(JSON.stringify({ t: 'join', room: name, presence: st.pres })); };
         ws.onmessage = function (ev) {
+          st.any = true;
           var m; try { m = JSON.parse(ev.data); } catch (e) { return; }
           if (m.t === 'joined') {
             st.me = m.peer; st.peers = {};
@@ -49,6 +73,8 @@
         };
         ws.onclose = function () {
           if (st.closed) return;
+          // WebSocket ใช้ไม่ได้ (เช่นโฮสต์ตัด Upgrade) -> สลับไปใช้ SSE
+          if (!st.ready && !st.sse && !st.any) { st.sse = true; connect(); return; }
           if (!st.ready) { reject({ code: 'upstream_error' }); return; }
           if (st.tries < 6) { st.tries++; setTimeout(connect, Math.min(5000, 500 * st.tries)); }
         };

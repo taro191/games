@@ -26,7 +26,8 @@ node app.js          # http://localhost:3000
 - `lib/m90-server.js` เซิร์ฟเวอร์ร่วมของ 3 เกมตระกูล Mitty (isan, mitty90, career) เดิมเป็นโค้ดชุดเดียวกัน 3 ชุด
 - `games/tan-set-thi/server.js`, `games/waw-selfhost/server.js` export `create()` ให้ app.js เมานต์ได้ และยังรันเดี่ยวได้เหมือนเดิม
 - หน้าเกมเรียก API แบบ relative (`api/...`) จึงทำงานได้ทั้งตอนอยู่ใต้ path และตอนรันเดี่ยว
-- waw: ถ้าแก้ `game-source.html` หรือ `shim.js` ให้รัน `python build.py` ในโฟลเดอร์นั้นเพื่อสร้าง `public/index.html` ใหม่
+- waw: ถ้าแก้ `game-source.html` หรือ `shim.js` ให้รัน `node build.js .` ในโฟลเดอร์นั้นเพื่อสร้าง `public/index.html` ใหม่
+- waw ใช้ WebSocket `/waw/ws` ถ้าโฮสต์ไม่ส่งต่อ WebSocket (Plesk ที่ nginx อยู่หน้า Apache) หน้าเกมจะสลับไปใช้ SSE (`/waw/rt/open` + `/waw/rt/send`) เอง
 - ไฟล์ Docker/Caddy/DEPLOY.md ในโฟลเดอร์เกมเป็นของเดิมแบบแยกเกม ไม่ได้ใช้กับการขึ้น Plesk
 
 ## ข้อมูลผู้เล่น

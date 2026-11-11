@@ -11,6 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { WebSocketServer } = require('ws');
+const { EventEmitter } = require('events');
 
 const INDEX = path.join(__dirname, 'public', 'index.html');
 
@@ -37,6 +38,19 @@ const MAX_ROOMS = parseInt(env.MAX_ROOMS, 10) || 500;
 const MAX_PEERS = parseInt(env.MAX_PEERS, 10) || 12;
 const ALLOWED_ORIGINS = (env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
 const rooms = new Map();                 // ชื่อห้อง -> Map(peerId -> peer)
+const sseConns = new Map();              // รหัสลับการเชื่อมต่อ -> SseConn
+
+/* ช่องทางสำรองเมื่อโฮสต์ไม่ส่งต่อ WebSocket (เช่น Plesk ที่ nginx ส่งต่อให้ Apache)
+   GET /rt/open = สตรีม SSE ส่งข้อความจากเซิร์ฟเวอร์, POST /rt/send?c=รหัส = ส่งข้อความแบบเดียวกับ WebSocket
+   SseConn ทำตัวเหมือน ws (send/close/terminate/ping, event message/close/pong) จึงใช้ตัวจัดการเดียวกัน */
+class SseConn extends EventEmitter {
+  constructor(res) { super(); this.res = res; this.readyState = 1; this.id = crypto.randomBytes(16).toString('hex'); }
+  send(str) { if (this.readyState === 1) this.res.write('data: ' + str + '\n\n'); }
+  close() { this.terminate(); }
+  terminate() { if (this.readyState !== 1) return; this.readyState = 3; sseConns.delete(this.id); try { this.res.end(); } catch (e) {} this.emit('close'); }
+  ping() { if (this.readyState === 1) { this.res.write(': ping\n\n'); this.emit('pong'); } }
+}
+const originOk = req => !ALLOWED_ORIGINS.length || !req.headers.origin || ALLOWED_ORIGINS.includes(req.headers.origin);
 
 function handle(req, res) {
   const url = (req.url || '/').split('?')[0];
@@ -46,6 +60,24 @@ function handle(req, res) {
     'Referrer-Policy': 'no-referrer',
     'Permissions-Policy': 'camera=(self), microphone=(), geolocation=()'
   };
+  if (url === '/rt/open' && req.method === 'GET') {
+    if (sseConns.size >= MAX_ROOMS * MAX_PEERS) { res.writeHead(503, headers); return res.end(); }
+    res.writeHead(200, { ...headers, 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no' });
+    const c = new SseConn(res);
+    sseConns.set(c.id, c);
+    attach(c);
+    c.send(JSON.stringify({ t: 'conn', id: c.id }));
+    req.on('close', () => c.terminate());
+    return;
+  }
+  if (url === '/rt/send' && req.method === 'POST') {
+    const c = sseConns.get(new URL(req.url, 'http://x').searchParams.get('c') || '');
+    if (!c || !originOk(req)) { res.writeHead(404, headers); return res.end(); }
+    const chunks = []; let n = 0;
+    req.on('data', d => { n += d.length; if (n > MAX_MSG_BYTES) { res.writeHead(413, headers); res.end(); req.destroy(); } else chunks.push(d); });
+    req.on('end', () => { if (res.headersSent) return; c.emit('message', Buffer.concat(chunks), false); res.writeHead(204, headers); res.end(); });
+    return;
+  }
   if (url === '/healthz') { res.writeHead(200, { ...headers, 'Content-Type': 'text/plain' }); return res.end('ok'); }
   if (url === '/' || url === '/index.html') {
     fs.readFile(INDEX, (err, buf) => {
@@ -85,7 +117,7 @@ function leave(ws) {
   else for (const q of room.values()) send(q.ws, { t: 'left', peer: p.id });
 }
 
-wss.on('connection', ws => {
+function attach(ws) {
   ws.isAlive = true;
   ws._peer = null;
   ws._tokens = 60; ws._last = Date.now(); ws._drops = 0;
@@ -157,7 +189,8 @@ wss.on('connection', ws => {
 
   ws.on('close', () => leave(ws));
   ws.on('error', () => { try { ws.terminate(); } catch (e) {} });
-});
+}
+wss.on('connection', attach);
 
 // ตรวจว่ายังเชื่อมต่ออยู่ ตัดคนที่หลุดทุก ~25 วินาที
 const beat = setInterval(() => {
@@ -166,6 +199,7 @@ const beat = setInterval(() => {
     ws.isAlive = false;
     try { ws.ping(); } catch (e) {}
   }
+  for (const c of sseConns.values()) c.ping();   // กันพร็อกซีตัดสตรีมที่เงียบนาน
 }, 25000);
 beat.unref();
 
