@@ -67,5 +67,5 @@ node app.js          # http://localhost:3000
    - กด **NPM install** แล้ว **Restart App**
 3. **SSL**: SSL/TLS Certificates > Let's Encrypt สำหรับ games.yaydang.com
 4. **DNS**: ตอนนี้ Plesk แจ้งว่าโดเมน resolve ไม่ได้ ต้องเพิ่ม A record `games` -> IP ของโฮสต์ ที่ผู้ดูแล DNS ของ yaydang.com
-5. หลัง push โค้ดใหม่: Plesk pull อัตโนมัติ (ถ้าเปิด webhook/auto deploy) แล้วกด Restart App ในหน้า Node.js
-   หรือใส่ไฟล์ `tmp/restart.txt` ให้ Passenger รีสตาร์ทเอง
+5. ตั้งไว้แล้ว: push เข้า `main` -> GitHub webhook แจ้ง Plesk -> Plesk pull และ deploy -> post-deploy action `mkdir -p tmp && touch tmp/restart.txt` ให้ Passenger รีสตาร์ทแอปเอง
+   ถ้า deploy ไม่ขึ้น ดูที่ GitHub > Settings > Webhooks > Recent Deliveries หรือกด Pull now ในหน้า Git ของ Plesk
