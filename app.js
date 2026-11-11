@@ -68,6 +68,13 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', 'X-Content-Type-Options': 'nosniff' }); res.end(d);
     });
   }
+  const shot = /^\/shots\/([a-z0-9]+)\.jpg$/.exec(p);   // ภาพปกเกมในหน้ารวม (บน Plesk nginx เสิร์ฟเองจาก public/)
+  if (shot) {
+    return fs.readFile(path.join(__dirname, 'public', 'shots', shot[1] + '.jpg'), (err, d) => {
+      if (err) { res.writeHead(404); return res.end(); }
+      res.writeHead(200, { 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=86400', 'X-Content-Type-Options': 'nosniff' }); res.end(d);
+    });
+  }
   const r = route(url);
   if (!r) { res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); return res.end('Not found'); }
   const [slug, rest] = r, g = mounted.get(slug);
