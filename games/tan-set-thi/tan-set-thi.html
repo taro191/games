@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ท่านเศรษฐี</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800&family=Sarabun:wght@400;600;700&display=swap">
+<style>
+:root{--page:#f1ebdd;--app:#fffaf0;--amber:#f2b54a;--card:#fff;--card2:#f6eedb;--line:#e6dcc0;--y:#ffc928;--hl:#b57600;--cy:#00b4d8;--cor:#ff6b57;--ink:#1d1d1d;--mut:#6e6757;--bi:#06303b;--pos:#0b8a52;--neg:#d3382f;--sheet:#fff;--dis:#e7e0cf;--disf:#9b9484;--tile:#fffaf0;--sp:#fff3d6;--sh:rgba(120,90,20,.14);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+:root[data-theme="dark"]{--page:#141414;--app:#2f2f2f;--amber:#d99a35;--card:#3b3b3b;--card2:#4a4a4a;--line:#5a5a5a;--hl:#ffcc00;--ink:#f4f4f4;--mut:#bdbdbd;--sheet:#262626;--dis:#4a4a4a;--disf:#9c9c9c;--sp:#3b3b3b;--pos:#ffd84a;--neg:#ff8a7a;--sh:rgba(0,0,0,.35);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--page);color:var(--ink);font:400 16px/1.5 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif;min-height:100dvh;touch-action:manipulation;overscroll-behavior:none;-webkit-user-select:none;user-select:none}
+#app{position:relative;max-width:440px;margin:0 auto;min-height:100dvh;overflow:hidden;background:var(--app) radial-gradient(circle at 108% 104%,rgba(242,181,74,.2) 0 34%,transparent 35%)}
+@media (min-width:480px){#app{margin:16px auto;min-height:calc(100dvh - 32px);border-radius:38px;box-shadow:0 20px 50px var(--sh)}}
+.scr{display:flex;flex-direction:column;gap:14px;padding-bottom:96px}
+.hero{position:relative;height:230px;background:var(--amber);overflow:hidden;flex:none}
+.top{position:absolute;top:14px;left:14px;right:14px;display:flex;justify-content:space-between;z-index:3}
+.mas{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:170px;z-index:2}.mas svg{display:block;width:100%;height:auto}
+.wave{position:absolute;left:0;bottom:-1px;width:100%;height:64px;z-index:1;fill:var(--app)}
+.ttl{padding:0 24px}.sm{color:var(--hl);font-weight:600;font-size:18px}
+h1{font:700 clamp(34px,11.5vw,46px)/1.05 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif;color:var(--ink);margin:0;word-break:break-word}
+.ttl p{margin:10px 0 0;max-width:300px;font-size:15px;line-height:1.6;color:var(--mut)}
+.box,.err,.note,.scr>button{margin:0 18px}.scr>button{flex:none}
+.box{background:var(--card);border:1px solid var(--line);box-shadow:0 1px 8px var(--sh);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.box h3{margin:0;font:700 20px/1.3 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif}
+.row,.seg{display:flex;gap:10px}.seg{gap:20px}.fbs{display:flex;gap:10px}
+.tab{background:none;color:var(--mut);padding:4px 0;min-height:38px;flex:none;font-size:16px;border-radius:0;font-weight:600;box-shadow:none}
+.tab.on{color:var(--ink);box-shadow:inset 0 -3px 0 var(--y)}
+input{font:inherit;width:100%;padding:12px 18px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--ink);min-height:54px;-webkit-user-select:text;user-select:text}
+.row input{text-transform:uppercase;letter-spacing:4px;text-align:center}
+button{font:600 16px Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif;color:var(--bi);background:var(--cy);border:0;border-radius:16px;padding:10px 18px;min-height:50px;cursor:pointer;flex:1;transition:transform .1s;box-shadow:0 1px 3px rgba(0,0,0,.16)}
+button:active{transform:scale(.96)}
+button.alt{background:var(--y);color:#1d1d1d}
+button.alt2{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
+button:disabled,button.alt:disabled{background:var(--dis);color:var(--disf);box-shadow:none}
+button:focus-visible,input:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.mut{color:var(--mut);font-size:14px}.err{color:var(--neg);text-align:center;font-weight:700}.note{text-align:center;color:var(--mut)}
+button.av{width:46px;min-height:46px;padding:0;flex:none;font-size:22px;background:#fff;color:#1d1d1d;border-radius:50%;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.pill2{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);color:var(--ink);min-height:52px;padding:0 22px;font-size:16px;box-shadow:0 1px 8px var(--sh)}
+.big{width:104px;height:104px;border-radius:50%;background:var(--card2);display:grid;place-items:center;font-size:60px;margin:0 auto;border:4px solid var(--y);overflow:hidden}
+.av img,.big img,.pl i img,.lpa img{width:100%;height:100%;object-fit:cover;display:block}
+.fb{min-height:60px;font-size:30px;padding:0;background:var(--card2);box-shadow:none}.fb.on{background:var(--y)}
+.st{display:flex;justify-content:space-between;align-items:center;background:var(--card2);border-radius:18px;padding:14px 16px}.st b{color:var(--hl);font-size:20px}
+.lp{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px}
+.lpa{display:inline-grid;width:38px;height:38px;border-radius:50%;place-items:center;background:var(--card2);overflow:hidden}
+.rg{flex:none;width:calc(100% - 36px);margin:0 18px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:var(--card);border:1px solid var(--line);color:var(--ink);border-radius:20px;padding:12px 16px;min-height:0;font-weight:600;box-shadow:0 1px 8px var(--sh)}
+.rg b{font-size:20px}.rg span{font-size:14px;color:var(--mut);font-weight:400}.rg i{font-style:normal;font-size:14px;color:var(--hl);font-weight:700}
+.rg.on{background:var(--y);color:#1d1d1d;border-color:var(--y)}.rg.on span,.rg.on i{color:#1d1d1d}
+#app.g{padding:10px 10px 0;overflow:visible}
+.gm{display:flex;flex-direction:column;gap:8px;min-height:calc(100dvh - 10px)}
+@media (min-width:480px){.gm{min-height:calc(100dvh - 42px)}#app.g{overflow:hidden}}
+.bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.bk{flex:none;width:42px;min-height:42px;padding:0;font-size:22px;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:14px;align-self:stretch;box-shadow:none}.bk.on{background:var(--cor);color:#fff;border-color:var(--cor);font-size:13px}
+.pl{position:relative;flex:1 0 112px;display:flex;gap:7px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:5px 9px}
+.pl.on{background:var(--y);border-color:var(--y);color:#1d1d1d}.pl.out{opacity:.35;text-decoration:line-through}
+.pl i{font-style:normal;font-size:20px;width:34px;height:34px;border-radius:50%;background:var(--card2);display:grid;place-items:center;flex:none;border:2px solid var(--o);overflow:hidden}
+.pl span{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+.pl b{font-size:12px;font-weight:600;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pl.on b{color:#5b4300}
+.pl strong{font-size:15px;font-weight:700;line-height:1.15}
+.fl{position:absolute;right:10px;top:-4px;font-style:normal;font-weight:800;font-size:16px;animation:flo 1.2s ease-out forwards;pointer-events:none;text-shadow:0 1px 0 #fff;z-index:3}
+#board{display:grid;grid-template:repeat(8,1fr)/repeat(6,1fr);gap:3px;flex:1 1 auto;min-height:min(125vw,520px);max-height:640px;width:100%;padding:5px;border-radius:22px;background:var(--amber);box-shadow:0 2px 10px var(--sh)}
+.c{position:relative;background:var(--tile);color:#1d1d1d;border-radius:9px;display:flex;flex-direction:column;overflow:hidden;min-width:0;min-height:0;font-size:clamp(9.5px,2.8vw,12.5px);line-height:1.18;text-align:center}
+.c .hd{display:flex;justify-content:space-between;align-items:center;gap:2px;white-space:nowrap;background:var(--b);color:#1d1d1d;padding:0 5px;height:18px;flex:none;font-weight:700;font-size:.95em}
+.c>b{flex:1;display:flex;align-items:center;justify-content:center;padding:2px 3px 4px;overflow:hidden;font-weight:600;word-break:break-word}
+.c.sp{background:var(--sp);color:var(--ink);align-items:center;justify-content:center;gap:1px}.c.sp.go{background:var(--y);color:#1d1d1d}.c.sp u{text-decoration:none;font-size:1.55em;line-height:1}.c.sp>b{flex:none;padding:0 2px}
+.c.own{outline:2px solid var(--o);outline-offset:-2px}.c.cur{box-shadow:0 0 0 2px var(--ink);z-index:2}.c.cur.stp{animation:stp .25s ease}@keyframes stp{0%{transform:scale(.9)}55%{transform:scale(1.07)}100%{transform:none}}
+.c.pop{animation:pop .7s ease}
+.tk{display:flex}.tk em{font-style:normal;font-size:17px;line-height:1;margin-left:-5px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.c.sp .tk{margin-top:1px}.c.sp .tk em{font-size:17px;margin-left:-3px}.c.sp.tkn u{font-size:1.35em}
+.tk em.me{animation:hop .5s ease}.c .hd .tk em{font-size:13px;margin-left:-4px}
+#mid{grid-area:2/2/8/6;background:var(--card);color:var(--ink);border-radius:18px;margin:2px;padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:5px;text-align:center;min-height:0;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line)}
+.who{font:600 clamp(14px,4.4vw,17px)/1.2 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif}
+.rk{background:var(--y);color:#1d1d1d;border-radius:999px;padding:1px 12px;font-weight:600;font-size:12px}
+#die{position:relative;width:clamp(84px,25vw,108px);aspect-ratio:1;background:linear-gradient(150deg,#fff 30%,#ece5d2);border:2.5px solid #1d1d1d;border-radius:24%;display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:11%;box-shadow:0 5px 10px rgba(0,0,0,.2);flex:none;min-height:0}
+#die i{border-radius:50%;margin:8%}
+#die i.on{background:radial-gradient(circle at 35% 30%,#555,#111 70%)}
+#die.one i.on{background:radial-gradient(circle at 35% 30%,#ff9a8a,#e5483a 70%);transform:scale(1.35)}
+button#die,#die.q{display:flex;align-items:center;justify-content:center;font:800 44px/1 Prompt,sans-serif;color:#1d1d1d;padding:0;cursor:pointer}
+button#die{animation:nudge 1.6s ease-in-out infinite}
+#die.spin{animation:droll .9s cubic-bezier(.2,.8,.3,1)}
+.rn{font-size:13px;font-weight:600;color:var(--mut);margin-top:-2px}
+@keyframes droll{0%{transform:translateY(-34px) rotate(-320deg) scale(.7);opacity:.5}55%{transform:translateY(0) rotate(36deg) scale(1.1);opacity:1}78%{transform:rotate(-7deg)}100%{transform:none}}
+@keyframes nudge{0%,100%{transform:none}50%{transform:translateY(-4px) rotate(-3deg)}}
+.pg{width:100%;display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--mut)}.pg b{color:var(--ink);font-size:14px}
+.bar2{height:10px;border-radius:5px;background:var(--line);overflow:hidden}.bar2 i{display:block;height:100%;background:linear-gradient(90deg,#ffc928,#ff9f1c);border-radius:5px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.ws{display:flex;gap:4px;justify-content:center;white-space:nowrap}.ws span{background:var(--card2);border-radius:999px;padding:1px 8px;font-size:11px;font-weight:600}
+.lg{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;font-size:11.5px;text-align:left;width:100%;color:var(--mut)}.lg span{padding-left:13px;position:relative}.lg span:before{content:"";position:absolute;left:0;top:.35em;width:9px;height:9px;border-radius:50%;background:var(--b)}
+.gl{font-size:11.5px;color:var(--mut)}
+.fact{background:var(--card2);border-radius:12px;padding:7px 10px;font-size:12px;line-height:1.4;text-align:left;width:100%;max-height:38%;overflow:hidden}.fact p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.fact b{display:block;font-size:13.5px;color:var(--hl)}.fact i{font-style:normal;font-size:12px;color:var(--mut);display:inline-block;padding-left:12px;position:relative}
+.fact i:before{content:"";position:absolute;left:0;top:.35em;width:8px;height:8px;border-radius:50%;background:var(--b)}.fact p{margin:2px 0 0}
+.sheet{position:sticky;bottom:0;z-index:5;margin:auto -10px 0;background:var(--sheet);border-top:1px solid var(--line);border-radius:22px 22px 0 0;box-shadow:0 -2px 12px var(--sh);padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.sheet button{min-height:46px;padding:8px 12px;font-size:15.5px}.sheet .say{font-size:15px;line-height:1.4}
+.logo{list-style:none;margin:0;padding:0 6px;font-size:13px;color:var(--mut);display:flex;flex-direction:column;gap:2px}
+.msg{background:var(--card2);border-left:5px solid var(--y);border-radius:12px;padding:8px 12px;font-size:15.5px;font-weight:500;line-height:1.35}
+.pos{color:var(--pos);white-space:nowrap}.neg{color:var(--neg);white-space:nowrap}
+.acts{display:flex;gap:10px;flex-wrap:wrap}.say{font-weight:700;text-align:center;width:100%}
+.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:#1d1d1d;color:#fff;font-weight:700;padding:10px 18px;border-radius:999px;z-index:60;box-shadow:0 8px 24px rgba(0,0,0,.3);animation:tin 2.6s ease forwards;white-space:nowrap}
+.cf{position:fixed;top:-30px;z-index:55;pointer-events:none;animation:cf 1.9s ease-in forwards}
+@keyframes hop{0%{transform:translateY(0)}40%{transform:translateY(-10px) scale(1.25)}100%{transform:translateY(0)}}
+@keyframes spin{from{transform:rotate(-360deg) scale(.4)}to{transform:none}}
+@keyframes pop{0%{transform:scale(.7)}50%{transform:scale(1.15);box-shadow:0 0 0 6px rgba(255,201,40,.6)}100%{transform:none}}
+@keyframes flo{0%{opacity:0;transform:translateY(10px)}15%{opacity:1}100%{opacity:0;transform:translateY(-34px)}}
+@keyframes tin{0%{opacity:0;transform:translate(-50%,-20px)}10%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+@keyframes cf{to{transform:translateY(112vh) rotate(540deg)}}
+@media (prefers-reduced-motion:reduce){button#die{animation:none}.tk em.me,#die.spin,.c.pop,.fl,.cf,.toast{animation:none}.bar2 i{transition:none}}
+@media (max-height:800px){.logo{display:none}}
+.dt{background:var(--card);border:1px solid var(--line);border-radius:18px;margin:0 18px;padding:0 16px;box-shadow:0 1px 8px var(--sh);-webkit-user-select:text;user-select:text}
+.dt summary{list-style:none;cursor:pointer;font-weight:700;font-size:17px;padding:12px 0;min-height:52px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dt summary::-webkit-details-marker{display:none}.dt summary:after{content:"+";font-weight:400;color:var(--hl);font-size:26px;line-height:1}.dt[open] summary:after{content:"−"}
+.dt ul{margin:0 0 14px;padding-left:20px;display:flex;flex-direction:column;gap:7px;font-size:15px;line-height:1.55}
+.lk{background:none;border:0;box-shadow:none;color:var(--hl);text-decoration:underline;padding:4px 2px;min-height:0;flex:none;font:inherit;font-weight:700;border-radius:6px}
+.lnk{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:0 18px}
+.scr .note{line-height:2}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));width:min(calc(100% - 20px),420px);z-index:20;display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:4px 6px;box-shadow:0 4px 16px var(--sh)}
+.nt{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:none;box-shadow:none;border-radius:18px;padding:4px 2px;min-height:46px;color:var(--mut);font-size:10.5px;font-weight:600}
+.nt i{font-style:normal;font-size:20px;line-height:1}.nt.on{background:var(--y);color:#1d1d1d}
+.nc{flex:none;width:54px;height:54px;min-height:54px;border-radius:50%;padding:0;margin:-20px 4px 0;font-size:26px;background:var(--cy);color:var(--bi);border:4px solid var(--app);box-shadow:0 3px 8px var(--sh)}
+.pill2.in{background:var(--card2);box-shadow:none;width:100%;border:0;flex:none}
+.gst{align-self:center;width:auto;min-height:44px;padding:8px 26px;font-size:15px;border-width:1.5px;border-radius:999px}
+button.sso{background:var(--ink);color:var(--app);min-height:56px}
+.or{text-align:center;color:var(--mut);font-size:13px;margin:-4px 0}
+@media (max-height:760px),(max-width:370px){
+.hero{height:176px}.mas{width:132px}.ttl p,.sm{display:none}.ttl h1{font-size:38px}.scr{gap:10px}.scr>.pill2:not(.in){display:none}.box{padding:14px;gap:9px}.box .mut.sub{display:none}.tab{min-height:32px}
+#die{width:clamp(66px,19vw,78px)}.who{font-size:15px}.gl,.lg{display:none}.rk{font-size:11.5px;padding:0 10px}
+#mid{padding:8px;gap:3px}.fact b{font-size:12.5px}.fact i{display:none}.fact p{-webkit-line-clamp:2}
+.sheet{padding-top:10px}.sheet button{min-height:46px;font-size:15px}.msg{font-size:15px;padding:8px 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+}
+.msg{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.wl{display:flex;flex-direction:column;min-height:100dvh}
+@media (min-width:480px){.wl{min-height:calc(100dvh - 32px)}}
+.wh{position:relative;flex:1;min-height:360px;background:var(--amber);overflow:hidden}
+.sun{position:absolute;width:86px;height:86px;border-radius:50%;background:rgba(255,255,255,.42);right:21%;top:17%}
+.gsh{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);width:64%;height:18px;border-radius:50%;background:rgba(0,0,0,.14)}
+.wm{position:absolute;left:50%;bottom:56px;transform:translateX(-50%);width:min(72%,290px)}.wm svg{display:block;width:100%;height:auto}
+.wc{position:absolute;right:13%;bottom:46px;width:66px}.wc svg{display:block;width:100%;height:auto}
+.wave2{position:absolute;left:0;bottom:-1px;width:100%;height:56px;fill:#3b3b3b}
+.wb{background:#3b3b3b;padding:4px 24px calc(20px + env(safe-area-inset-bottom,0px));color:#fff}
+.sm2{color:var(--y);font-weight:600;font-size:16px}
+.wt{font:700 clamp(34px,11vw,44px)/1.15 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif;color:var(--y);margin:0 0 16px}
+.go{width:100%;display:flex;align-items:center;justify-content:center;gap:14px;background:var(--y);color:#1d1d1d;border-radius:999px;min-height:54px;font-size:17.5px;box-shadow:none;flex:none}
+.go i{font-style:normal;font-size:24px;line-height:1}
+.pw{text-align:center;color:#a0a0a0;font-size:12.5px;margin:12px 0 0}
+@media (max-height:680px){.wh{min-height:300px}.wm{width:min(62%,230px);bottom:50px}.wc{width:54px}.sun{width:68px;height:68px}}
+.lg2{display:flex;flex-direction:column;min-height:100dvh}
+@media (min-width:480px){.lg2{min-height:calc(100dvh - 32px)}}
+.lh{position:relative;height:236px;flex:none;background:var(--amber);overflow:hidden}
+.lm{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);width:158px;z-index:2}.lm svg{display:block;width:100%;height:auto}
+.lb{flex:1;background:#3b3b3b;color:#fff;display:flex;flex-direction:column;gap:11px;padding:2px 24px calc(18px + env(safe-area-inset-bottom,0px))}
+.ls{margin:-6px 0 2px;font-size:13.5px;color:#e6e6e6}
+.fi{background:#4a4a4a;color:#fff;border:0;border-radius:18px;min-height:48px;padding:12px 18px;width:100%;flex:none}
+.fi::placeholder{color:#b3b3b3;opacity:1}
+.lb .go{min-height:54px;font-size:18px}
+.lk2{background:none;border:0;box-shadow:none;color:#ececec;text-decoration:underline;font:600 15px/1.4 inherit;min-height:0;padding:2px;align-self:center;flex:none;border-radius:6px}
+.err2{color:#ffd24a;text-align:center;margin:0;font-weight:700;font-size:14px}
+.fgn{margin:0;font-size:13.5px;line-height:1.5;color:#dcdcdc;background:#4a4a4a;border-radius:14px;padding:10px 14px}
+.try{width:100%;min-height:48px;border-radius:999px;background:transparent;color:var(--cy);border:2px solid var(--cy);box-shadow:none;font-size:15.5px;flex:none}
+.ssob{width:100%;min-height:50px;border-radius:999px;background:transparent;color:#fff;border:2px solid #fff;box-shadow:none;font-size:15.5px;flex:none}
+.tn{text-align:center;color:#a8a8a8;font-size:12.5px;margin:-4px 0 0}
+.lb .ft{margin-top:auto;padding-top:10px}
+@media (max-height:700px){.lh{height:164px}.lm{width:112px;bottom:26px}.lb .wt{font-size:34px}.lb{gap:8px}.fi{min-height:46px}.lb .go,.try{min-height:48px}.ls{display:none}.tn{display:none}}
+.ob{display:flex;flex-direction:column;min-height:100dvh}
+@media (min-width:480px){.ob{min-height:calc(100dvh - 32px)}}
+.oh{position:relative;flex:1;min-height:300px;background:var(--amber);overflow:hidden;display:grid;place-items:center}
+.oa{width:min(80%,310px);margin-bottom:34px}.oa svg{width:100%;height:auto;display:block}
+.skip{position:absolute;top:14px;right:14px;z-index:3;background:rgba(255,255,255,.6);color:#1d1d1d;border-radius:999px;min-height:38px;padding:4px 18px;font-size:14px;flex:none;box-shadow:none}
+.obp{position:relative;overflow:hidden;background:#3b3b3b;color:#fff;padding:2px 24px calc(22px + env(safe-area-inset-bottom,0px))}
+.obp:after{content:"";position:absolute;right:-70px;bottom:-80px;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+.ot{font:700 clamp(26px,8vw,34px)/1.2 Prompt,Sarabun,"Noto Sans Thai",system-ui,sans-serif;color:var(--y);margin:2px 0 8px}
+.op{margin:0 0 18px;font-size:15.5px;line-height:1.65;color:#f0f0f0;min-height:5em}
+.of{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.dg{display:flex;align-items:center;gap:12px}.dots i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#6c6c6c;margin-right:6px;vertical-align:middle;transition:width .2s}
+.dots i.on{background:var(--y);width:24px;border-radius:5px}
+.nx{width:58px;height:58px;min-height:58px;border-radius:18px;background:var(--cy);color:var(--bi);font-size:28px;padding:0;flex:none;box-shadow:none;line-height:1}
+.go2{min-height:58px;border-radius:18px;background:var(--y);color:#1d1d1d;padding:0 24px;display:flex;align-items:center;gap:10px;font-size:18px;flex:none;box-shadow:none}.go2 i{font-style:normal;font-size:26px}
+.pv{width:44px;height:44px;min-height:44px;border-radius:50%;background:#4a4a4a;color:#fff;padding:0;font-size:20px;flex:none;box-shadow:none}
+.wlk{text-align:center;margin:10px 0 0}.wlk .lk2{align-self:auto}
+@media (max-height:680px){.oh{min-height:240px}.oa{width:min(62%,230px);margin-bottom:26px}.op{min-height:4.6em;margin-bottom:12px}.wlk{margin-top:4px}}
+.tk em{font-size:20px;margin-left:-7px}.tk em svg{display:block;width:1em;height:1em}
+.c .hd .tk em{font-size:17px;margin-left:-6px}.c.sp .tk em{font-size:20px;margin-left:-5px}
+.who svg{width:1.3em;height:1.3em;vertical-align:-.3em}
+.pl i svg,.lpa svg,button.av svg{width:100%;height:100%;display:block}
+.big svg{width:84%;height:84%}.fb{display:flex;align-items:center;justify-content:center}.fb svg{width:42px;height:42px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+let GOAL=20000,MAXT=40;const CFG={start:3000,sal:1000,exp0:500,expStep:150,r0:.3,lvl:.8,set:2,nwP:1,nwU:1,upP:.6,tax:.1,div:.5,rr:600,sellP:.7,anim:1,seatB:150,mt:.8,gm:.1},FR=["c0","c1","c2","c3"],PC=["#e0a100","#00a3c4","#e5483a","#7a4ee0"],GC=["#ff6b57","#ffcc00","#00b4d8","#ffffff"];
+const P=(n,g,p)=>({k:"p",n,g,p});
+const BASE=[{k:"s",n:"จุดเริ่ม"},P("ร้านทอง",0,1000),P("ร้านยาจีน",0,1200),{k:"c",n:"โชค"},P("ภัตตาคาร",0,1400),{k:"w",n:"วัด"},{k:"x",n:"ภาษี"},
+P("แผงเสื้อผ้า",1,1800),{k:"c",n:"โชค"},P("แผงต้นไม้",1,2000),P("แผงกระเป๋า",1,2200),{k:"m",n:"ตลาดนัด"},{k:"t",n:"รถติด"},
+P("ออฟฟิศ",2,2800),P("ธนาคาร",2,3000),{k:"c",n:"โชค"},P("คอนโด",2,3200),{k:"w",n:"วัด"},
+P("ร้านกาแฟ",3,4000),{k:"c",n:"โชค"},P("ผับ",3,4500),{k:"x",n:"ภาษี"},P("ห้างหรู",3,5000),{k:"c",n:"โชค"}];
+let T=BASE;
+const BR={gr:["🏮 เยาวราช","🛍️ จตุจักร","🏢 สีลม","🍸 ทองหล่อ"],n:"โหมดปกติ",e:"🎲",note:"กติกามาตรฐาน กระดานเมืองใหญ่",goal:15000,turns:40,pm:1,rm:1,exp:0,bad:1};
+const REG=[
+{n:"ภาคกลาง",pv:"พระนครศรีอยุธยา",e:"🏛️",note:"วัดโบราณ แม่น้ำสามสาย ขนมและอาหารริมน้ำ · กติกามาตรฐาน",intro:"เมืองหลวงเก่าที่เป็นมรดกโลก เด่นเรื่องวัดโบราณ แม่น้ำสามสาย และอาหารริมน้ำ",goal:14000,turns:40,pm:1,rm:1,exp:0,bad:1,
+gr:["🛕 โบราณสถาน","🌊 แม่น้ำและพื้นที่","🍜 อาหารและตลาด","🎨 วัฒนธรรมและงานช่าง"],
+nm:["วัดมหาธาตุ","วัดไชยวัฒนาราม","วัดพระศรีสรรเพชญ์","แม่น้ำ 3 สาย","บางปะอิน","บึงพระราม","ก๋วยเตี๋ยวเรือ","โรตีสายไหม","กุ้งแม่น้ำเผา","ศิลปาชีพบางไทร","ช้างอยุธยา","ตลาดน้ำอโยธยา"],
+fx:["เศียรพระพุทธรูปหินทรายที่รากต้นโพธิ์เกาะ เป็นภาพจำของเมืองกรุงเก่า","วัดริมแม่น้ำเจ้าพระยา สร้างในสมัยพระเจ้าปราสาททอง","วัดในพระราชวังหลวง มีเจดีย์ประธาน 3 องค์เรียงกัน","เจ้าพระยา ป่าสัก และลพบุรี ไหลล้อมเกาะเมืองอยุธยา","พระราชวังฤดูร้อน ผสมศิลปะไทย จีน และตะวันตก","สวนสาธารณะและบึงน้ำใหญ่กลางเมืองกรุงเก่า","ก๋วยเตี๋ยวชามเล็ก น้ำซุปเข้มข้น ขายริมน้ำ","ขนมแป้งบางห่อใยน้ำตาลสีสวย ของฝากยอดนิยม","กุ้งก้ามกรามตัวใหญ่ ขึ้นชื่อริมแม่น้ำ","ศูนย์ฝึกงานหัตถกรรมไทย ในพระบรมราชูปถัมภ์","ช้างศึกเคยเป็นกำลังสำคัญของกองทัพสมัยโบราณ","ตลาดน้ำจำลองวิถีชีวิตสมัยกรุงเก่า"],
+ch:[["นักท่องเที่ยวมาไหว้พระและขี่ช้างชมวัด",1000],["ขายโรตีสายไหมช่วงวันหยุดยาว",700],["ขายกุ้งแม่น้ำเผาได้ราคาดี",900],["น้ำท่วมริมแม่น้ำ ต้องซ่อมร้าน",-1200,1],["รถติดเข้าเมืองเก่าช่วงเทศกาล",-500,1]]},
+{n:"ภาคเหนือ",pv:"เชียงใหม่",e:"🏔️",note:"วัดล้านนา ดอยสูง ข้าวซอย งานหัตถกรรม · หน้าหนาวคนล้น ค่าเช่าสูงแต่ค่าครองชีพแพง",intro:"เมืองหลวงแห่งล้านนา เด่นเรื่องวัด ดอยสูง อาหารเหนือ และงานหัตถกรรม",goal:17000,turns:40,pm:1,rm:1.2,exp:100,bad:1,
+gr:["🛕 วัดและประวัติศาสตร์","⛰️ ธรรมชาติ","🍜 อาหารพื้นเมือง","🎨 หัตถกรรมและเทศกาล"],
+nm:["พระธาตุดอยสุเทพ","วัดเจดีย์หลวง","เวียงกุมกาม","ดอยอินทนนท์","ดอยอ่างขาง","น้ำตกบัวตอง","ข้าวซอย","ไส้อั่ว","แกงฮังเล","ถนนวัวลาย","บ่อสร้าง","ยี่เป็งลอยโคม"],
+fx:["วัดบนยอดเขาที่มองเห็นเมืองเชียงใหม่ทั้งเมือง เป็นปูชนียสถานสำคัญของล้านนา","วัดเก่าแก่กลางเมืองเก่า มีเจดีย์ทรงล้านนาขนาดใหญ่","เมืองโบราณของล้านนา ก่อนย้ายมาตั้งเมืองเชียงใหม่","ยอดเขาที่สูงที่สุดในประเทศไทย","เมืองหนาวของไทย ปลูกสตรอว์เบอร์รีและท้อ","น้ำตกหินปูนที่เดินปีนขึ้นไปได้","ก๋วยเตี๋ยวน้ำแกงกะทิสไตล์เหนือ กินกับผักดอง","ไส้กรอกสมุนไพรของล้านนา ย่างหอมกลิ่นพริกแกง","แกงหมูที่ได้อิทธิพลจากพม่า เข้ามาผสมในอาหารล้านนา","ย่านเครื่องเงินเก่าแก่ ขึ้นชื่อเรื่องงานตีเงิน","หมู่บ้านทำร่มกระดาษสา วาดลายด้วยมือ","เทศกาลปล่อยโคมและลอยกระทงของล้านนา"],
+ch:[["นักท่องเที่ยวมาเที่ยวหน้าหนาวล้นเมือง",1200],["ขายผ้าทอและเครื่องเงินได้ดี",800],["ขายสตรอว์เบอร์รีดอยได้ราคาดี",900],["หมอกควันฤดูแล้ง นักท่องเที่ยวหาย",-900,1],["ฝนตกหนัก ทางขึ้นดอยเสีย ต้องซ่อมถนน",-700,1]]},
+{n:"ภาคอีสาน",pv:"นครราชสีมา",e:"🌾",note:"ปราสาทขอม เขาใหญ่ อาหารอีสาน ผ้าไหม · ที่ดินถูก แต่ภัยแล้งทำโชคร้ายหนักขึ้น",intro:"ประตูสู่อีสาน เด่นเรื่องปราสาทขอม ป่าเขา อาหารอีสาน และผ้าไหม",goal:14000,turns:40,pm:.8,rm:.9,exp:-50,bad:1.3,
+gr:["🛕 โบราณสถาน","⛰️ ธรรมชาติ","🍜 อาหารอีสาน","🎨 ของดีและวัฒนธรรม"],
+nm:["ปราสาทหินพิมาย","อนุสาวรีย์ย่าโม","ปราสาทพนมวัน","เขาใหญ่","วังน้ำเขียว","น้ำตกเหวสุวัต","ผัดหมี่โคราช","ส้มตำปลาร้า","ลาบเนื้อ","ฟาร์มโคนมปากช่อง","ผ้าไหมปักธงชัย","ปั้นดินเผา"],
+fx:["ปราสาทขอมขนาดใหญ่ในอีสานใต้ ศิลปะเขมรโบราณ","วีรสตรีผู้เป็นที่เคารพของชาวเมืองโคราช ชื่อท้าวสุรนารี","ปราสาทขอมโบราณในตัวเมืองนครราชสีมา","อุทยานแห่งชาติแห่งแรกของไทย เป็นมรดกโลกร่วมกับป่าดงพญาเย็น","ที่ราบสูงอากาศเย็นสบาย มีรีสอร์ตและไร่องุ่น","น้ำตกสูงในป่าอุทยาน เดินลงไปชมได้","เส้นหมี่ผัดน้ำซอสรสเข้มข้น ของขึ้นชื่อของโคราช","ส้มตำสไตล์อีสานรสจัด ใส่ปลาร้า","เนื้อสับรสเปรี้ยวเผ็ด โรยข้าวคั่วหอม","แหล่งเลี้ยงโคนมและท่องเที่ยวฟาร์ม ขึ้นชื่อของนมสด","ผ้าไหมคุณภาพดีขึ้นชื่อของอำเภอปักธงชัย","ภาชนะดินเนื้อหยาบสีน้ำตาลแดง ทำจากดินพื้นถิ่น"],
+ch:[["ผ้าไหมส่งออกขายดี",1000],["นักท่องเที่ยวขึ้นเขาช่วงวันหยุดยาว",1200],["งานเฉลิมฉลองท้าวสุรนารี คนแน่นเมือง ขายของดี",800],["ภัยแล้งทำให้นาข้าวเสียหาย",-900,1],["ฝนตกหนัก ถนนขึ้นเขาเสียหาย",-700,1]]},
+{n:"ภาคตะวันออก",pv:"จันทบุรี",e:"🍈",note:"ผลไม้ พลอย ชายฝั่งทะเล · ค่าเช่าสูง ค่าครองชีพแพง ตาน้อยลง",intro:"เมืองผลไม้และอัญมณี เด่นเรื่องทุเรียน มังคุด พลอย และชายฝั่งทะเล",goal:15000,turns:36,pm:1.1,rm:1.3,exp:150,bad:1,
+gr:["🍈 ผลไม้และสวน","🏝️ ธรรมชาติและทะเล","🍜 อาหารและตลาด","💎 อัญมณีและวัฒนธรรม"],
+nm:["สวนทุเรียน","สวนมังคุด","สวนเงาะ","อ่าวคุ้งกระเบน","น้ำตกพลิ้ว","หาดแหลมสิงห์","ผัดหมี่จันท์","ตลาดริมน้ำ","อาหารทะเลสด","ตลาดพลอย","อาสนวิหารคาทอลิก","เสื่อจันทบูร"],
+fx:["ผลไม้ที่ได้ชื่อว่าราชาแห่งผลไม้ ปลูกมากในภาคตะวันออก","ราชินีแห่งผลไม้ เปลือกสีม่วงเข้ม เนื้อขาวหวานอมเปรี้ยว","ผลไม้ขนยาวสีแดง ออกผลช่วงฤดูร้อน","อ่าวและป่าชายเลน เป็นแหล่งเรียนรู้ธรรมชาติ","น้ำตกในอุทยานแห่งชาติของจังหวัด","ชายหาดเงียบสงบใกล้ตัวเมือง","เส้นข้าวเหนียวนุ่ม ผัดแห้ง ของดีประจำจังหวัด","ย่านเมืองเก่าริมแม่น้ำ มีอาคารเก่าและร้านอาหาร","ปู กุ้ง ปลา จากชายฝั่งอ่าวไทย ส่งตรงถึงตลาด","ศูนย์กลางซื้อขายพลอยและอัญมณีใหญ่ของไทย","โบสถ์คริสต์ขนาดใหญ่ริมแม่น้ำ","เสื่อกกทอมือ งานหัตถกรรมประจำจังหวัด"],
+ch:[["ฤดูทุเรียน ขายส่งออกได้ราคาดี",1500],["พ่อค้าพลอยมาซื้อพลอยที่ตลาด",1000],["เทศกาลผลไม้ นักท่องเที่ยวแน่น",900],["พายุฝนทำให้ผลไม้ร่วงเสียหาย",-1000,1],["มังคุดล้นตลาด ราคาตก",-700,1]]},
+{n:"ภาคตะวันตก",pv:"กาญจนบุรี",e:"🌲",note:"ทางรถไฟสายพม่า น้ำตก ชุมชนมอญ · โชคร้ายเบาลง แต่เวลาสั้นกว่าใคร",intro:"เมืองประวัติศาสตร์ทางรถไฟสายพม่า น้ำตก ป่าเขา และชุมชนมอญ",goal:12000,turns:32,pm:.9,rm:1,exp:0,bad:.8,
+gr:["🚂 ประวัติศาสตร์สงคราม","💧 น้ำตกและป่าเขา","🍜 อาหารและตลาด","🎨 วัฒนธรรมและพักผ่อน"],
+nm:["สะพานแม่น้ำแคว","สุสานสัมพันธมิตร","ช่องเขาขาด","น้ำตกเจ็ดชั้น","น้ำตกไทรโยคน้อย","อ่างเก็บน้ำ","ปลาน้ำจืดริมแพ","ข้าวแช่มอญ","ตลาดริมน้ำแคว","สะพานไม้ยาว","ล่องแพ","พิพิธภัณฑ์รถไฟ"],
+fx:["สะพานบนทางรถไฟสายพม่า สมัยสงครามโลกครั้งที่ 2","สุสานทหารเชลยศึกที่เสียชีวิตขณะสร้างทางรถไฟ","ช่องเขาที่เชลยศึกขุดเจาะหินเพื่อสร้างทางรถไฟ","น้ำตกหินปูน 7 ชั้น เดินขึ้นชมได้ทีละชั้น","น้ำตกใหญ่ริมทางรถไฟ ใกล้สถานีปลายทางสายสั้น","ทะเลสาบกว้างใหญ่หลังเขื่อน ใช้เก็บน้ำและผลิตไฟฟ้า","เมนูปลาน้ำจืดสดๆ กินริมแพกลางแม่น้ำ","อาหารชาวมอญ กินช่วงสงกรานต์ ข้าวหอมเย็นกับเครื่องเคียง","ตลาดชุมชนขายของพื้นเมือง ผักผลไม้ และของฝาก","สะพานไม้ข้ามแม่น้ำ ยาวมากแห่งหนึ่งของโลก เชื่อมชุมชนมอญที่สังขละบุรี","นั่งแพกินอาหารและพักผ่อนกลางแม่น้ำ","พิพิธภัณฑ์เล่าเรื่องการสร้างทางรถไฟสายพม่า"],
+ch:[["นักท่องเที่ยวมาเที่ยวน้ำตกหน้าฝน",1000],["ล่องแพวันหยุดยาว ลูกค้าเต็ม",800],["โรงเรียนพานักเรียนมาเรียนประวัติศาสตร์",600],["น้ำป่าไหลหลาก ปิดทางเข้าน้ำตก",-900,1],["ฝุ่นควันจากไฟป่า",-600,1]]},
+{n:"ภาคใต้",pv:"ภูเก็ต",e:"🏝️",note:"ทะเล เมืองเก่าชิโน-โปรตุกีส อาหารจีนภูเก็ต กินเจ · ระดับยาก ทุกอย่างแพง มรสุมโชคร้ายหนัก",intro:"เกาะเมืองท่องเที่ยวที่รุ่งเรืองจากเหมืองดีบุก เด่นเรื่องทะเล เมืองเก่า และเทศกาลกินเจ",goal:20000,turns:40,pm:1.3,rm:1.4,exp:150,bad:1.2,
+gr:["🏖️ ทะเลและชายหาด","🏘️ เมืองเก่าและประวัติศาสตร์","🍜 อาหาร","🎎 วัฒนธรรมและเทศกาล"],
+nm:["หาดป่าตอง","แหลมพรหมเทพ","หาดกะตะ","ถนนถลาง","พิพิธภัณฑ์ไทยหัว","อนุสาวรีย์วีรสตรี","หมี่ผัดน้ำซุป","โอ๊ะเอ๋ว","หมูฮ้อง","เทศกาลกินเจ","ศาลเจ้าเก่าแก่","ผ้าบาติก"],
+fx:["หาดท่องเที่ยวที่คึกคักที่สุดแห่งหนึ่งของเกาะ","จุดชมพระอาทิตย์ตกยอดนิยมที่ปลายเกาะ","ชายหาดทรายขาวทางฝั่งตะวันตกของเกาะ","ถนนสายเมืองเก่า ตึกแถวสไตล์ชิโน-โปรตุกีส สมัยเมืองดีบุกรุ่งเรือง","โรงเรียนจีนเก่าที่เล่าประวัติชาวจีนในภูเก็ต","อนุสาวรีย์ของสองพี่น้องผู้นำชาวเมืองสู้ศึกพม่า","เส้นหมี่เหลืองผัดน้ำซุปเข้มข้น ตำรับจีนในภูเก็ต","ขนมเย็นแบบจีน กินกับน้ำแข็งและน้ำเชื่อม","หมูสามชั้นตุ๋นเค็มหวาน อาหารจีนของภูเก็ต","เทศกาลกินผัก ขึ้นชื่อเรื่องพิธีกรรมและขบวนแห่","ศาลเจ้าหลายแห่งสะท้อนวัฒนธรรมชาวจีนในภูเก็ต","ผ้าเขียนลายพื้นเมืองของภาคใต้"],
+ch:[["นักท่องเที่ยวต่างชาติเต็มเมือง",1500],["ขายหมี่ผัดช่วงเทศกาลกินเจ",900],["ขายผ้าบาติกในตลาดเมืองเก่า",700],["มรสุม คลื่นลมแรง ปิดเรือท่องเที่ยว",-1200,1],["ฝนตกหนัก น้ำท่วมถนนในเมือง",-700,1]]}];
+function mkT(r){if(r==null)return BASE;let k=0;const R=REG[r];return BASE.map(t=>{if(t.k!="p")return t;const j=k++;return{...t,n:R.nm[j],fx:R.fx[j],p:Math.round(t.p*R.pm/10)*10}})}
+function setReg(r,n){const g=r==null?BR:REG[r];GOAL=Math.round(g.goal*(1+CFG.gm*((n||1)-1))/500)*500;MAXT=Math.round(g.turns*((n||1)>1?CFG.mt:1));T=mkT(r)}
+const RG=()=>G&&G.reg!=null?REG[G.reg]:BR;
+const FI=[`<circle cx="24" cy="29" r="15" fill="#ffdcbc"/><circle cx="18.5" cy="29.5" r="5.2" fill="#fff" stroke="#c98a00" stroke-width="2.2"/><circle cx="29.5" cy="29.5" r="5.2" fill="#fff" stroke="#c98a00" stroke-width="2.2"/><path d="M23.7 29.5h.6" stroke="#c98a00" stroke-width="2.2"/><circle cx="18.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><circle cx="29.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><path d="M21 39q3 3 6 0z" fill="#ff6b57" stroke-width="2"/><path d="M16 35c3-3.4 5-1 8 0c3-1 5-3.4 8 0c-3 4.2-5 1.8-8 1.8s-5 2.6-8-1.8z" fill="#2a2a2a" stroke-width="1.6"/><ellipse cx="24" cy="16" rx="16.5" ry="3.8" fill="#2a2a2a"/><path d="M14 16V6q10-3.4 20 0v10z" fill="#2a2a2a"/><path d="M14 12.5q10 3 20 0V9.5q-10 3-20 0z" fill="#ffc800" stroke-width="1.8"/>`,`<circle cx="24" cy="29" r="15" fill="#ffdcbc"/><circle cx="18.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><circle cx="29.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><path d="M18 35q6 6.5 12 0z" fill="#fff" stroke-width="2.4"/><circle cx="14" cy="34" r="3" fill="#ff9a8a" stroke="none"/><circle cx="34" cy="34" r="3" fill="#ff9a8a" stroke="none"/><path d="M8 23Q8 7 24 7T40 23Q24 17 8 23z" fill="#e5483a"/><circle cx="37.5" cy="9" r="4.2" fill="#e5483a"/>`,`<circle cx="24" cy="29" r="15" fill="#ffdcbc"/><circle cx="18.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><circle cx="29.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><path d="M18 35q6 6.5 12 0z" fill="#fff" stroke-width="2.4"/><circle cx="14" cy="34" r="3" fill="#ff9a8a" stroke="none"/><circle cx="34" cy="34" r="3" fill="#ff9a8a" stroke="none"/><path d="M7.5 33C3.5 9 16 4 24 4s20.500 5 16.500 29c-1-10-5-15.500-16.500-15.500S8.500 23 7.500 33z" fill="#2a2a2a"/><path d="M35 11l8-4.500v10z M35 11l-8-4.500v10z" fill="#ff6b57" stroke-width="2"/><circle cx="35" cy="11" r="2.4" fill="#ffc800" stroke-width="1.6"/>`,`<circle cx="24" cy="29" r="15" fill="#ffdcbc"/><circle cx="18.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><circle cx="29.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><path d="M18 35q6 6.5 12 0z" fill="#fff" stroke-width="2.4"/><circle cx="14.500" cy="35" r="1" fill="#b87a52" stroke="none"/><circle cx="17" cy="37" r="1" fill="#b87a52" stroke="none"/><circle cx="33.500" cy="35" r="1" fill="#b87a52" stroke="none"/><circle cx="31" cy="37" r="1" fill="#b87a52" stroke="none"/><path d="M9 24C9 10 15 5 24 5s15 5 15 19z" fill="#00b4d8"/><rect x="8" y="21.500" width="32" height="6.500" rx="3.200" fill="#ffc800" stroke-width="2.400"/><circle cx="24" cy="5" r="3.600" fill="#ffc800" stroke-width="2.200"/>`];
+const FACE={};FI.forEach((x,i)=>{FACE["c"+i]=`<svg viewBox="3 3 42 42" fill="none" stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${x}</svg>`});
+const fc=c=>FACE[c]||c;
+const DF=[[],[5],[1,9],[1,5,9],[1,3,7,9],[1,3,5,7,9],[1,3,4,6,7,9]];
+const IC={s:"🏁",c:"🎴",w:"🛕",x:"🧾",m:"🛒",t:"🚗"};
+const CH=[["ถูกหวยรางวัลที่ 3",2500],["เงินกงสีเข้าบัญชี",1500],["ขายของออนไลน์ติดลมบน",1200],["ลูกค้าจ่ายโบนัสพิเศษ",800],
+["ทำบุญตักบาตรตอนเช้า",-300,1],["ค่าเทอมลูกมาแล้ว",-1000,1],["น้ำท่วมหน้าบ้าน ต้องซ่อม",-1200,1],["เพื่อนยืมเงินแล้วหายตัว",-600,1],["รถเสีย ค่าซ่อมแพง",-700,1],["ถูกแก๊งคอลเซ็นเตอร์หลอก",-900,1]];
+const PK={rent:"ค่าเช่า +20% ถาวร",sal:"เงินเดือนผ่านจุดเริ่ม +฿600",cost:"ค่าครองชีพต่อรอบ -฿250",re:"ทอยใหม่ฟรี 1 ครั้งต่อรอบ",luck:"การ์ดโชคร้ายเสียน้อยลงครึ่งหนึ่ง"};
+const $=s=>document.querySelector(s);
+const fmt=n=>(n<0?"-":"")+"฿"+Math.abs(Math.round(n)).toLocaleString("th-TH");
+const sg=n=>(n>0?"+":"")+fmt(n);
+const up=i=>Math.round(T[i].p*CFG.upP/10)*10;
+const xy=i=>i<=5?[8,6-i]:i<=11?[13-i,1]:i<=17?[1,i-11]:[i-16,6];
+const rd=()=>1+Math.floor(Math.random()*6);
+let ME=Math.random().toString(36).slice(2,8);
+let G=null,DB=null,API=0,TOK="",USER="",LM=0,SELREG=null,XC=0,LN=1,MSG="",unsub=null,SCR="login",PREV="home",WP=0,DA=0,ANIM=0,VD=0,VP=null,PEND=null,SSO=null,ENT="login",FG=0,LU="",REC=0,RST=0,PROF,NAME="",pt=0;
+const online=()=>API||DB;
+const PDEF=()=>({th:"light",name:"",img:"",fi:0,games:0,wins:0,best:0});
+const lsg=k=>{try{return JSON.parse(localStorage.getItem(k)||"null")}catch(e){return null}},lss=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const H=()=>({Authorization:"Bearer "+TOK});
+async function F(u,o){const r=await fetch(u,o);if(r.status==401){logout();throw 0}return r}
+function applyTh(){try{document.documentElement.dataset.theme=PROF.th||"light"}catch(e){}}
+const acct=()=>/^(e_|w5_)/.test(USER)?"":USER;
+function loadProf(){PROF=Object.assign(PDEF(),lsg("tst_prof_"+(USER||"guest")));NAME=PROF.name||acct();applyTh()}
+function theme(){PROF.th=PROF.th=="dark"?"light":"dark";applyTh();savep();render()}
+const savep=()=>{lss("tst_prof_"+(USER||"guest"),PROF);if(API&&TOK){clearTimeout(pt);pt=setTimeout(()=>F("api/profile",{method:"PUT",headers:{...H(),"Content-Type":"application/json"},body:JSON.stringify(PROF)}).catch(()=>{}),800)}};
+{const x=lsg("tst_sess");if(x){USER=x.u;TOK=x.t;ENT="home"}SCR="welcome";loadProf()}
+const cp=()=>G.players[G.cur];
+const mine=()=>G.mode!="online"||cp().id==ME;
+function newGame(ps,mode,code,reg){REC=0;reg=reg==null?null:reg;setReg(reg,ps.length);return{id:Math.random().toString(36).slice(2,8),reg,fact:reg!=null?{n:"จ."+REG[reg].pv+" ("+REG[reg].n+")",x:REG[reg].intro,g:-1}:null,q:null,mode,code,started:1,host:ME,cur:0,ph:"roll",r:0,pend:0,opts:[],own:{},over:"",win:-1,log:["เป้าหมาย "+fmt(GOAL)+" ภายใน "+MAXT+" ตา"],
+players:ps.map((q,i)=>({id:q.id,name:q.name,f:q.f||FR[i],img:q.img||"",cash:CFG.start+CFG.seatB*i,pos:0,lap:1,turn:1,perk:{},shield:0,free:0,out:0,d:0}))}}
+function save(){if(G&&G.mode=="online"&&online())Net.set(G.code,G).catch(()=>{})}
+function commit(){render();save()}
+function lg(m){G.log.unshift(m);G.log.length=Math.min(G.log.length,5)}
+function rent(i){const o=G.own[i],t=T[i],w=G.players[o.o];let b=t.p*CFG.r0*(1+o.l*CFG.lvl);if(T.every((x,j)=>x.g!==t.g||(G.own[j]&&G.own[j].o==o.o)))b*=CFG.set;if(w.perk.rent)b*=1.2;b*=RG().rm;return Math.round(b/10)*10}
+function nw(k){let v=G.players[k].cash;for(const i in G.own){const o=G.own[i];if(o.o==k)v+=T[i].p*CFG.nwP+o.l*up(i)*CFG.nwU}return v}
+function roll(){const r=rd();if(!CFG.anim){G.r=r;G.ph="dec";return commit()}
+ANIM=1;VD=rd();render(true);const TD=redu()?[40,40,40,40]:[80,92,108,128,152,182,220];let n=0;
+const t=()=>{const v=rd(),d=document.querySelector("#die");if(d){d.className=v==1?"one":"";d.innerHTML=Array.from({length:9},(_,k)=>`<i${DF[v].includes(k+1)?' class="on"':""}></i>`).join("");d.style.transform="rotate("+Math.round(Math.random()*44-22)+"deg)"}
+if(++n<TD.length)setTimeout(t,TD[n]);else{VD=0;ANIM=0;G.r=r;G.ph="dec";commit()}};setTimeout(t,TD[0])}
+function reroll(){const p=cp();if(p.free>0)p.free--;else p.cash-=500;G.r=rd();lg("ทอยใหม่ ได้ "+G.r);commit()}
+const vpos=k=>VP&&G&&VP.id===G.id&&VP.p[k]!=null?VP.p[k]:G.players[k].pos;
+const STEP=()=>redu()?90:250;
+function stepMove(k,from,n,done,remote){ANIM=remote?2:1;VP={id:G.id,p:G.players.map(q=>q.pos)};VP.p[k]=from;render(true);let i=0;
+const t=()=>{i++;VP.p[k]=(from+i)%24;render(true);if(i<n)setTimeout(t,STEP());else setTimeout(()=>{VP=null;ANIM=0;if(remote&&PEND){G=PEND}PEND=null;done()},STEP()*.9)};setTimeout(t,STEP())}
+function animRemote(old,g){if(!CFG.anim||!old||!old.started||!g.started||old.id!==g.id)return false;let mv=null;
+g.players.forEach((q,k)=>{const o=old.players[k];if(!mv&&o&&o.pos!==q.pos){const n=(q.pos-o.pos+24)%24;if(n>0&&n<=12)mv={k,from:o.pos,n}}});
+if(!mv)return false;stepMove(mv.k,mv.from,mv.n,()=>render(),true);return true}
+function go(){const p=cp(),n=G.r,from=p.pos;lg(p.name+" เดิน "+n+" ช่อง");
+const fin_=()=>{let q=from+n;if(q>=24){q-=24;lap()}p.pos=q;G.r=0;land()};
+if(!CFG.anim){fin_();return}
+G.ph="move";stepMove(G.cur,from,n,fin_,false)}
+function lap(){const p=cp();p.lap++;let dv=0;if(CFG.div)for(const i in G.own)if(G.own[i].o==G.cur)dv+=rent(i)*CFG.div;dv=Math.round(dv/10)*10;const sal=CFG.sal+(p.perk.sal?600:0)+dv,ex=Math.max(0,CFG.exp0+CFG.expStep*(p.lap-2)+RG().exp-(p.perk.cost?250:0));p.cash+=sal-ex;p.free=p.perk.re?1:0;G.pend=1;lg("ผ่านจุดเริ่ม เงินเดือน "+sg(sal)+" ค่าครองชีพ "+sg(-ex))}
+function card(){const p=cp(),pc=G.reg!=null&&Math.random()<.6?REG[G.reg].ch:CH,c=pc[Math.floor(Math.random()*pc.length)];let d=c[1];if(c[2]){if(p.shield){p.shield=0;lg("การ์ด: "+c[0]+" แต่บุญคุ้มครอง ไม่เสียอะไร");return}if(p.perk.luck)d=Math.round(d/20)*10;d=Math.round(d*RG().bad/10)*10}p.cash+=d;lg("การ์ด: "+c[0]+" "+sg(d))}
+function land(){const p=cp(),i=p.pos,t=T[i];
+if(t.k=="p"){if(G.reg!=null)G.fact={n:t.n,x:t.fx,g:t.g};const o=G.own[i];
+if(!o){G.ph="buy";lg(p.name+" ถึง "+t.n+" ว่าง "+fmt(t.p));return commit()}
+if(o.o==G.cur){if(G.players.length==1){const r=rent(i);p.cash+=r;lg("ค่าเช่า "+t.n+" "+sg(r))}if(o.l<3){G.ph="upg";return commit()}}
+else{const r=rent(i),w=G.players[o.o];p.cash-=r;w.cash+=r;lg(p.name+" จ่ายค่าเช่า "+w.name+" "+fmt(r))}}
+else if(t.k=="c")card();
+else if(t.k=="w"){if(p.cash>=300){p.cash-=300;p.shield=1;lg("ทำบุญ -฿300 โชคร้ายครั้งหน้าไม่มีผล")}}
+else if(t.k=="x"){const x=Math.max(300,Math.round(p.cash*CFG.tax/10)*10);p.cash-=x;lg("ภาษี "+sg(-x))}
+else if(t.k=="m"){if(G.reg!=null)return quiz();const g=200+100*Math.floor(Math.random()*9);p.cash+=g;lg("ขายของตลาดนัด "+sg(g))}
+else if(t.k=="t"){p.cash-=300;lg("รถติดจนเสียงาน -฿300")}
+else{p.cash+=500;lg("ลงตรงจุดเริ่ม โบนัส +฿500")}
+fin()}
+function buy(){const p=cp(),t=T[p.pos];p.cash-=t.p;G.own[p.pos]={o:G.cur,l:0};lg(p.name+" ซื้อ "+t.n);fin()}
+function upg(){const p=cp(),c=up(p.pos);p.cash-=c;G.own[p.pos].l++;lg(p.name+" ปรับปรุง "+T[p.pos].n);fin()}
+function over(m,w){G.ph="over";G.over=m;G.win=w===undefined?-1:w;commit()}
+function fin(){const p=cp(),n=G.players.length;
+if(p.cash<0){const mine=Object.keys(G.own).filter(i=>G.own[i].o==G.cur).sort((a,b)=>T[a].p-T[b].p);while(p.cash<0&&mine.length){const i=mine.shift(),o=G.own[i],v=Math.round((T[i].p+o.l*up(i))*CFG.sellP/10)*10;p.cash+=v;delete G.own[i];lg(p.name+" ขาย "+T[i].n+" ใช้หนี้ "+sg(v))}}
+if(p.cash<0){p.out=1;for(const i in G.own)if(G.own[i].o==G.cur)delete G.own[i];lg(p.name+" ล้มละลาย!");const al=G.players.filter(q=>!q.out);
+if(n>1&&al.length==1)return over("🏆 "+al[0].name+" ชนะ เพราะคนอื่นล้มละลายหมด",G.players.indexOf(al[0]));if(!al.length)return over("ล้มละลาย เงินหมดก่อนถึงเป้าหมาย");return next()}
+if(nw(G.cur)>=GOAL)return over("🏆 "+p.name+" เป็นท่านเศรษฐีตัวจริง! สุทธิ "+fmt(nw(G.cur)),G.cur);
+if(G.pend){G.pend=0;const a=Object.keys(PK).filter(k=>!p.perk[k]).sort(()=>Math.random()-.5).slice(0,3);if(a.length){G.opts=a;G.ph="perk";return commit()}}
+next()}
+function pick(k){const p=cp();p.perk[k]=1;if(k=="re")p.free=1;lg(p.name+" ได้บัฟ: "+PK[k]);next()}
+function next(){const p=cp(),n=G.players.length;p.turn++;if(p.turn>MAXT)p.d=1;let k=G.cur;
+for(let s=0;s<n;s++){k=(k+1)%n;const q=G.players[k];if(!q.out&&!q.d){G.cur=k;G.ph="roll";G.r=0;return commit()}}
+let b=-1;G.players.forEach((q,i)=>{if(!q.out&&(b<0||nw(i)>nw(b)))b=i});
+over(n>1?"หมดเวลา 🏆 "+G.players[b].name+" ชนะ สุทธิ "+fmt(nw(b)):"หมดเวลา สุทธิ "+fmt(nw(0))+" ยังไม่ถึงเป้าหมาย",n>1?b:-1)}
+function setN(a){LN=+a;render()}
+function local(){const ps=[],u=[FR[PROF.fi]];for(let i=0;i<LN;i++){let f=u[0];if(i){f=FR.find(x=>!u.includes(x));u.push(f)}ps.push({id:"l"+i,f,img:i?"":PROF.img,name:i?"ผู้เล่น "+(i+1):(NAME||(LN>1?"ผู้เล่น 1":"คุณ"))})}G=newGame(ps,"local","",SELREG);render()}
+const ava=q=>q.img?`<img src="${q.img}" alt="">`:fc(q.f);
+const fp=ps=>{const u=ps.map(q=>q.f);return u.includes(FR[PROF.fi])?FR.find(x=>!u.includes(x)):FR[PROF.fi]};
+const code4=()=>Array.from({length:4},()=>"ABCDEFGHJKMNPQRSTUVWXYZ23456789"[Math.floor(Math.random()*31)]).join("");
+function sub(c){if(unsub)unsub();unsub=Net.sub(c,g=>{if(ANIM==1)return;if(ANIM==2){PEND=g;return}const old=G;G=g;if(!animRemote(old,g))render()},()=>{MSG="เชื่อมต่อห้องไม่ได้";G=null;render()})}
+function make(){if(API&&!TOK){MSG="ต้องเข้าสู่ระบบก่อนเล่นออนไลน์";return render()}const c=code4();G={reg:SELREG,mode:"online",code:c,started:0,host:ME,players:[{id:ME,name:NAME||"ผู้เล่น",img:PROF.img,f:FR[PROF.fi]}]};render();save();sub(c)}
+async function join(){const c=($("#cd").value||"").toUpperCase().trim();MSG="";if(API&&!TOK){MSG="ต้องเข้าสู่ระบบก่อนเล่นออนไลน์";return render()}if(c.length!=4){MSG="ใส่รหัสห้อง 4 ตัว";return render()}
+try{const g=await Net.get(c);if(!g){MSG="ไม่พบห้อง "+c;return render()}
+if(g.started){MSG="ห้องนี้เริ่มเล่นไปแล้ว";return render()}if(g.players.length>=4){MSG="ห้องเต็มแล้ว";return render()}
+if(!g.players.some(q=>q.id==ME))g.players.push({id:ME,name:NAME||"ผู้เล่น",f:fp(g.players),img:PROF.img});
+G=g;await Net.set(c,g);sub(c);render()}catch(e){MSG="เข้าห้องไม่ได้ ลองใหม่อีกครั้ง";G=null;render()}}
+function start(){G=newGame(G.players,"online",G.code,G.reg);G.host=G.players[0].id;commit()}
+function leave(){if(unsub)unsub();unsub=null;G=null;MSG="";SCR="home";render()}
+function openProf(){SCR="prof";RST=0;render()}
+function chImg(){$("#pf").click()}
+function delImg(){PROF.img="";savep();render()}
+function loadImg(file){if(!file)return;const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement("canvas");c.width=c.height=72;const m=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,72,72);PROF.img=c.toDataURL("image/jpeg",.7);savep();render()};im.src=fr.result};fr.readAsDataURL(file)}
+document.addEventListener("change",e=>{if(e.target.id=="pf")loadImg(e.target.files[0])});
+function back(){SCR="home";render()}
+function fruit(a){PROF.fi=+a;savep();render()}
+function reset(){if(!RST){RST=1;return render()}PROF.games=PROF.wins=PROF.best=0;RST=0;savep();render()}
+function record(){const k=G.mode=="online"?G.players.findIndex(q=>q.id==ME):0;if(k<0)return;PROF.games++;if(G.win===k)PROF.wins++;if(!G.players[k].out)PROF.best=Math.max(PROF.best,Math.round(nw(k)));savep()}
+const POWERED="Kapsulep & Co";// ข้อความท้ายหน้าแรก: Powered by ...  (แก้ชื่อแบรนด์ได้ที่นี่)
+const CONTACT="";// ผู้ติดตั้งระบบ: ใส่ชื่อและช่องทางติดต่อ เช่น "ทีมท่านเศรษฐี อีเมล support@example.com"
+const MAS=`<svg viewBox="0 0 220 272" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 96l-12-10M30 56l-6-14M200 92l12-10M206 134l12 4M26 206l-10 8M196 214l12 8" stroke-width="2.5"/><path d="M14 40l2-6 6-2-6-2-2-6-2 6-6 2 6 2z" fill="#fff" stroke="none" transform="translate(10 6)"/><path d="M0-9L2.5-2.5 9 0 2.5 2.5 0 9-2.5 2.5-9 0-2.5-2.5Z" fill="#fff" stroke="none" transform="translate(196 118)"/><g transform="rotate(-5 110 150)"><path d="M72 196H148C150 218 146 238 138 250L120 246L112 222L104 248L84 252C74 236 70 216 72 196Z" fill="#3b3b3b"/><ellipse cx="90" cy="255" rx="16" ry="7" fill="#111"/><ellipse cx="135" cy="251" rx="16" ry="7" fill="#111"/><path d="M76 128C56 124 44 104 50 76M146 128C168 120 178 98 172 70" stroke-width="21"/><path d="M76 128C56 124 44 104 50 76M146 128C168 120 178 98 172 70" stroke="#3b3b3b" stroke-width="14"/><path d="M72 120C90 108 132 108 150 120C160 150 160 176 152 198H70C62 176 62 148 72 120Z" fill="#3b3b3b"/><path d="M98 112L110 142L122 112Z" fill="#fff"/><path d="M106 124H114L117 150L110 162L103 150Z" fill="#ffc800"/><circle cx="110" cy="178" r="3.5" fill="#ffc800" stroke-width="2"/><circle cx="110" cy="192" r="3.5" fill="#ffc800" stroke-width="2"/><path d="M128 140l12-2v8l-12 2z" fill="#00b4d8" stroke-width="2.5"/><circle cx="50" cy="66" r="10.5" fill="#fff"/><circle cx="172" cy="62" r="10.5" fill="#fff"/><g transform="rotate(-24 44 44)"><rect x="26" y="34" width="36" height="19" rx="3" fill="#7fd6a0"/><circle cx="44" cy="43.5" r="5" fill="#d9f5e3" stroke-width="2"/></g><g transform="rotate(10 58 38)"><rect x="40" y="26" width="36" height="19" rx="3" fill="#9be3b5"/><circle cx="58" cy="35.5" r="5" fill="#d9f5e3" stroke-width="2"/></g><path d="M158 54C148 36 158 20 172 20C186 20 196 36 186 54C184 60 160 60 158 54Z" fill="#ffc928"/><path d="M164 22L172 11L180 22" fill="#ffc928"/><text x="172" y="46" text-anchor="middle" font-size="22" font-weight="800" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d" stroke="none">฿</text><ellipse cx="110" cy="90" rx="27" ry="30" fill="#fff"/><path d="M101 107q9 13 18 0z" fill="#ff6b57" stroke-width="3"/><path d="M95 101C101 94 108 98 110 101C112 98 119 94 125 101C119 107 112 103 110 103C108 103 101 107 95 101Z" fill="#2a2a2a" stroke-width="2.5"/><circle cx="99" cy="86" r="8" fill="#fff" stroke="#c98a00" stroke-width="2.5"/><circle cx="121" cy="86" r="8" fill="#fff" stroke="#c98a00" stroke-width="2.5"/><path d="M107 86H113" stroke="#c98a00" stroke-width="2.5"/><path d="M95 88q4-6 8 0M117 88q4-6 8 0" stroke-width="2.8"/><ellipse cx="110" cy="64" rx="35" ry="7" fill="#2a2a2a"/><path d="M86 64V30Q110 22 134 30V64Z" fill="#2a2a2a"/><path d="M86 56Q110 62 134 56V48Q110 54 86 48Z" fill="#ffc800" stroke-width="2.5"/></g><circle cx="26" cy="120" r="11" fill="#ffc800"/><text x="26" y="125" text-anchor="middle" font-size="13" font-weight="800" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d" stroke="none">฿</text><circle cx="192" cy="168" r="11" fill="#ffc800"/><text x="192" y="173" text-anchor="middle" font-size="13" font-weight="800" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d" stroke="none">฿</text><circle cx="30" cy="186" r="9" fill="#ffc800"/><text x="30" y="190" text-anchor="middle" font-size="11" font-weight="800" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d" stroke="none">฿</text></svg>`;
+const COINS=`<svg viewBox="0 0 70 74" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round"><g fill="#e0a100"><path d="M8 58v-10a27 9 0 0 0 54 0v10a27 9 0 0 1-54 0z"/><path d="M12 44v-10a23 8 0 0 0 46 0v10a23 8 0 0 1-46 0z" transform="translate(0 -2)"/></g><ellipse cx="35" cy="33" rx="23" ry="8" fill="#ffc928"/><path d="M12 33v10a23 8 0 0 0 46 0V33" fill="#e0a100"/><ellipse cx="35" cy="32" rx="23" ry="8" fill="#ffc928"/><text x="35" y="36" text-anchor="middle" font-size="12" font-weight="800" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d" stroke="none">฿</text></svg>`;
+const WAVE2='<svg class="wave2" viewBox="0 0 400 60" preserveAspectRatio="none"><path d="M0 60V30C70 14 150 4 230 14S350 34 400 22V60Z"/></svg>';
+const WAVE='<svg class="wave" viewBox="0 0 400 60" preserveAspectRatio="none"><path d="M0 60V40C70 32 150 44 230 22S350 -8 400 6V60Z"/></svg>';
+const hero=(top,sm,big,p)=>`<div class="hero"><div class="top">${top}</div><div class="mas">${MAS}</div>${WAVE}</div><div class="ttl"><div class="sm">${sm}</div><h1>${big}</h1><p>${p}</p></div>`;
+const BK=f=>`<button class="av" data-f="${f}" aria-label="ย้อนกลับ">←</button>`;
+function prof(){const q=PROF,wr=q.games?Math.round(q.wins/q.games*100):0,row=(a,b)=>`<div class="st"><span>${a}</span><b>${b}</b></div>`;
+return `<div class="scr">${hero(BK("back")+"<span></span>","โปรไฟล์",NAME||"ผู้เล่น","ชื่อ รูป และสถิติของคุณ")}
+<div class="box"><div class="big">${ava({img:q.img,f:FR[q.fi]})}</div><input id="nm" placeholder="ชื่อของคุณ" maxlength="12" value="${NAME}"><div class="row">${btn("📷 เลือกรูป","chImg")}${q.img?btn("ลบรูป","delImg",{alt:1}):""}</div><input id="pf" type="file" accept="image/*" hidden><span class="mut">เลือกตัวการ์ตูนประจำตัว (ตัวหมากบนกระดาน)</span><div class="fbs">${FR.map((x,i)=>`<button class="fb${i==q.fi?" on":""}" data-f="fruit" data-a="${i}" aria-label="ตัวการ์ตูน ${i+1}">${fc(x)}</button>`).join("")}</div></div>
+<div class="box"><h3>สถิติ</h3>${row("เล่นไปแล้ว",q.games+" เกม")}${row("ชนะ",q.wins+" เกม")}${row("อัตราชนะ",wr+"%")}${row("ทรัพย์สินสูงสุด",fmt(q.best))}</div>
+<div class="box"><h3>ช่วยเหลือและข้อมูล</h3><button class="pill2 in" data-f="introProf"><span>🎬 แนะนำการเล่นแบบสั้น</span><span>›</span></button><button class="pill2 in" data-f="openHelp"><span>📖 คู่มือการใช้งาน</span><span>›</span></button><button class="pill2 in" data-f="openPriv"><span>🔒 ข้อมูลความเป็นส่วนตัว</span><span>›</span></button></div>
+${btn(PROF.th=="dark"?"☀️ เปลี่ยนเป็นธีมสว่าง":"🌙 เปลี่ยนเป็นธีมมืด","theme",{alt2:1})}${btn(RST?"แตะอีกครั้งเพื่อยืนยันล้างสถิติ":"ล้างสถิติ","reset",{alt:1})}${btn(USER?"ออกจากระบบ"+(acct()?" ("+acct()+")":""):"เข้าสู่ระบบ","logout",{alt2:1})}</div>`}
+
+const Net={
+async get(c){if(API){const r=await F("api/room/"+c,{headers:H()});return r.ok?(await r.json()).g:null}const s=await DB.doc("rooms/"+c).get();return s.exists?JSON.parse(s.data().g):null},
+async set(c,g){if(API){await F("api/room/"+c,{method:"PUT",headers:{...H(),"Content-Type":"application/json"},body:JSON.stringify({g})});return}await DB.doc("rooms/"+c).set({g:JSON.stringify(g),t:Date.now()})},
+sub(c,cb,err){if(API){const es=new EventSource("api/room/"+c+"/events?t="+encodeURIComponent(TOK));es.onmessage=e=>cb(JSON.parse(e.data).g);es.onerror=()=>{};return()=>es.close()}return DB.doc("rooms/"+c).onSnapshot(s=>{if(s.exists)cb(JSON.parse(s.data().g))},err)}};
+async function sha(x){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(x));return Array.from(new Uint8Array(b),v=>v.toString(16).padStart(2,"0")).join("")}
+async function auth(){const raw=($("#lu").value||"").trim().toLowerCase(),p=$("#lp").value||"";MSG="";LU=raw;let u=raw;
+if(raw.indexOf("@")>=0){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(raw)){MSG="รูปแบบอีเมลไม่ถูกต้อง";return render()}u="e_"+(await sha("email:"+raw)).slice(0,14)}
+else if(!/^[a-z0-9_]{3,16}$/.test(raw)){MSG="กรอกอีเมล หรือชื่อผู้ใช้ 3-16 ตัว (a-z 0-9 _)";return render()}
+if(!p.length||(LM&&p.length<8)){MSG=LM?"รหัสผ่านอย่างน้อย 8 ตัว":"กรอกรหัสผ่าน";return render()}
+try{let t="local";
+if(API){const r=await fetch("api/"+(LM?"register":"login"),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({u,p})}),j=await r.json().catch(()=>({}));if(!r.ok){MSG=j.e||"เข้าสู่ระบบไม่สำเร็จ";return render()}t=j.t}
+else{const ac=lsg("tst_acc")||{},h=await sha(u+":"+p);if(LM){if(ac[u]){MSG="ชื่อนี้ถูกใช้แล้ว";return render()}ac[u]=h;lss("tst_acc",ac)}else if(ac[u]!==h){MSG="ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";return render()}}
+USER=u;TOK=t;LU="";FG=0;lss("tst_sess",{u,t});if(API)ME=u;loadProf();
+if(API){const d=await (await F("api/profile",{headers:H()})).json();if(d&&d.p){PROF=Object.assign(PDEF(),d.p);NAME=PROF.name||acct()}else savep()}
+SCR="home";render()}catch(e){MSG="เชื่อมต่อไม่ได้ ลองใหม่อีกครั้ง";render()}}
+function guest(){USER="";TOK="";lss("tst_sess",null);loadProf();SCR="home";MSG="";render()}
+function logout(){if(unsub)unsub();unsub=null;USER="";TOK="";lss("tst_sess",null);G=null;MSG="";SCR="login";loadProf();render()}
+function lm(a){LM=+a;MSG="";FG=0;render()}
+function forgot(){FG=!FG;render()}
+function exit(){if(!XC){XC=1;render();setTimeout(()=>{if(XC){XC=0;if(G)render()}},3000);return}XC=0;leave()}
+function openReg(){SCR="reg";render()}
+function selReg(a){SELREG=a=="x"?null:+a;SCR="home";render()}
+function login(){const sub=API?"บัญชีบนเซิร์ฟเวอร์เกม ใช้ได้ทุกเครื่อง":"บัญชีนี้เก็บในเบราว์เซอร์เครื่องนี้เท่านั้น";
+const fg=API?"ระบบนี้ยังไม่ส่งอีเมลรีเซ็ตรหัสผ่านอัตโนมัติ กรุณาติดต่อผู้ดูแลระบบ: "+(CONTACT||"ผู้ที่ให้ลิงก์เกมนี้แก่คุณ"):"บัญชีนี้เก็บในเครื่องนี้เท่านั้น จึงกู้รหัสผ่านไม่ได้ ให้สมัครบัญชีใหม่ หรือกด “ลองเล่นก่อน”";
+return `<div class="lg2"><div class="lh"><div class="lm">${MAS}</div>${WAVE2}</div><div class="lb"><div class="sm2">ยินดีต้อนรับ</div><h1 class="wt">${LM?"สมัครสมาชิก":"เข้าสู่ระบบ"}</h1><p class="ls">${sub}</p>
+<input id="lu" class="fi" aria-label="อีเมล" placeholder="อีเมล" value="${LU}" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" autocomplete="username">
+<input id="lp" class="fi" type="password" aria-label="รหัสผ่าน" placeholder="รหัสผ่าน (อย่างน้อย 8 ตัว)" autocomplete="${LM?"new-password":"current-password"}">
+<button class="go" data-f="auth"><span>${LM?"สมัครและเข้าเกม":"เข้าสู่ระบบ"}</span></button>
+${MSG?`<p class="err2">${MSG}</p>`:""}
+${LM?"":`<button class="lk2" data-f="forgot">ลืมรหัสผ่าน?</button>`}${FG&&!LM?`<p class="fgn">${fg}</p>`:""}
+<button class="lk2" data-f="lm" data-a="${LM?0:1}">${LM?"มีบัญชีแล้ว? เข้าสู่ระบบ":"ยังไม่มีบัญชี? สมัครสมาชิก"}</button>
+${SSO?`<button class="ssob" data-f="sso">🔑 เข้าสู่ระบบด้วย ${SSO.name}</button>`:""}
+<button class="try" data-f="guest">ลองเล่นก่อน (ไม่ต้องสมัคร)</button><p class="tn">โหมดทดลองบันทึกในเบราว์เซอร์เครื่องนี้ ไม่ข้ามเครื่อง</p>
+<p class="pw ft">Powered by ${POWERED}</p></div></div>`}
+function regs(){return `<div class="scr">${hero(BK("back")+"<span></span>","เลือกภาค","6 ภาค!","เลือก 1 จังหวัดเด่นของแต่ละภาค ทุกช่องบนกระดานคือจุดเด่นจริงของจังหวัด เลือกแล้วกลับไปกดเริ่มเล่น")}${[null,0,1,2,3,4,5].map(i=>{const r=i==null?BR:REG[i];return `<button class="rg${SELREG===i?" on":""}" data-f="selReg" data-a="${i==null?"x":i}"><b>${r.e} ${r.n}${r.pv?" · "+r.pv:""}</b><span>${r.note}</span><i>เป้า ${fmt(r.goal)} · ${r.turns} ตา</i></button>`}).join("")}</div>`}
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.id=="lp")auth()});
+function quiz(){const ps=T.filter(t=>t.k=="p"),a=ps[Math.floor(Math.random()*ps.length)],o=[a.n];while(o.length<3){const n=ps[Math.floor(Math.random()*ps.length)].n;if(!o.includes(n))o.push(n)}o.sort(()=>Math.random()-.5);G.q={x:a.fx,o,a:a.n,g:a.g};G.ph="quiz";lg("ตลาดนัด: ตอบคำถามชิงโบนัส ฿600");commit()}
+function ans(i){const p=cp(),q=G.q,ok=q.o[i]==q.a;G.fact={n:q.a,x:q.x,g:q.g};if(ok){p.cash+=CFG.rr;lg("ตอบถูก! "+q.a+" "+sg(CFG.rr))}else lg("ตอบผิด คำตอบคือ "+q.a);G.q=null;fin()}
+const sec=(t,items,open)=>`<details class="dt"${open?" open":""}><summary>${t}</summary><ul>${items.filter(Boolean).map(i=>`<li>${i}</li>`).join("")}</ul></details>`;
+function helpScr(){return `<div class="scr">${hero(BK("back2")+"<span></span>","คู่มือการใช้งาน","วิธีเล่น!","แตะหัวข้อเพื่อเปิดอ่านทีละเรื่อง")}
+${sec("🎯 เป้าหมายของเกม",[`เริ่มด้วยเงิน ${fmt(CFG.start)} ซื้อที่ดิน เก็บค่าเช่า แล้วเพิ่มทรัพย์สินสุทธิให้ถึงเป้าหมายก่อนหมดตา`,"ทรัพย์สินสุทธิ = เงินสด + ราคาที่ดินที่ถือ + ค่าอัปเกรด",`โหมดปกติเป้า ${fmt(BR.goal)} ใน ${BR.turns} ตา ถ้าเล่นหลายคนเป้าเพิ่มคนละ 10% และจำนวนตาเหลือ 80%`,"ฐานะมี 5 ระดับตามสัดส่วนของเป้า: มือใหม่ → พ่อค้า (15%) → เถ้าแก่ (35%) → เจ้าสัว (60%) → มหาเศรษฐี (85%)"],1)}
+${sec("🚀 เริ่มเล่น",["เข้าสู่ระบบหรือสมัครสมาชิกด้วยอีเมลและรหัสผ่าน (อย่างน้อย 8 ตัว) หรือกด “ลองเล่นก่อน” (ไม่ต้องสมัคร)","เล่นเครื่องเดียว: เลือก 1-4 คน แล้วส่งมือถือต่อกัน","เล่นออนไลน์: สร้างห้อง แล้วส่งรหัส 4 ตัวให้เพื่อน (2-4 คน) เจ้าของห้องกดเริ่มเกม","โหมดพิเศษ 6 ภาค: กดเลือกภาคที่หน้าแรกก่อนกดเริ่มเล่น"])}
+${sec("🎲 ตาเดิน",["กดทอยเต๋า แล้วเลือกเดินตามแต้ม หรือทอยใหม่ (เสีย ฿500 หรือฟรีถ้ามีบัฟ)","เดินถึงช่องไหน ทำตามช่องนั้น แล้วตาจะเปลี่ยนเป็นคนถัดไป","ข้อความล่าสุดอยู่เหนือปุ่ม บอกว่าเกิดอะไรขึ้น ตัวเลขสีเขียวคือได้เงิน สีแดงคือเสียเงิน"])}
+${sec("🗺️ ช่องบนกระดาน",["ช่องสถานที่ (มีแถบสี): ถ้าว่างซื้อได้ ถ้าเป็นของคนอื่นต้องจ่ายค่าเช่าให้เจ้าของ","ช่องที่เป็นของคุณ: อัปเกรดได้สูงสุด 4 ระดับ (ดาว ★) ค่าอัปเกรด 60% ของราคา ยิ่งระดับสูงค่าเช่ายิ่งแพง","ถือครบ 3 ช่องของสีเดียวกัน ค่าเช่าคูณ 2","โชค: จั่วการ์ดเหตุการณ์ อาจได้หรือเสียเงิน","วัด: ทำบุญ ฿300 การ์ดโชคร้ายครั้งถัดไปจะไม่มีผล","ภาษี: จ่าย 10% ของเงินสด (ขั้นต่ำ ฿300)","ตลาดนัด: ได้โบนัส ฿200-฿1,000 (โหมด 6 ภาคเป็นเกมทายสถานที่ ตอบถูกได้ ฿600)","รถติด: เสีย ฿300",`จุดเริ่ม: ผ่านแล้วรับเงินเดือน ${fmt(CFG.sal)} และปันผลครึ่งหนึ่งของค่าเช่ารวม แต่ต้องจ่ายค่าครองชีพที่เพิ่มขึ้นทุกรอบ (เริ่ม ${fmt(CFG.exp0)} เพิ่มรอบละ ${fmt(CFG.expStep)}) หยุดตรงจุดเริ่มพอดีได้โบนัส ฿500`,"เล่นคนเดียว: ถึงช่องที่เป็นของตัวเองจะได้ค่าเช่าจากธนาคาร"])}
+${sec("💪 บัฟถาวร",["ทุกครั้งที่ผ่านจุดเริ่ม เลือกบัฟถาวรได้ 1 จาก 3 ที่สุ่มมา","ค่าเช่า +20% · เงินเดือน +฿600 · ค่าครองชีพ -฿250 · ทอยใหม่ฟรี 1 ครั้งต่อรอบ · โชคร้ายเสียน้อยลงครึ่งหนึ่ง"])}
+${sec("🏆 ชนะและแพ้",["ชนะเมื่อทรัพย์สินสุทธิถึงเป้าก่อน หรือมีทรัพย์สินสุทธิสูงสุดเมื่อหมดตา หรืออยู่รอดคนสุดท้าย","เงินติดลบ: ระบบขายที่ดินให้อัตโนมัติ (70% ของมูลค่า) ถ้ายังไม่พอถือว่าล้มละลาย","สถิติจะนับเมื่อเล่นจบเกมเท่านั้น"])}
+${sec("📚 โหมดพิเศษ เศรษฐี 6 ภาค",["ภาคละ 1 จังหวัด: อยุธยา เชียงใหม่ นครราชสีมา จันทบุรี กาญจนบุรี ภูเก็ต","ทุกช่องสถานที่คือจุดเด่นจริงของจังหวัด เดินถึงแล้วจะมีการ์ด 'รู้ไหม?' อธิบายสั้นๆ","ราคา ค่าเช่า เป้าหมาย และความยากต่างกันตามภาค การ์ดโชคเป็นเหตุการณ์ของจังหวัดนั้น","เนื้อหาความรู้เขียนจากความรู้ทั่วไป ควรตรวจกับแหล่งอ้างอิงก่อนนำไปสอน"])}
+${sec("👥 เล่นหลายคน",["เดินตามลำดับ ผู้เล่นคนหลังได้เงินเริ่มต้นเพิ่ม (฿150 ต่อลำดับ)","ออนไลน์: ตาของคนอื่นปุ่มจะถูกล็อกและขึ้นข้อความรอ","ปุ่ม ← ที่แถบบนกดสองครั้งเพื่อออกจากเกม"])}
+${sec("👤 โปรไฟล์",["เปลี่ยนชื่อ รูป ตัวการ์ตูนประจำตัว (ตัวหมาก) และสลับธีมสว่าง/มืดได้","ดูสถิติ: เกมที่เล่น ชนะ อัตราชนะ และทรัพย์สินสูงสุด"])}
+${sec("❓ แก้ปัญหา",["เข้าห้องไม่ได้: เช็กรหัส 4 ตัว ห้องที่เริ่มเล่นแล้วหรือเต็ม 4 คนเข้าเพิ่มไม่ได้","ไม่เห็นปุ่มออนไลน์: ต้องเปิดเกมผ่านเซิร์ฟเวอร์เกมหรือผ่าน claude.ai","หลุดจากห้องกลางเกม: ยังกลับเข้าห้องเดิมไม่ได้ ให้สร้างห้องใหม่","ลืมรหัสผ่าน: ระบบยังไม่ส่งอีเมลรีเซ็ต ให้ติดต่อผู้ดูแลระบบ หรือสมัครบัญชีใหม่"])}
+<div class="lnk"><button class="lk" data-f="openPriv">🔒 ข้อมูลความเป็นส่วนตัว</button></div></div>`}
+function privScr(){const L="ผู้ให้บริการระบบ: "+(CONTACT||"ติดต่อผู้ดูแลระบบที่ให้ลิงก์เกมนี้แก่คุณ");
+return `<div class="scr">${hero(BK("back2")+"<span></span>","ข้อมูลความเป็นส่วนตัว","ข้อมูลของคุณ","อธิบายว่าเกมเก็บอะไร เก็บที่ไหน และคุณควบคุมได้อย่างไร")}
+${sec("📱 ข้อมูลที่เก็บในเครื่องของคุณ",["ชื่อที่แสดง รูปโปรไฟล์ (ย่อเป็นรูปเล็ก) ตัวการ์ตูนประจำตัว ธีม และสถิติการเล่น เก็บในเบราว์เซอร์ของเครื่องนี้","สถานะล็อกอิน (ชื่อผู้ใช้และตั๋วเข้าระบบ)","บัญชีแบบเก็บในเครื่อง (เมื่อไม่มีเซิร์ฟเวอร์): ชื่อผู้ใช้ (หรือรหัสย่อที่แปลงจากอีเมล) และค่าแฮชของรหัสผ่านอยู่ในเครื่องนี้เท่านั้น ใช้เพื่อความสะดวก ไม่ปลอดภัยเท่าบัญชีบนเซิร์ฟเวอร์","ถ้ากด “ลองเล่นก่อน” (ไม่ล็อกอิน) หรือเล่นเครื่องเดียว: ไม่มีข้อมูลถูกส่งไปที่ไหน"],1)}
+${sec("🌐 เมื่อเล่นออนไลน์หรือใช้บัญชีบนเซิร์ฟเวอร์",["เซิร์ฟเวอร์ที่ให้บริการเกมเก็บ: ชื่อผู้ใช้ หรือรหัสย่อที่เบราว์เซอร์แปลงจากอีเมลของคุณก่อนส่ง (เซิร์ฟเวอร์ไม่เห็นอีเมลจริง) รหัสผ่านแบบเข้ารหัส (แฮช ไม่เก็บรหัสผ่านจริง) และโปรไฟล์ (ชื่อ รูป ตัวการ์ตูน สถิติ)","สถานะห้องเกม (ชื่อ รูป ตัวการ์ตูน เงิน และความคืบหน้า) เก็บชั่วคราว ห้องที่ไม่มีใครใช้นานเกิน 6 ชั่วโมงจะถูกลบ","ผู้เล่นคนอื่นในห้องเดียวกันเห็นชื่อ รูป และตัวการ์ตูนของคุณ",SSO?"เข้าสู่ระบบด้วย "+SSO.name+": เกมได้รับรหัสผู้ใช้และชื่อที่แสดงจากระบบนั้น (ไม่ได้รับรหัสผ่านของระบบนั้น) และเก็บเฉพาะรหัสย่อกับชื่อที่แสดง":null,"เมื่อเปิดผ่านหน้าตัวอย่างบน claude.ai ห้องออนไลน์อยู่ในที่เก็บข้อมูลของหน้านั้น ซึ่งผู้ที่เปิดหน้านั้นได้อาจเห็นข้อมูลห้อง"])}
+${sec("🚫 สิ่งที่เกมไม่ทำ",["ไม่เก็บอีเมลจริงของคุณ (แปลงเป็นรหัสย่อในเครื่องก่อน) และไม่ขอเบอร์โทร ที่อยู่ หรือตำแหน่งที่ตั้ง","ไม่มีโฆษณา และไม่มีเครื่องมือวิเคราะห์การใช้งานของบุคคลที่สามในตัวเกม","ไม่ตรวจสอบอายุผู้เล่น ผู้ปกครองควรดูแลการใช้งานของเด็ก"])}
+${sec("🔤 บริการภายนอก",["ตัวอักษรโหลดจาก Google Fonts ตอนเปิดหน้าเกม เบราว์เซอร์ของคุณจึงติดต่อ Google (เช่น ที่อยู่ IP) ผู้ติดตั้งระบบอาจเปลี่ยนไปใช้ฟอนต์ที่เก็บในเซิร์ฟเวอร์ตัวเองได้"])}
+${sec("🛠️ การควบคุมข้อมูลของคุณ",["ไม่อยากส่งข้อมูลไปเซิร์ฟเวอร์: กด “ลองเล่นก่อน” โดยไม่ล็อกอิน","ลบรูปหรือล้างสถิติได้ในหน้าโปรไฟล์","ปุ่มด้านล่างลบข้อมูลทั้งหมดในเครื่องนี้ หรือลบบัญชีบนเซิร์ฟเวอร์","อย่าใช้ชื่อจริงหรือรูปที่ระบุตัวตนได้ ถ้าไม่ต้องการให้เพื่อนในห้องเห็น"],1)}
+${sec("📞 ผู้ให้บริการและการติดต่อ",[L,"เอกสารนี้อธิบายการทำงานของตัวเกม ผู้ให้บริการอาจมีข้อกำหนดเพิ่มเติมตามกฎหมาย เช่น พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล","ปรับปรุงล่าสุด: 7 พฤศจิกายน 2569"])}
+${MSG?`<p class="err">${MSG}</p>`:""}
+${btn(WP?"แตะอีกครั้งเพื่อยืนยันลบข้อมูลในเครื่อง":"🗑️ ลบข้อมูลทั้งหมดในเครื่องนี้","wipe",{alt2:1})}
+${API&&TOK?btn(DA?"แตะอีกครั้งเพื่อยืนยันลบบัญชี":"⚠️ ลบบัญชีบนเซิร์ฟเวอร์","delAcct",{alt2:1}):""}</div>`}
+function goOnline(){SCR="home";MSG="";render();setTimeout(()=>{try{document.querySelector("#onl").scrollIntoView({behavior:redu()?"auto":"smooth",block:"center"})}catch(e){}},60)}
+async function ssoBack(){const h=location.hash;if(!/^#sso(err)?=/.test(h))return;try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}
+if(h.indexOf("#ssoerr")==0){MSG="เข้าสู่ระบบผ่านระบบภายนอกไม่สำเร็จ ลองใหม่อีกครั้ง";SCR="login";return}
+TOK=h.slice(5);try{const me=await (await fetch("api/me",{headers:H()})).json();USER=me.u;ME=USER;lss("tst_sess",{u:USER,t:TOK});loadProf();
+const d=await (await fetch("api/profile",{headers:H()})).json();if(d&&d.p){PROF=Object.assign(PDEF(),d.p);NAME=PROF.name||acct();applyTh()}else if(me.name){PROF.name=me.name;NAME=me.name;savep()}SCR="home"}catch(e){TOK="";USER="";SCR="login";MSG="เข้าสู่ระบบผ่านระบบภายนอกไม่สำเร็จ"}}
+function sso(){location.href="auth/sso/login"}
+function goHome(){SCR="home";MSG="";render()}
+function nav(){if(G||!["home","reg","prof","help","priv"].includes(SCR))return"";
+const t=(f,ic,lb,on)=>`<button class="nt${on?" on":""}" data-f="${f}" aria-label="${lb}"><i>${ic}</i><span>${lb}</span></button>`;
+return `<nav class="nav">${t("goHome","🏠","หน้าแรก",SCR=="home")}${t("openReg","🗺️","6 ภาค",SCR=="reg")}<button class="nc" data-f="local" aria-label="เริ่มเล่นเลย">🎲</button>${t("goOnline","🌐","ออนไลน์",0)}${t("openProf","👤","โปรไฟล์",SCR=="prof"||SCR=="help"||SCR=="priv")}</nav>`}
+const ART=[`<svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="130" cy="200" rx="104" ry="9" fill="rgba(0,0,0,.12)" stroke="none"/><g transform="rotate(-14 62 74)"><rect x="22" y="34" width="80" height="80" rx="19" fill="#fff"/><g fill="#1d1d1d" stroke="none"><circle cx="46" cy="58" r="7"/><circle cx="78" cy="58" r="7"/><circle cx="62" cy="74" r="7"/><circle cx="46" cy="90" r="7"/><circle cx="78" cy="90" r="7"/></g></g><rect x="100" y="140" width="46" height="46" rx="9" fill="#fffaf0"/><path d="M100 156V149a9 9 0 0 1 9-9h28a9 9 0 0 1 9 9V156z" fill="#00b4d8"/><rect x="150" y="140" width="46" height="46" rx="9" fill="#fffaf0"/><path d="M150 156V149a9 9 0 0 1 9-9h28a9 9 0 0 1 9 9V156z" fill="#ff6b57"/><rect x="200" y="140" width="46" height="46" rx="9" fill="#fffaf0"/><path d="M200 156V149a9 9 0 0 1 9-9h28a9 9 0 0 1 9 9V156z" fill="#ffc928"/><path d="M112 120Q164 56 220 112" stroke-dasharray="1 10" stroke-width="5"/><g transform="translate(198 82) scale(.95)"><circle cx="24" cy="29" r="15" fill="#ffdcbc"/><circle cx="18.5" cy="29.5" r="5.2" fill="#fff" stroke="#c98a00" stroke-width="2.2"/><circle cx="29.5" cy="29.5" r="5.2" fill="#fff" stroke="#c98a00" stroke-width="2.2"/><path d="M23.7 29.5h.6" stroke="#c98a00" stroke-width="2.2"/><circle cx="18.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><circle cx="29.5" cy="29.5" r="2.1" fill="#1d1d1d" stroke="none"/><path d="M21 39q3 3 6 0z" fill="#ff6b57" stroke-width="2"/><path d="M16 35c3-3.4 5-1 8 0c3-1 5-3.4 8 0c-3 4.2-5 1.8-8 1.8s-5 2.6-8-1.8z" fill="#2a2a2a" stroke-width="1.6"/><ellipse cx="24" cy="16" rx="16.5" ry="3.8" fill="#2a2a2a"/><path d="M14 16V6q10-3.4 20 0v10z" fill="#2a2a2a"/><path d="M14 12.5q10 3 20 0V9.5q-10 3-20 0z" fill="#ffc800" stroke-width="1.8"/></g><path d="M236 40l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#fff" stroke="none"/></svg>`,`<svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="130" cy="200" rx="104" ry="9" fill="rgba(0,0,0,.12)" stroke="none"/><rect x="70" y="100" width="120" height="86" rx="8" fill="#fffaf0"/><path d="M56 106L130 48L204 106Z" fill="#ff6b57"/><rect x="112" y="138" width="36" height="48" rx="6" fill="#00b4d8"/><rect x="82" y="118" width="22" height="22" rx="4" fill="#ffe7ab"/><rect x="156" y="118" width="22" height="22" rx="4" fill="#ffe7ab"/><path d="M130 14l6 12 13 2-9.5 9 2.5 13-12-6.5-12 6.5 2.5-13-9.5-9 13-2z" fill="#ffc928"/><g transform="rotate(10 216 70)"><rect x="188" y="52" width="60" height="36" rx="11" fill="#ffc928"/><text x="218" y="78" font-size="22" font-weight="800" text-anchor="middle" stroke="none" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d">+฿</text></g><circle cx="38" cy="78" r="17" fill="#ffc928"/><text x="38" y="86" font-size="22" font-weight="800" text-anchor="middle" stroke="none" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d">฿</text></svg>`,`<svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="130" cy="200" rx="104" ry="9" fill="rgba(0,0,0,.12)" stroke="none"/><path d="M96 80C80 108 82 152 100 170C114 182 146 182 160 170C178 152 180 108 164 80Z" fill="#ffc928"/><path d="M104 62L130 38L156 62Q130 76 104 62Z" fill="#ffc928"/><path d="M100 80Q130 94 160 80"/><text x="130" y="144" font-size="50" font-weight="800" text-anchor="middle" stroke="none" font-family="Prompt,Sarabun,sans-serif" fill="#1d1d1d">฿</text><g transform="rotate(-22 54 66)"><rect x="22" y="50" width="64" height="34" rx="5" fill="#7fd6a0"/><circle cx="54" cy="67" r="8" fill="#d9f5e3"/></g><g transform="rotate(14 64 110)"><rect x="30" y="98" width="60" height="32" rx="5" fill="#9be3b5"/><circle cx="60" cy="114" r="8" fill="#d9f5e3"/></g><path d="M200 186V96"/><path d="M200 96h42l-11 15 11 15h-42z" fill="#ff6b57"/><circle cx="214" cy="164" r="11" fill="#ffc928"/></svg>`,`<svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="130" cy="200" rx="104" ry="9" fill="rgba(0,0,0,.12)" stroke="none"/><path d="M90 52h80v40a40 40 0 0 1-80 0z" fill="#ffc928"/><path d="M90 64H68a4 4 0 0 0-4 4c0 20 12 34 30 38"/><path d="M170 64h22a4 4 0 0 1 4 4c0 20-12 34-30 34"/><rect x="120" y="132" width="20" height="28" fill="#e0a100"/><rect x="94" y="160" width="72" height="20" rx="7" fill="#3b3b3b"/><path d="M130 66l7.5 15 16.5 2.5-12 11.5 3 16.5-15-8-15 8 3-16.5-12-11.5 16.5-2.5z" fill="#fff"/><g stroke="none"><circle cx="52" cy="46" r="6" fill="#00b4d8"/><circle cx="214" cy="60" r="7" fill="#ff6b57"/><circle cx="40" cy="120" r="5" fill="#fff"/><circle cx="224" cy="128" r="5" fill="#00b4d8"/><path d="M226 24l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#fff"/><path d="M34 70l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z" fill="#fff"/></g></svg>`];
+const STEPS=[["ขั้นที่ 1","ทอยเต๋า เดินไปเลย!","กดทอยเต๋า แล้วตัวหมากจะเดินทีละช่อง จะเดินตามแต้ม หรือทอยใหม่ก็ได้ (เสีย ฿500)"],["ขั้นที่ 2","ซื้อที่ เก็บค่าเช่า","ถึงช่องที่ว่างก็ซื้อได้ ใครมาตกช่องของคุณต้องจ่ายค่าเช่า ยิ่งอัปเกรดค่าเช่ายิ่งแพง"],["ขั้นที่ 3","รับเงินเดือน|ระวังรายจ่าย","ผ่านจุดเริ่มได้เงินเดือนกับปันผล แต่มีค่าครองชีพ ช่องภาษีและการ์ดโชคอาจทำให้เสียเงิน"],["ขั้นที่ 4","ถึงเป้าก่อน ชนะ!","ทำทรัพย์สินสุทธิให้ถึงเป้าหมายก่อนหมดตา ลองโหมด 6 ภาคเพื่อเรียนจังหวัดเด่นไปด้วย"]];
+let IS=0,IR="welcome";
+const seen=()=>{try{return localStorage.getItem("tst_seen")}catch(e){return "1"}};
+function intro(){const d=STEPS[IS],last=IS==STEPS.length-1;
+return `<div class="ob"><div class="oh"><button class="skip" data-f="skipIntro">ข้าม</button><div class="oa">${ART[IS]}</div>${WAVE2}</div><div class="obp"><div class="sm2">${d[0]} จาก ${STEPS.length}</div><h1 class="ot">${d[1].replace("|","<br>")}</h1><p class="op">${d[2]}</p><div class="of"><div class="dg">${IS>0?`<button class="pv" data-f="prevIntro" aria-label="ย้อนกลับ">←</button>`:""}<span class="dots">${STEPS.map((_,i)=>`<i class="${i==IS?"on":""}"></i>`).join("")}</span></div>${last?`<button class="go2" data-f="nextIntro"><span>เริ่มเลย</span><i>→</i></button>`:`<button class="nx" data-f="nextIntro" aria-label="ถัดไป">→</button>`}</div></div></div>`}
+function nextIntro(){if(IS<STEPS.length-1){IS++;render()}else finishIntro()}
+function prevIntro(){if(IS>0){IS--;render()}}
+function skipIntro(){finishIntro()}
+function finishIntro(){try{localStorage.setItem("tst_seen","1")}catch(e){}SCR=IR;IS=0;render()}
+function introLink(){IR="welcome";IS=0;SCR="intro";render()}
+function introProf(){IR="prof";IS=0;SCR="intro";render()}
+function enter(){MSG="";if(!seen()){IR=ENT;IS=0;SCR="intro"}else SCR=ENT;render()}
+function welcome(){return `<div class="wl"><div class="wh"><div class="sun"></div><div class="gsh"></div><div class="wm">${MAS}</div><div class="wc">${COINS}</div>${WAVE2}</div><div class="wb"><div class="sm2">ยินดีต้อนรับ</div><h1 class="wt">ท่านเศรษฐี</h1><button class="go" data-f="enter"><span>เริ่มรวยเลย</span><i>→</i></button><div class="wlk"><button class="lk2" data-f="introLink">📖 ดูวิธีเล่นแบบง่ายๆ</button></div><p class="pw">Powered by ${POWERED}</p></div></div>`}
+function openHelp(){PREV=SCR;SCR="help";render()}
+function openPriv(){if(SCR!="help")PREV=SCR;SCR="priv";MSG="";render()}
+function back2(){SCR=PREV||"home";if(SCR=="help"||SCR=="priv")SCR="home";MSG="";render()}
+function wipe(now){if(now!==true&&!WP){WP=1;render();setTimeout(()=>{if(WP){WP=0;if(!G&&SCR=="priv")render()}},4000);return}WP=0;try{Object.keys(localStorage).filter(k=>k.indexOf("tst_")==0).forEach(k=>localStorage.removeItem(k))}catch(e){}if(unsub)unsub();unsub=null;USER="";TOK="";G=null;PROF=PDEF();NAME="";MSG="";SCR="login";applyTh();render()}
+async function delAcct(){if(!DA){DA=1;render();setTimeout(()=>{if(DA){DA=0;if(!G&&SCR=="priv")render()}},4000);return}DA=0;try{await F("api/account",{method:"DELETE",headers:H()});wipe(true)}catch(e){MSG="ลบบัญชีไม่สำเร็จ ลองใหม่อีกครั้ง";render()}}
+const FN={introLink,introProf,nextIntro,prevIntro,skipIntro,forgot,enter,sso,goOnline,goHome,openHelp,openPriv,back2,wipe,delAcct,theme,ans,roll,reroll,go,buy,upg,fin,pick,setN,local,make,join,start,leave,openProf,back,fruit,reset,chImg,delImg,auth,guest,logout,lm,exit,openReg,selReg};
+const PLAY=["ans","roll","reroll","go","buy","upg","fin","pick"];
+const hl=m=>m.replace(/([+-]฿[\d,]+)/g,x=>`<span class="${x[0]=="+"?"pos":"neg"}">${x}</span>`);
+function btn(t,f,o){o=o||{};return `<button class="${o.alt?"alt":o.alt2?"alt2":""}" ${o.off?"disabled":""} data-f="${f}" ${o.a?`data-a="${o.a}"`:""}>${t}</button>`}
+function home(){const av=`<button class="av" data-f="openProf" aria-label="โปรไฟล์">${ava({img:PROF.img,f:FR[PROF.fi]})}</button>`;
+return `<div class="scr">${hero("<span></span>"+av,"สวัสดี"+(NAME?" "+NAME:""),"เศรษฐี!","ทอยเต๋า ซื้อที่ดิน ไต่ให้ถึง "+fmt(GOAL)+" ก่อนใครเพื่อน")}
+<button class="pill2" data-f="openProf"><span>👤 โปรไฟล์ของฉัน</span><span>ชนะ ${PROF.wins}/${PROF.games} ›</span></button>
+<div class="box"><h3>เริ่มเล่น</h3><span class="mut sub">เล่นเครื่องเดียว ส่งมือถือต่อกัน</span><div class="seg">${[1,2,3,4].map(n=>`<button class="tab${n==LN?" on":""}" data-f="setN" data-a="${n}">${n} คน</button>`).join("")}</div>
+<button class="pill2 in" data-f="openReg"><span>🗺️ ${SELREG==null?"โหมดปกติ":REG[SELREG].e+" "+REG[SELREG].pv}</span><span>เลือก 6 ภาค ›</span></button>${btn("เริ่มเล่น","local")}</div>
+<div class="box" id="onl"><h3>เล่นออนไลน์</h3>${online()?btn("สร้างห้อง","make")+`<div class="row"><input id="cd" placeholder="รหัส" maxlength="4">${btn("เข้าห้อง","join",{alt:1})}</div>`:'<span class="mut">ออนไลน์ต้องเปิดเกมผ่านเซิร์ฟเวอร์เกม (server.js) หรือผ่าน claude.ai</span>'}</div>
+${MSG?`<p class="err">${MSG}</p>`:""}</div>`}
+function lobby(){const h=G.host==ME;return `<div class="scr">${hero(BK("leave")+"<span></span>","ห้องออนไลน์","ห้อง "+G.code,(G.reg!=null?REG[G.reg].e+" "+REG[G.reg].n+" · ":"")+"ให้เพื่อนเปิดเกมแล้วใส่รหัสนี้")}<div class="box">${G.players.map(q=>`<div class="lp"><span class="lpa">${ava(q)}</span>${q.name}${q.id==G.host?" (เจ้าของห้อง)":""}</div>`).join("")}<span class="mut">${G.players.length}/4 คน (ต้องมีอย่างน้อย 2)</span></div>${h?btn("เริ่มเกม","start",{off:G.players.length<2}):'<p class="note">รอเจ้าของห้องเริ่มเกม…</p>'}</div>`}
+function game(){if(G.ph=="over"&&!REC){REC=1;record()}const p=cp(),t=T[p.pos],ok=mine(),Rg=RG();
+const bar=G.players.map((q,k)=>`<div class="pl${k==G.cur?" on":""}${q.out?" out":""}" style="--o:${PC[k]}"><i>${ava(q)}</i><span><strong class="cv">${fmt(q.cash)}</strong><b>${q.name} · 🏠${Object.values(G.own).filter(o=>o.o==k).length}</b></span></div>`).join("");
+const cells=T.map((x,i)=>{const[r,c]=xy(i),o=G.own[i],tk=G.players.map((q,k)=>vpos(k)==i&&!q.out?`<em class="${k==G.cur&&VP?"me":""}">${fc(q.f)}</em>`:"").join("");
+const st=`grid-row:${r};grid-column:${c}${x.k=="p"?";--b:"+GC[x.g]:""}${o?";--o:"+PC[o.o]:""}`,cl=`c${o?" own":""}${vpos(G.cur)==i?" cur":""}${vpos(G.cur)==i&&VP?" stp":""}${x.k!="p"?" sp":""}${x.k=="s"?" go":""}${tk?" tkn":""}${o&&FX.own!=null&&!FX.own.split(",").includes(String(i))?" pop":""}`;
+return x.k=="p"?`<div class="${cl}" style="${st}"><div class="hd"><span>${o?"★".repeat(o.l+1)+" "+rent(i):fmt(x.p)}</span><span class="tk">${tk}</span></div><b>${x.n}</b></div>`:`<div class="${cl}" style="${st}"><u>${IC[x.k]||""}</u><b>${x.n}</b><span class="tk">${tk}</span></div>`}).join("");
+const pr=Math.max(0,Math.min(100,nw(G.cur)/GOAL*100));
+const info=G.fact&&G.ph!="quiz"?`<div class="fact"><b>📚 ${G.fact.n}</b>${G.fact.g>=0?`<i style="--b:${GC[G.fact.g]}">${Rg.gr[G.fact.g]}</i>`:""}<p>${G.fact.x}</p></div>`:`<div class="lg">${Rg.gr.map((x,k)=>`<span style="--b:${GC[k]}">${x}</span>`).join("")}</div>`;
+const fv=VD||G.r,tap=ok&&G.ph=="roll"&&!VD;
+const dieH=tap?`<button id="die" class="q" data-f="roll" aria-label="ทอยเต๋า">?</button>`:`<div id="die" class="${fv?((VD||VP)?"":"spin")+(fv==1?" one":""):"q"}"${VD?` style="transform:rotate(${Math.round(Math.random()*44-22)}deg)"`:""}>${fv?Array.from({length:9},(_,k)=>`<i${DF[fv].includes(k+1)?' class="on"':""}></i>`).join(""):"?"}</div>`;
+const rn=VD?"กำลังทอย…":G.r?"ทอยได้ "+G.r:tap?"แตะลูกเต๋าเพื่อทอย":"รอทอยเต๋า";
+const mine_=Object.keys(G.own).filter(i=>G.own[i].o==G.cur),dv=Math.round(mine_.reduce((a,i)=>a+rent(i),0)*CFG.div/10)*10,ws=`<div class="ws"><span>🏠 ${mine_.length}</span><span>🏦 ${fmt(nw(G.cur)-p.cash)}</span><span>💸 ${fmt(dv)}/รอบ</span></div>`;
+const mid=`<div id="mid"><div class="who">${fc(p.f)} ${p.name}</div><span class="rk">${RK[rank(G.cur)]}</span>${dieH}<div class="rn">${rn}</div><div class="pg"><div class="bar2"><i style="width:${pr}%"></i></div><span>สุทธิ <b id="nwb">${fmt(nw(G.cur))}</b> / ${fmt(GOAL)}</span></div>${ws}${info}<div class="gl">${G.reg!=null?Rg.e+" "+Rg.pv+" · ":""}ตา ${Math.min(p.turn,MAXT)}/${MAXT}</div></div>`;
+let h="";const md=G.ph=="quiz"||G.ph=="perk";
+if(G.ph=="over")h=`<div class="say">${G.over}</div>`+btn(G.mode=="online"?"ออกจากห้อง":"กลับหน้าหลัก","leave");
+else if(G.ph=="move")h=`<div class="say">🚶 ${p.name} กำลังเดิน…</div>`;
+else if(!ok)h=`<div class="say">⏳ รอ ${p.name} เล่น…</div>`;
+else if(G.ph=="roll")h=btn("🎲 ทอยเต๋า","roll");
+else if(G.ph=="dec")h=btn("เดิน "+G.r+" ช่อง","go")+btn(p.free>0?"ทอยใหม่ (ฟรี)":"ทอยใหม่ -฿500","reroll",{alt:1,off:p.free<=0&&p.cash<500});
+else if(G.ph=="buy")h=btn("ซื้อ "+t.n+" "+fmt(t.p),"buy",{off:p.cash<t.p})+btn("ข้าม","fin",{alt:1});
+else if(G.ph=="upg")h=btn("ปรับปรุง "+fmt(up(p.pos)),"upg",{off:p.cash<up(p.pos)})+btn("ข้าม","fin",{alt:1});
+else if(G.ph=="quiz")h='<div class="say">❓ ที่ไหนกันนะ? “'+G.q.x+'”</div>'+G.q.o.map((n,i)=>btn(n,"ans",{alt:1,a:i})).join("");
+else if(G.ph=="perk")h='<div class="say">เลือกบัฟถาวร 1 อย่าง</div>'+G.opts.map(k=>btn(PK[k],"pick",{a:k})).join("");
+return `<div class="gm"><div class="bar"><button class="bk${XC?" on":""}" data-f="exit">${XC?"ออก?":"←"}</button>${bar}</div><div id="board">${cells}${mid}</div><div class="sheet">${md?"":`<ul class="logo">${G.log.slice(1,2).map(m=>"<li>"+hl(m)+"</li>").join("")}</ul><div class="msg">${hl(G.log[0])}</div>`}<div class="acts">${h}</div></div></div>`}
+const RK=["🌱 มือใหม่","🛒 พ่อค้า","🏪 เถ้าแก่","🏢 เจ้าสัว","👑 มหาเศรษฐี"];
+const rank=k=>{const q=nw(k)/GOAL;return q>=.85?4:q>=.6?3:q>=.35?2:q>=.15?1:0};
+let FX={};
+const redu=()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}};
+function burst(n){if(redu())return;for(let i=0;i<n;i++){const e=document.createElement("span");e.className="cf";e.textContent=["🎉","✨","💰","⭐","🪙"][i%5];e.style.left=Math.random()*96+"%";e.style.animationDelay=Math.random()*.5+"s";e.style.fontSize=16+Math.random()*14+"px";document.body.appendChild(e);setTimeout(()=>e.remove(),2600)}}
+function toast(m){const e=document.createElement("div");e.className="toast";e.textContent=m;document.body.appendChild(e);setTimeout(()=>e.remove(),2700)}
+function tween(el,a,b,ms){const t0=performance.now(),f=t=>{const k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,3);el.textContent=fmt(a+(b-a)*e);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function fx(){try{if(!G||!G.started){FX={};return}
+const W=G.players.map((q,k)=>nw(k)),own=Object.keys(G.own).join();
+if(FX.id!==G.id){FX={id:G.id,c:G.players.map(q=>q.cash),w:W,r:G.players.map((q,k)=>rank(k)),own,n:Object.keys(G.own).length};return}
+const cs=document.querySelectorAll(".pl");
+G.players.forEach((q,k)=>{const d=q.cash-FX.c[k];if(d&&cs[k]){const cv=cs[k].querySelector(".cv");if(cv)tween(cv,FX.c[k],q.cash,700);if(Math.abs(d)>=50){const f=document.createElement("em");f.className="fl "+(d>0?"pos":"neg");f.textContent=sg(d);cs[k].appendChild(f);setTimeout(()=>f.remove(),1300)}}
+const rk=rank(k);if(rk>FX.r[k]){toast("🎉 "+q.name+" เลื่อนขั้นเป็น "+RK[rk]);burst(26)}FX.r[k]=rk;FX.c[k]=q.cash});
+const bi=document.querySelector(".bar2 i"),nb=document.querySelector("#nwb");
+if(bi){const p=Math.min(100,W[G.cur]/GOAL*100),o=Math.min(100,(FX.w[G.cur]||0)/GOAL*100);bi.style.width=o+"%";requestAnimationFrame(()=>requestAnimationFrame(()=>{bi.style.width=p+"%"}))}
+if(nb&&FX.w[G.cur]!==W[G.cur])tween(nb,FX.w[G.cur],W[G.cur],800);
+if(own!==FX.own){const n=Object.keys(G.own).length;if(n>FX.n)burst(14);FX.own=own;FX.n=n}
+FX.w=W;if(G.ph=="over"&&!FX.done){FX.done=1;if(G.win>=0)burst(44)}}catch(e){}}
+function render(v){if(G&&G.started)setReg(G.reg==null?null:G.reg,G.players.length);$("#app").className=G&&G.started?"g":"";$("#app").innerHTML=(!G?(SCR=="welcome"?welcome():SCR=="intro"?intro():SCR=="login"?login():SCR=="prof"?prof():SCR=="reg"?regs():SCR=="help"?helpScr():SCR=="priv"?privScr():home()):!G.started?lobby():game())+nav();if(!v)fx()}
+document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("button[data-f]");if(!b||ANIM)return;const f=b.dataset.f;if(G&&G.started&&PLAY.includes(f)&&!mine())return;FN[f]&&FN[f](b.dataset.a)});
+document.addEventListener("input",e=>{if(e.target.id=="lu")LU=e.target.value;if(e.target.id=="nm"){NAME=e.target.value;PROF.name=NAME;savep()}});
+render();
+(async()=>{try{const r=await fetch("api/ping",{cache:"no-store"}),j=await r.json();if(j&&j.ok){API=1;if(USER)ME=USER}}catch(e){}if(API){try{const c=await (await fetch("api/sso/config")).json();SSO=c.on?c:null}catch(e){}await ssoBack()}if(!API){try{DB=await claude.use("db")}catch(e){}}if(!G)render()})();
+</script>
+</body>
+</html>

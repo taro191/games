@@ -1,0 +1,9 @@
+node_modules/
+storage/
+data/
+.env
+games/*/.env
+games/*/server/data/
+games/tan-set-thi/users.json
+games/tan-set-thi/secret.key
+tmp/

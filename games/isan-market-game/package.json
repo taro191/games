@@ -1,0 +1,12 @@
+{
+  "name": "mitty-90-day",
+  "version": "1.0.0",
+  "private": true,
+  "description": "จ่ายตลาดอีสาน - เกมฝึกคิดและลงมือทำจริง พร้อมระบบบัญชีผู้เล่นและ Login ผ่าน 500 Windows Thailand",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server/server.js",
+    "start:env": "node --env-file=.env server/server.js",
+    "mock500w": "node tools/mock-500w.js"
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เกมทั้งหมด</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --ink:#1d1b18; --muted:#6b665d; --line:#e6e1d6; --accent:#c2410c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#151412; --card:#1f1d1a; --ink:#f3efe7; --muted:#a39d92; --line:#33302b; --accent:#fb923c; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:"Noto Sans Thai", system-ui, sans-serif; line-height:1.6; }
+  main { max-width:880px; margin:0 auto; padding:48px 16px 64px; }
+  h1 { font-size:clamp(28px,6vw,40px); font-weight:800; margin:0 0 4px; }
+  p.lead { color:var(--muted); margin:0 0 32px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:16px; }
+  a.card { display:flex; flex-direction:column; gap:6px; padding:20px; background:var(--card); border:1px solid var(--line); border-radius:14px;
+    color:inherit; text-decoration:none; transition:border-color .15s, transform .15s; }
+  a.card:hover, a.card:focus-visible { border-color:var(--accent); transform:translateY(-2px); outline:none; }
+  .emoji { font-size:32px; line-height:1; }
+  .name { font-weight:600; font-size:18px; }
+  .desc { color:var(--muted); font-size:14px; }
+  .go { margin-top:auto; padding-top:8px; color:var(--accent); font-weight:600; font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>เกมทั้งหมด</h1>
+  <p class="lead">เลือกเกมที่อยากเล่น เล่นได้ทั้งบนมือถือและคอมพิวเตอร์</p>
+  <div class="grid">
+    <a class="card" href="/isan/"><span class="emoji">🧺</span><span class="name">จ่ายตลาดอีสาน</span><span class="desc">ฝึกวางแผนใช้เงินจ่ายตลาดแบบคนอีสาน</span><span class="go">เข้าเล่น →</span></a>
+    <a class="card" href="/mitty90/"><span class="emoji">🌱</span><span class="name">สร้างตัว 90 วัน</span><span class="desc">Mitty 90 Day เกมฝึกคิดและลงมือทำจริง</span><span class="go">เข้าเล่น →</span></a>
+    <a class="card" href="/career/"><span class="emoji">💼</span><span class="name">จำลองอาชีพ 90 วัน</span><span class="desc">Mitty Career ลองใช้ชีวิตในอาชีพที่สนใจ</span><span class="go">เข้าเล่น →</span></a>
+    <a class="card" href="/settee/"><span class="emoji">🎩</span><span class="name">ท่านเศรษฐี</span><span class="desc">เกมเศรษฐีออนไลน์ เล่นกับเพื่อน และมีโหมดเรียนรู้</span><span class="go">เข้าเล่น →</span></a>
+    <a class="card" href="/waw/"><span class="emoji">🤪</span><span class="name">คนเก่งเกินเบอร์ 5</span><span class="desc">ตอบผิดคือชนะ เล่นเป็นห้องกับเพื่อน</span><span class="go">เข้าเล่น →</span></a>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+# เกม + HTTPS อัตโนมัติ (Caddy ขอใบรับรองจาก Let's Encrypt ให้เอง)
+# ใช้: คัดลอก .env.production.example เป็น .env แก้ค่า แล้วรัน  docker compose up -d --build
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      PORT: "3000"
+      COOKIE_SECURE: "1"
+      TRUST_PROXY: "1"
+    volumes:
+      - mitty_data:/data
+    expose:
+      - "3000"
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  mitty_data:
+  caddy_data:
+  caddy_config:

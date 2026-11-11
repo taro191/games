@@ -1,0 +1,9 @@
+{
+  "name": "tan-set-thi",
+  "version": "1.0.0",
+  "description": "เกมเศรษฐีออนไลน์ เล่นบนมือถือ มีโหมดเรียนรู้ 6 ภาค (เซิร์ฟเวอร์ Node ไม่ต้องติดตั้งแพ็กเกจเพิ่ม)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "private": true
+}

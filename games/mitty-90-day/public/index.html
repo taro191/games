@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800&family=Kanit:wght@400;500;600;700&display=swap"><title>Mitty 90 Day</title>
+<style>
+:root{--bg:#151515;--card:#262626;--y:#FFDD33;--yd:#8f7f1f;--b:#3563B0;--r:#FF3030;--w:#fff;--mu:#8a8a8a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--w);font-family:"SF Pro Display",-apple-system,"Noto Sans Thai","Sarabun",system-ui,sans-serif;display:flex;justify-content:center;letter-spacing:-.01em}
+#app{width:100%;max-width:430px;min-height:100vh;padding-bottom:120px}
+.tag{font-size:11px;color:var(--mu);text-align:center;padding:8px}
+.hero{background:var(--y);color:#1e1e1e;border-radius:0 0 40px 40px;padding:16px 20px 22px;margin-top:-4px}
+.top{display:flex;justify-content:flex-end;gap:10px;align-items:center}
+.av{width:42px;height:42px;border-radius:50%;background:#111;display:grid;place-items:center;font-size:22px;border:2px solid #fff}
+.ic{width:42px;height:42px;border-radius:50%;background:#111;color:var(--y);display:grid;place-items:center;font-size:17px;border:0}
+.hi{font-size:38px;font-weight:600;line-height:1.1;margin:70px 0 80px}.hi span{color:var(--yd)}
+.pill{background:#111;color:#fff;border-radius:99px;padding:18px 22px;display:flex;justify-content:space-between;font-size:17px;font-weight:500;border:0;width:100%;font-family:inherit}
+.tabs{display:flex;gap:18px;padding:22px 20px 8px;overflow-x:auto;font-size:14px;font-weight:600}
+.tabs div{color:var(--mu);position:relative;white-space:nowrap}.tabs div.on{color:#fff}
+.tabs sup{font-size:9px;margin-left:2px}
+.box{background:var(--card);border-radius:28px;padding:18px;margin:10px 16px;position:relative}
+.box h3{margin:0 0 4px;font-size:21px;font-weight:600}.mu{color:var(--mu);font-size:13px;line-height:1.4}
+.sq{width:112px;height:112px;background:var(--y);border-radius:24px;display:grid;place-items:center;font-size:56px;flex:none}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tg{width:58px;height:30px;border-radius:99px;background:var(--b);position:relative;border:0}.tg:after{content:"";position:absolute;right:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff}
+.btn{display:block;width:calc(100% - 32px);margin:14px 16px 0;border:0;border-radius:99px;padding:17px;background:var(--b);color:#fff;font:600 14px inherit;font-family:inherit;letter-spacing:.04em}
+.btn.y{background:var(--y);color:#1e1e1e}.btn.d{background:#111;color:#fff;border:1px solid #333}
+.it{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:22px;padding:12px;margin:10px 16px}
+.it .i{width:46px;height:46px;border-radius:14px;background:#3a3a3a;display:grid;place-items:center;font-size:22px;flex:none}
+.it b{display:block;font-size:16px;font-weight:600}.it em{margin-left:auto;font-style:normal;color:var(--y);font-weight:600;font-size:15px}
+.it.lock{opacity:.4}.it.now{outline:2px solid var(--y)}.it.done .i{background:var(--y)}.it.boss .i{background:var(--r)}
+h2{font-size:24px;font-weight:600;margin:22px 20px 6px}
+nav{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);width:calc(100% - 32px);max-width:398px;background:#1d1d1d;border:1px solid #2c2c2c;border-radius:30px;display:flex;align-items:center;justify-content:space-around;padding:10px}
+nav button{background:none;border:0;color:#bbb;font-size:21px;width:44px;height:44px}nav button.on{color:var(--y)}
+nav .c{width:58px;height:58px;border-radius:50%;background:#fff;color:#111;font-size:24px}
+.card{background:var(--y);color:#1e1e1e;border-radius:30px;margin:10px 16px;padding:22px}
+.card h1{font-size:30px;margin:6px 0;line-height:1.1;font-weight:600}.card .mu{color:var(--yd)}
+.chip{display:inline-block;background:#111;color:var(--y);border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600}
+.pf{background:var(--y);color:#1e1e1e;border-radius:30px;margin:60px 16px 10px;padding:56px 20px 22px;text-align:center;position:relative}
+.pf .av{position:absolute;top:-44px;left:50%;transform:translateX(-50%);width:88px;height:88px;font-size:46px;border:6px solid var(--bg)}
+.pf b{font-size:22px;font-weight:600}
+textarea{width:100%;background:#1b1b1b;color:#fff;border:1px solid #3a3a3a;border-radius:18px;padding:14px;font:inherit;font-size:15px;margin-top:8px}
+input{width:100%;background:#1b1b1b;color:#fff;border:1px solid #3a3a3a;border-radius:99px;padding:14px;font:inherit;margin-top:8px}
+select{width:100%;background:#1b1b1b;color:#fff;border:1px solid #3a3a3a;border-radius:99px;padding:14px;font:inherit;margin-top:8px}
+.st{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:4px 10px;margin:3px 3px 0 0}
+#ov{position:fixed;inset:0;background:#000b;display:none;place-items:center;z-index:9;text-align:center;padding:20px}#ov.on{display:grid}
+#ovc{background:var(--y);color:#1e1e1e;border-radius:36px;padding:32px 24px;width:100%;max-width:340px;animation:z .45s}
+@keyframes z{from{transform:scale(.5);opacity:0}}
+.ch{display:inline-block;padding:12px 16px;margin:5px 4px 0 0;border-radius:99px;background:#333;color:#fff;font:600 15px inherit;font-family:inherit;border:0;position:relative}
+.ch.on{background:var(--y);color:#1e1e1e}.ch sup{background:#111;color:var(--y);border-radius:50%;padding:1px 6px;margin-left:6px;font-size:11px}
+.big3{display:flex;gap:8px;margin-top:12px}.big3 button{flex:1;border:0;border-radius:24px;background:#333;color:#fff;font:600 14px inherit;font-family:inherit;padding:18px 4px;line-height:1.3}
+.big3 button:active{background:var(--y);color:#1e1e1e;transform:scale(.96)}
+.dots{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.dots span{width:46px;height:46px;border-radius:50%;background:#1b1b1b;border:2px dashed #444;display:grid;place-items:center;font-size:22px}.dots span.f{background:var(--y);border:0;animation:z .35s}
+input[type=range]{width:100%;accent-color:#FFDD33;height:36px}
+.mt{height:22px;border-radius:99px;background:#1b1b1b;overflow:hidden;margin-top:8px}.mt i{display:block;height:100%;transition:width .2s}
+.rt{display:flex;gap:8px;margin-top:10px}.rt button{flex:1;border:0;border-radius:24px;background:#333;color:#fff;font-size:30px;padding:14px}.rt button.on{background:var(--y)}
+.dis{opacity:.35;pointer-events:none}
+
+:root{--bg:#1a1245;--card:#2b2175;--y:#FFC800;--yd:#b58900;--b:#3DB8FF;--r:#FF5A5F;--g:#58E08A;--mu:#b9b0ee}
+body{font-family:"Kanit","SF Pro Display","Noto Sans Thai",system-ui,sans-serif;background:linear-gradient(180deg,#1a1245 0%,#2b1b73 55%,#3a1f7a 100%) fixed;letter-spacing:0}
+.hud{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;padding:10px 14px;background:#140d38ee;backdrop-filter:blur(6px);border-bottom:3px solid #0d0828}
+.lvb{width:46px;height:46px;border-radius:14px;background:var(--y);color:#2a1d00;display:grid;place-items:center;font-weight:700;font-size:20px;border-bottom:4px solid var(--yd);flex:none;transform:rotate(-4deg)}
+.xpw{flex:1}.xpw .t{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);font-weight:500}
+.xb{height:16px;border-radius:99px;background:#0d0828;margin-top:3px;overflow:hidden;border:2px solid #0d0828}.xb i{display:block;height:100%;background:linear-gradient(90deg,#ffd84a,#ff9a3d);border-radius:99px;transition:width .6s}
+.pc{background:#0d0828;border-radius:99px;padding:6px 12px;font-weight:600;font-size:14px;color:var(--g);white-space:nowrap}
+.stage{display:flex;align-items:flex-end;gap:6px;padding:22px 16px 6px}
+.bub{background:#fff;color:#1a1245;border-radius:22px 22px 22px 6px;padding:14px 16px;font-weight:500;font-size:16px;line-height:1.35;flex:1;margin-bottom:34px;box-shadow:0 5px 0 #0d082866}
+.plat{width:100%;height:14px;border-radius:50%;background:#0d082888;margin-top:-10px}
+.qc{background:var(--card);border-radius:26px;margin:14px 16px;padding:18px;border:3px solid #4a3dad;border-bottom-width:7px}
+.qc h3{margin:6px 0 4px;font-size:24px;font-weight:700}
+.tagq{display:inline-block;background:var(--r);color:#fff;font-weight:700;font-size:12px;border-radius:10px;padding:3px 10px}
+.btn{font-family:inherit;font-weight:700;font-size:18px;letter-spacing:0;border-radius:18px;padding:16px;border:0;border-bottom:6px solid var(--yd);background:var(--y);color:#2a1d00;width:calc(100% - 32px)}
+.btn:active{transform:translateY(4px);border-bottom-width:2px}
+.btn.g,.btn.y{background:var(--g);color:#1e1e1e;border-bottom-color:#2a9a58}
+.btn.d{background:#4a3dad;color:#fff;border-bottom-color:#2a2078}.btn.s{background:#4a3dad;color:#fff}
+.btn.dis{opacity:.4}
+.box,.it{background:var(--card);border:3px solid #4a3dad;border-bottom-width:6px;border-radius:22px}
+.it{padding:12px 14px}.it .i{background:#3b2f96;border-radius:16px}.it.done .i{background:var(--g);color:#1e1e1e}.it.now{outline:0;border-color:var(--y)}
+.card{background:linear-gradient(135deg,#ffd84a,#ff9a3d);color:#2a1d00;border-radius:26px;border-bottom:7px solid #c26a00}
+.card .mu{color:#6b4300}.chip{background:#2a1d00;color:var(--y);border-radius:10px}
+.ch{background:#3b2f96;border-bottom:4px solid #2a2078;border-radius:16px;font-family:inherit;font-weight:600}.ch.on{background:var(--y);color:#2a1d00;border-bottom-color:var(--yd)}
+.big3 button{background:#3b2f96;border-bottom:5px solid #2a2078;border-radius:18px;font-family:inherit}.dots span{background:#1a1245;border-color:#4a3dad}.dots span.f{background:var(--y)}
+textarea,select,input{background:#140d38;border-color:#4a3dad}.mt{background:#140d38}.rt button{background:#3b2f96;border-bottom:4px solid #2a2078}.rt button.on{background:var(--y)}
+.pf{background:linear-gradient(135deg,#ffd84a,#ff9a3d);border-radius:26px}.pf .av{border-color:#2b1b73}.av{background:#2a1d00}.ic{background:#0d0828;color:var(--y)}
+.sq{background:#3b2f96;border-radius:24px}.tag{color:var(--mu)}
+.bn{display:flex;align-items:center;justify-content:center;margin:26px 16px 4px;gap:10px;color:#fff;font-weight:700;font-size:15px}.bn:before,.bn:after{content:"";height:4px;border-radius:9px;background:#4a3dad;flex:1}
+.path{position:relative;padding:6px 0;overflow-x:clip}.path:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:6px dotted #4a3dad;transform:translateX(-3px)}
+.nd{position:relative;display:flex;flex-direction:column;align-items:center;margin:14px 0;text-align:center}
+.cir{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:#3b2f96;border:4px solid #4a3dad;border-bottom-width:9px;position:relative}
+.nd.done .cir{background:var(--g);border-color:#7ff0a8;border-bottom-color:#2a9a58;color:#1e1e1e}
+.nd.now .cir{background:var(--y);border-color:#ffe06b;border-bottom-color:var(--yd);animation:bn 1.2s infinite}
+.nd.boss .cir{width:92px;height:92px;font-size:44px;background:var(--r);border-color:#ff9a9d;border-bottom-color:#b02a30}
+.nd.lock .cir{opacity:.5;filter:grayscale(.6)}
+.nd .lb{margin-top:8px;font-weight:600;font-size:14px;background:#140d38;border-radius:12px;padding:4px 12px;max-width:200px}
+.nd small{color:var(--mu);font-size:12px;font-weight:500}
+@keyframes bn{50%{transform:translateY(-8px)}}
+nav{background:#140d38;border:3px solid #0d0828;border-radius:26px;padding:8px 6px}
+nav button{font-family:inherit;font-size:22px;width:auto;height:auto;flex:1;padding:4px 0;line-height:1.1;color:var(--mu)}nav button small{display:block;font-size:11px;font-weight:500}
+nav button.on{color:var(--y)}nav .c{width:64px;height:64px;flex:none;margin-top:-26px;border-radius:50%;background:var(--g);color:#1e1e1e;border:0;border-bottom:6px solid #2a9a58;box-shadow:0 4px 0 #0d0828;font-size:28px}
+#ovc{background:radial-gradient(circle at 50% 0%,#ffe06b,#ffc800 60%);border-bottom:8px solid var(--yd);border-radius:30px;font-family:inherit}
+h2{font-weight:700}
+
+/* ===== Task Dark theme (lime / yellow / coral) ===== */
+:root{--bg:#222;--card:#2d2d2d;--y:#ffcc00;--yd:#c9962b;--b:#00b4d8;--r:#ec5b52;--g:#00b4d8;--mu:#a0a09a;--ink:#1e1e1e;--gray:#d8d8d2;--snow:#f8f8f6;color-scheme:dark}
+body{font-family:"Kumbh Sans","Kanit","Sarabun","Noto Sans Thai","Thonburi","Tahoma",system-ui,sans-serif;color:#f3f3ee;background:#222}
+.tag{color:var(--mu)}
+.hud{background:rgba(34,34,34,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:0}
+.lvb{background:var(--y);color:var(--ink);border:0;border-radius:50%;transform:none;box-shadow:none}
+.xpw .t{color:var(--mu)}.xb{background:#3a3a3a;border:0;height:12px}.xb i{background:var(--y)}
+.pc{background:#3a3a3a;color:#fff}
+.stage svg{filter:none;border-radius:50%;border:0}
+.bub{background:var(--gray);color:var(--ink);box-shadow:none;border:0;border-radius:26px 26px 26px 8px;font-weight:600}
+.plat{background:rgba(0,0,0,.35)}
+.box,.it{background:var(--card);backdrop-filter:none;border:0;border-radius:28px;box-shadow:none;color:#f3f3ee}
+.it .i{background:var(--b);color:var(--ink);border-radius:50%}.it.done .i{background:var(--b);color:var(--ink)}.it.now{box-shadow:0 0 0 2px var(--y)}.it.boss .i{background:var(--r);color:#fff;box-shadow:none}
+.it:nth-child(4n+1){background:var(--b);color:var(--ink)}.it:nth-child(4n+2){background:var(--y);color:var(--ink)}.it:nth-child(4n+3){background:var(--r);color:var(--ink)}.it:nth-child(4n){background:var(--gray);color:var(--ink)}
+.it:nth-child(4n+1) .i,.it:nth-child(4n+2) .i,.it:nth-child(4n+3) .i,.it:nth-child(4n) .i{background:var(--ink);color:#fff}.it .mu{color:rgba(30,30,30,.65)}
+.qc{background:var(--y);color:var(--ink);border:0;border-radius:30px;box-shadow:none;position:relative;padding-top:18px}
+.qc:before{display:none}
+.qc .mu{color:#6b5416}.qc h3,.qc b{color:var(--ink)}
+.tagq{background:var(--ink);color:#fff;border-radius:99px;padding:4px 12px}
+.card{background:var(--b);color:var(--ink);border:0;border-radius:30px;box-shadow:none}
+.card .mu{color:#4a5a1a}.card h1{color:var(--ink);font-weight:800;line-height:1.05}.chip{background:var(--ink);color:#fff}
+.pf{background:var(--gray);color:var(--ink);border:0;border-radius:30px;box-shadow:none}.pf b{color:var(--ink)}.pf .mu{color:#555}
+.btn{background:var(--y);color:var(--ink);border:0;border-radius:99px;box-shadow:none;font-weight:700}
+.btn:active{transform:scale(.97);border:0}
+.btn.g,.btn.y{background:var(--y);color:var(--ink);border:0}
+.btn.d,.btn.s{background:#3a3a3a;color:#fff;border:0;box-shadow:none}
+.qc .btn,.card .btn,#ovc .btn{background:var(--ink);color:#fff}
+.qc .btn.d{background:rgba(0,0,0,.12);color:var(--ink)}
+.ch,.big3 button,.rt button{background:var(--snow);color:var(--ink);border:0;border-bottom:0;box-shadow:none}
+.ch{border-radius:99px}.ch.on,.rt button.on{background:var(--y);color:var(--ink)}.qc .ch.on,.qc .rt button.on{background:var(--ink);color:var(--y)}.ch sup{background:var(--ink);color:var(--y)}
+.big3 button:active{background:var(--ink);color:var(--y)}
+.dots span{background:rgba(0,0,0,.12);border:2px dashed rgba(0,0,0,.3);color:var(--ink)}.dots span.f{background:var(--ink);border:0}
+textarea,select,input{background:var(--snow);color:var(--ink);border:0;border-radius:22px}
+.mt{background:rgba(0,0,0,.18)}
+input[type=range]{accent-color:#1e1e1e}
+.bn{color:#f3f3ee}.bn:before,.bn:after{background:#3a3a3a}
+.path:before{border-left-color:#4a4a48}
+.cir{background:#2d2d2d;border:0;color:#fff;box-shadow:none}
+.nd.done .cir{background:var(--b);border:0;color:var(--ink)}
+.nd.now .cir{background:var(--y);border:0;color:var(--ink);box-shadow:0 0 0 8px rgba(251,201,90,.22)}
+.nd.boss .cir{background:var(--r);border:0;color:#fff;box-shadow:none}
+.nd.lock .cir{opacity:.5;filter:none}
+.nd .lb{background:#2d2d2d;color:#f3f3ee;border:0}.nd small{color:var(--mu)}
+nav{background:#141414;border:0;border-radius:99px;padding:8px 10px;box-shadow:0 16px 34px rgba(0,0,0,.55);justify-content:space-between;gap:6px}
+nav button{flex:none;width:52px;height:52px;border-radius:50%;background:#2c2c2c;color:#fff;font-size:21px;padding:0;display:grid;place-items:center}
+nav button small{display:none}nav button svg{width:34px;height:34px;display:block}
+nav button.on{background:var(--y);color:var(--ink)}
+nav .c{background:var(--r);color:#fff;margin-top:0;width:52px;height:52px;border-radius:50%;box-shadow:none;border:0;font-size:18px}
+#ovc{background:var(--y);color:var(--ink);border:0;border-radius:34px;box-shadow:none}
+#ovc h1,#ovc b{color:var(--ink)}#ovc .mu{color:#6b5416}
+.av{background:#d9e08f;border:0;overflow:hidden;padding:0}.pf .av{border:6px solid #222;background:#d9e08f}.pf .av svg{width:100%;height:100%}
+.ic{background:#3a3a3a;color:#fff}
+.sq{background:#3a3a3a}
+h2{color:#f3f3ee;font-weight:700}
+summary{color:inherit}
+.ico{width:1.12em;height:1.12em;vertical-align:-.2em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico .f{fill:currentColor;fill-opacity:.18;stroke:none}
+.pc .ico{color:var(--y)}.nd.lock .cir .ico{opacity:.8}
+.ibadge{width:64px;height:64px;border-radius:50%;background:#1e1e1e;color:var(--b);display:grid;place-items:center;font-size:30px;flex:none}
+.pf .btn{background:#1e1e1e;color:#fff;display:block;margin:14px auto 0!important}
+.avg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}.avb{justify-self:center;background:none;border:4px solid transparent;border-radius:50%;padding:0;cursor:pointer;line-height:0;transition:transform .15s}.avb.on{border-color:var(--y);transform:scale(1.06)}.avb svg{border-radius:50%}
+.brand{padding:14px 20px 0;font-weight:800;font-size:20px;letter-spacing:.02em}.brand b{color:var(--y)}
+.obw{position:fixed;inset:0;z-index:30;background:#222;display:grid;place-items:center;padding:24px;overflow:auto}.obc{width:100%;max-width:380px;text-align:center;position:relative;padding-top:24px}.obc svg{border-radius:50%}.obc h1{font-size:28px;line-height:1.15;margin:18px 0 10px;font-weight:800}.obc p{color:#cfcfc8;font-size:16px;line-height:1.6;margin:0 0 20px}.obd{display:flex;gap:8px;justify-content:center;margin-bottom:22px}.obd i{width:8px;height:8px;border-radius:50%;background:#4a4a48;transition:width .2s}.obd i.on{width:26px;border-radius:99px;background:var(--y)}.obk{position:absolute;right:0;top:-6px;color:var(--mu);padding:10px;cursor:pointer}.obc .btn{margin:0;width:100%}
+.btn{min-height:52px}
+.dayc{margin:10px 16px;background:#2d2d2d;border-radius:26px;padding:16px 18px}.dayc b{font-size:17px}.dtag{background:var(--y);color:#1e1e1e;border-radius:99px;padding:4px 12px;font-size:12px;font-weight:700;white-space:nowrap}.dbar{position:relative;height:12px;background:#3f3f3d;border-radius:99px;margin:14px 0 10px}.dbar i{display:block;height:100%;background:var(--b);border-radius:99px;transition:width .4s}.dbar u{position:absolute;top:-4px;width:4px;height:20px;border-radius:2px;background:var(--y);transform:translateX(-2px)}
+.afm input{width:100%;box-sizing:border-box;margin-bottom:10px;padding:15px 18px;font:inherit}.aerr{background:var(--r);color:#fff;border-radius:16px;padding:10px 14px;margin-bottom:14px;font-weight:600}
+
+.lx{position:fixed;inset:0;z-index:30;background:#ececec;display:grid;place-items:center;padding:16px;overflow:auto;font-family:"Kumbh Sans","Kanit","Sarabun","Noto Sans Thai","Thonburi","Tahoma",system-ui,sans-serif}
+.lx *{box-sizing:border-box}
+.lx-c{width:100%;max-width:390px;height:min(844px,calc(100dvh - 32px));min-height:560px;border-radius:38px;background:#e8ab45;box-shadow:0 30px 60px -20px rgba(0,0,0,.28);display:flex;flex-direction:column;overflow:hidden}
+.lx-top{flex:0 0 clamp(170px,30dvh,280px);display:grid;place-items:end center;padding-top:14px}
+.lx-ill{height:100%;width:auto;overflow:visible;animation:lxh 2.4s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes lxh{0%,100%{transform:translateY(6px) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(1.5deg)}}
+.lx-w{display:block;width:100%;height:44px;margin-bottom:-1px;flex:none}
+.lx-f{flex:1 1 auto;background:#3b3b3b;padding:0 28px 28px;overflow:auto;color:#fff}
+.lx-k{margin:0;color:#ffcc00;font-weight:700;font-size:19px;line-height:1.2}
+.lx h1{margin:0 0 14px;color:#ffcc00;font-weight:800;font-size:44px;line-height:1.1;text-align:left}
+.lx input{display:block;width:100%;margin:0 0 10px;padding:15px 18px;border-radius:18px;border:2px solid transparent;background:#4a4a4a;color:#fff;font:inherit;font-size:16px;outline:0}
+.lx input::placeholder{color:#a9a9a4}.lx input:focus{border-color:#ffcc00}
+.lx-btn{display:block;width:100%;margin:6px 0 0;padding:16px;border:0;border-radius:99px;background:#ffcc00;color:#1e1e1e;font:inherit;font-weight:800;font-size:17px;cursor:pointer}
+.lx-btn.lx-alt{background:#00b4d8;color:#fff}.lx-btn:active{transform:scale(.98)}
+.lx-t{margin:14px 0 0;text-align:center;color:#cfcfca;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.lx-g{display:block;width:100%;margin:16px 0 0;padding:14px;border-radius:99px;border:2px solid #00b4d8;background:transparent;color:#00b4d8;font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+.lx-n{margin:8px 0 0;text-align:center;color:#9a9a95;font-size:12px}
+.lx .aerr{background:#ec5b52;color:#fff;border-radius:16px;padding:10px 14px;margin-bottom:12px;font-weight:600;font-size:14px;line-height:1.5}
+@media(max-width:430px){.lx{padding:0;background:#3b3b3b}.lx-c{max-width:none;height:100dvh;border-radius:0;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){.lx-ill{animation:none}}
+
+/* ===== Mitty Onboarding theme: mustard / dark wave / yellow headline / cyan ===== */
+:root{--bg:#3b3b3b;--card:#484848;--y:#ffcc00;--yd:#b58900;--b:#00b4d8;--r:#ef8a78;--g:#00b4d8;--mu:#bdbdb6;--ink:#262626;--gray:#f1ebdd;--snow:#fbf7ee;--sun:#e8ab45;--sky:#5fc3d6}
+body{background:#3b3b3b;color:var(--snow)}
+h2{color:var(--y);font-weight:800}
+.hud{background:var(--sun);color:var(--ink);backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0;margin-bottom:20px;padding:12px 16px 14px}
+.hud:after{content:"";position:absolute;left:0;right:0;top:100%;height:20px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 390 24' preserveAspectRatio='none'%3E%3Cpath d='M0 0H390V4C330 20 270 24 200 14C130 4 70 2 0 16Z' fill='%23e8ab45'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.lvb{background:var(--ink);color:var(--y)}
+.xpw .t{color:rgba(38,38,38,.78);font-weight:600}.xb{background:rgba(0,0,0,.18)}.xb i{background:var(--ink)}
+.pc{background:var(--ink);color:#fff}.pc .ico{color:var(--y)}
+.bub{background:var(--snow);color:var(--ink)}
+.box,.dayc{background:var(--card);border-radius:28px}
+.it{border-radius:28px}
+.it .i{background:var(--b);color:var(--ink);border-radius:20px}.it.done .i{background:var(--b);color:var(--ink)}.it.boss .i{background:var(--r);color:var(--ink)}
+.it:nth-child(4n+1){background:var(--b);color:var(--ink)}.it:nth-child(4n+2){background:var(--y);color:var(--ink)}.it:nth-child(4n+3){background:var(--r);color:var(--ink)}.it:nth-child(4n){background:var(--sun);color:var(--ink)}
+.it:nth-child(4n+1) .i,.it:nth-child(4n+2) .i,.it:nth-child(4n+3) .i,.it:nth-child(4n) .i{background:var(--ink);color:#fff;border-radius:20px}
+.qc{background:var(--sun);border-radius:34px}.qc .mu{color:#6b4a10}
+.card{background:var(--sky);border-radius:34px}.card .mu{color:#1d4f5a}
+.pf{background:var(--gray);border-radius:34px}.pf .av{border-color:var(--bg);background:var(--sky)}
+.av{background:var(--sky)}.ic{background:var(--ink);color:#fff}
+#ovc{background:var(--sun);border-radius:38px}#ovc .mu{color:#6b4a10}
+.btn{background:var(--y);color:var(--ink);font-weight:800;min-height:54px}
+.btn.g,.btn.y{background:var(--y);color:var(--ink)}.btn.d,.btn.s{background:#585858;color:#fff}
+.qc .btn,.card .btn,#ovc .btn,.pf .btn{background:var(--ink);color:#fff}
+.qc .btn.d{background:rgba(0,0,0,.14);color:var(--ink)}
+.ch.on,.rt button.on{background:var(--y);color:var(--ink)}.qc .ch.on,.qc .rt button.on{background:var(--ink);color:var(--y)}
+textarea,select,input{background:var(--snow);color:var(--ink)}
+.dbar i{background:var(--b)}.dbar{background:rgba(255,255,255,.18)}.dtag{background:var(--y);color:var(--ink)}
+.bn:before,.bn:after{background:rgba(255,255,255,.16)}.path:before{border-left-color:rgba(255,255,255,.2)}
+.cir{background:#505050;color:#fff;border-radius:28px}
+.nd.done .cir{background:var(--b);color:var(--ink)}.nd.now .cir{background:var(--y);color:var(--ink);box-shadow:0 0 0 8px rgba(255,204,0,.25)}
+.nd.boss .cir{background:var(--r);color:var(--ink);border-radius:34px}
+.nd .lb{background:var(--card);color:var(--snow)}
+nav{background:#2b2b2b;border-radius:34px;padding:8px}
+nav button{background:#3f3f3f;border-radius:22px}nav button.on{background:var(--b);color:#fff}
+nav .c{background:var(--y);color:var(--ink);border-radius:22px}
+.aerr{background:var(--r);color:var(--ink)}
+.ibadge{background:var(--ink);color:var(--y)}
+[style*="#4a5a1a"]{color:#1d4f5a!important}[style*="#5b4713"]{color:#4a3200!important}
+.lx .obd{justify-content:flex-start;margin:4px 0 14px}.lx .obd i{background:#6a6a68}.lx .obd i.on{background:var(--y)}
+.lx h1.sm{font-size:30px;line-height:1.2}.lx p.ld{color:#fff;font-size:16px;line-height:1.7;margin:0 0 14px}
+.lx .btn{width:100%;margin:6px 0 0}.lx-c{position:relative}.lx .obk{position:absolute;right:18px;top:16px;color:var(--ink);font-weight:700;padding:10px;cursor:pointer}
+
+/* login layout fix: fixed-height art area, form always visible */
+.lx-top{position:relative;min-height:0;overflow:hidden;flex:0 0 clamp(150px,25dvh,240px);display:block;padding:0}
+.lx-ill{position:absolute;left:0;right:0;bottom:0;margin:0 auto;height:94%;width:auto;max-width:100%}
+.lx-f{display:flex;flex-direction:column;padding:0 26px 22px;min-height:0}
+.lx-k{font-size:17px}
+.lx h1{font-size:36px;margin:0 0 12px}
+.lx-btn{padding:14px;font-size:16px;min-height:50px}
+.lx input{padding:13px 18px;margin-bottom:9px}
+.lx-t{margin-top:12px}.lx-g{margin-top:12px;padding:12px}
+.lx .aerr{margin-bottom:10px}
+@media(max-height:700px){.lx-top{flex-basis:clamp(120px,20dvh,160px)}.lx h1{font-size:30px;margin-bottom:8px}.lx-k{font-size:15px}}
+
+.lx-f>*{flex:none}
+.lx-top{flex-basis:clamp(160px,28dvh,270px)}
+.lx-sso{background:var(--snow);color:#262626;font-size:15px;white-space:normal}
+.lx-btn.lx-alt{background:#ffcc00;color:#1e1e1e}
+@media(max-height:700px){.lx-top{flex-basis:clamp(120px,20dvh,160px)}}
+
+.lx-ob .lx-top{flex:1 1 auto}.lx-ob .lx-ill{max-height:440px}
+.lx-ob .lx-f{flex:0 0 auto;padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+.lx-ob .lx-f h1.sm{margin-top:2px}
+
+/* cartoon characters */
+.stage svg,.stage .mf{border-radius:0!important;border:0}
+.mf{overflow:visible;transform-origin:50% 100%;animation:mfb 2.6s ease-in-out infinite}
+.mf.grin{animation-name:mfj;animation-duration:1.6s}
+@keyframes mfb{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes mfj{0%,100%{transform:translateY(4px) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.mf.sad{animation:none}
+#ovc .mf{display:block;margin:-6px auto 0}
+@media(prefers-reduced-motion:reduce){.mf{animation:none}}
+
+.pf{position:relative}
+.lo{position:absolute;top:14px;right:14px;display:flex;align-items:center;gap:6px;border:0;border-radius:99px;background:var(--ink);color:#fff;font:inherit;font-weight:700;font-size:13px;padding:9px 14px;cursor:pointer}
+.lo:active{transform:scale(.96)}.lo:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+
+.hlo{flex:none;display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:15px;background:var(--ink);color:#fff;cursor:pointer;padding:0}
+.hlo:active{transform:scale(.94)}.hlo:focus-visible,.lo2:focus-visible{outline:3px solid var(--y);outline-offset:2px}
+.lo2{display:flex;align-items:center;justify-content:center;gap:10px;width:calc(100% - 32px);margin:14px 16px 0;padding:16px;border:3px solid var(--r);border-radius:99px;background:transparent;color:var(--r);font:inherit;font-weight:800;font-size:17px;cursor:pointer}
+.lo2:active{transform:scale(.98)}
+
+#lp .lp-pw{position:absolute;left:30px;bottom:calc(8px + env(safe-area-inset-bottom,0px));font-size:11px;letter-spacing:.02em;color:#9a9a95;pointer-events:none}
+.lx-pw{margin:auto 0 0;padding-top:16px;text-align:center;font-size:11px;letter-spacing:.02em;color:#8f8f8a}
+.pwb{padding:6px 24px 8px;text-align:center;font-size:11px;letter-spacing:.02em;color:var(--mu);opacity:.8}
+
+/* top status strip: continues the mustard header */
+.tag{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--sun);color:var(--ink)!important;font-weight:700;font-size:12px;line-height:1.4;text-align:center;padding:calc(10px + env(safe-area-inset-top,0px)) 16px 0}
+.tag:before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 3px rgba(38,38,38,.16);border:2px solid var(--y);box-sizing:border-box}
+.tag[style*="FF3030"]{background:var(--r)}
+.tag[style*="FF3030"]:before{background:#fff;border-color:var(--ink)}
+.tag[style*="ffcc00"]{background:var(--ink);color:var(--y)!important;padding-bottom:10px;border-radius:0 0 22px 22px;margin-bottom:-12px;position:relative;z-index:6}
+.tag[style*="ffcc00"]:before{background:var(--y);border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,204,0,.25)}
+
+.tag{display:block}
+.tag:before{display:inline-block;vertical-align:middle;margin:-2px 8px 0 0}
+.tag[style*="ffcc00"]{margin-bottom:0;padding-bottom:12px}
+
+/* header: rounded bottom corners instead of wave */
+.hud{border-radius:0 0 32px 32px;margin-bottom:16px;padding:12px 18px 18px;box-shadow:0 12px 24px -16px rgba(0,0,0,.5)}
+.hud:after{display:none}
+
+/* page headers (gameplay + business tools) */
+.ph{position:relative;background:var(--sun);color:var(--ink);border-radius:0 0 32px 32px;box-shadow:0 12px 24px -16px rgba(0,0,0,.5);margin-bottom:16px;padding-bottom:16px}
+.ph0{padding-top:18px}
+.ph>div[style*="padding:8px 16px"]{padding:10px 16px 6px!important}
+.ph h2{color:var(--ink);margin:0;padding:2px 90px 4px 20px;font-size:30px;line-height:1.15}
+.ph>.mu{color:rgba(38,38,38,.78);padding:0 90px 4px 20px!important;font-weight:600}
+.ph-av{position:absolute;right:18px;top:12px;filter:drop-shadow(0 4px 0 rgba(0,0,0,.12))}
+.ph0 .ph-av{top:14px}
+.ph .card{background:transparent;box-shadow:none;border-radius:0;margin:0;padding:4px 20px 0}
+.ph .card .mu{color:rgba(38,38,38,.8)}
+.ph [style*="#4a5a1a"]{color:#5a3d08!important}
+.ph .stage{padding-top:4px}
+.ph .stage .plat{opacity:.25}
+.ph+.qc{background:var(--sky)}.ph+.qc .mu{color:#1d4f5a}
+.ic{width:42px;height:42px;border-radius:15px;background:var(--ink);color:#fff;font-weight:800}
+/* tool widgets */
+.big3 button{border-radius:26px;border:0;color:var(--ink);font-weight:800;padding:20px 4px;box-shadow:0 6px 0 rgba(0,0,0,.28)}
+.big3 button:nth-child(1){background:var(--b)}.big3 button:nth-child(2){background:var(--y)}.big3 button:nth-child(3){background:var(--r)}
+.big3 button:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.28)}
+.big3 button b{font-size:30px!important}
+input[type=range]{-webkit-appearance:none;appearance:none;height:14px;border-radius:99px;background:rgba(255,255,255,.2);accent-color:var(--y);outline:0}
+.qc input[type=range],.ph input[type=range]{background:rgba(0,0,0,.2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:var(--y);border:3px solid var(--ink);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--y);border:3px solid var(--ink);cursor:pointer}
+</style></head><body><div id="app"></div><div id="ov"><div id="ovc"></div></div>
+<script>
+const L=["ราคา","วิธีพูด","กลุ่มลูกค้า","จังหวะเวลา","คู่แข่ง","ของที่เสนอ"];
+const TL=["😍 อยากได้","🤔 ขอคิดดู","🙅 ไม่สนใจ"];
+const PR=["ไม่มีเวลา","ของแพง","หาของดีไม่เจอ","ขายไม่ออก","ทำไม่เป็น","ไม่มีคนช่วย","ส่งของช้า","ทำบัญชียาก"];
+const M=[
+["ทุนที่มี","แตะทักษะที่คุณทำได้ อย่างน้อย 3 อย่าง (ทั้งทั่วไปและเฉพาะทาง)",30,"🧰","chips",["เล่าเรื่อง","ทำอาหาร","วาดรูป","จัดระเบียบ","ขับรถ","ถ่ายรูป","สอนคน","เขียน","ตัดต่อ","ซ่อมของ","ขายของ","พูดภาษาอื่น"],3],
+["เสียงรอบตัว","ถาม 3 คนว่า ฉันช่วยเรื่องอะไรได้ แล้วแตะผลของแต่ละคน",40,"💬","tally",3,["😍 มีเรื่องให้ช่วย","🤔 ยังไม่แน่ใจ","🙅 ไม่มี"]],
+["กลุ่มเป้าหมาย","แตะกลุ่มลูกค้าที่เข้าถึงง่ายที่สุด 1 กลุ่ม",40,"🎯","chips",["นักศึกษา","พนักงานออฟฟิศ","แม่ค้าออนไลน์","ร้านอาหาร","ผู้สูงอายุ","เจ้าของร้านเล็ก","พ่อแม่","นักท่องเที่ยว"],1,1],
+["ปัญหา","แตะปัญหาที่คนรอบตัวเจอ เลือก 3 อย่าง",50,"🔍","chips",PR,3],
+["สัมภาษณ์ลูกค้า","คุย 3 คนในกลุ่มเป้าหมาย แล้วแตะว่าเขาสนใจจ่ายเงินแก้ปัญหานี้ไหม",80,"🎤","tally",3,["💸 เคยจ่ายแล้ว","🤔 สนใจ","🙅 ไม่สนใจ"]],
+["ปัญหาเร่งด่วน","แตะเรียงปัญหาจากเจ็บมากไปน้อย 3 อันดับ",50,"📌","rank",PR,3],
+["ต้นทุน","เลื่อนตั้งต้นทุนต่อชิ้น/ครั้งตามราคาจริงที่หามา",50,"🧮","cost"],
+["ข้อเสนอ","เลื่อนตั้งราคาขายและต้นทุน ดูมิเตอร์กำไรให้เป็นสีเหลือง",60,"📦","offer"],
+["การนำเสนอ","จับเวลา 30 วินาที เสนอขายให้เพื่อนหรือกระจก แล้วให้คะแนนตัวเอง (ฝึกซ้อม ไม่นับเป็นผลจริง)",0,"🎭","pitch"],
+["ทดลองขาย","เสนอให้ 5 คนจริง แล้วแตะผลของแต่ละคน",100,"🚀","tally",5,["🛒 ซื้อ","🤔 ขอคิดดู","🙅 ไม่ซื้อ"]],
+["ปิดการขาย","แตะผลลัพธ์จริงของศึกนี้ ซื้อ ปฏิเสธ หรือขอเวลา ผ่านได้ทุกแบบถ้าเรียนรู้",200,"👑","boss"],
+["ทบทวนผล","แตะบทเรียนที่ได้ แล้วเลือกก้าวต่อไป",100,"📈","review"],
+["ติดตามลูกค้า","ติดตามลูกค้าที่เคยซื้อ 3 คน แล้วแตะว่าเขากลับมาซื้อซ้ำไหม",80,"🔁","tally",3,["🔁 ซื้อซ้ำ","🤔 ยังไม่แน่ใจ","🙅 ไม่ซื้อซ้ำ"]],
+["ถามสิ่งที่อยากให้ปรับ","แตะสิ่งที่ลูกค้าเก่าบอกว่าอยากให้ปรับ เลือก 3 อย่าง",80,"💬","chips",["ราคา","คุณภาพ","ส่งช้า","บริการ","ตัวเลือกสินค้า","ขั้นตอนสั่งซื้อ","แพ็กเกจ","ติดต่อยาก"],3],
+["แผนรักษาลูกค้า","แตะวิธีรักษาลูกค้าที่จะลองทำสัปดาห์หน้า 1 วิธี",100,"🗺️","chips",["ส่วนลดลูกค้าเก่า","แจ้งเตือนสั่งซ้ำ","แพ็กเซ็ต","สะสมแต้ม","ขอรีวิว","ชวนเพื่อน"],1,1],
+["ประเมินตัวเอง","แตะด้านที่อยากพัฒนาที่สุด เลือก 3 อย่าง",80,"🪞","chips",["การขาย","การพูด","การเงิน","การจัดการเวลา","การวางแผน","ภาวะผู้นำ","รับมือการถูกปฏิเสธ","ทักษะเฉพาะทาง"],3],
+["ฝึกทักษะจริง","เลือกด้านหนึ่งแล้วฝึกจริง 3 ครั้ง แตะผลแต่ละครั้ง",100,"🏋️","tally",3,["💪 ฝึกครบตามแผน","🤔 ฝึกบางส่วน","🙅 ไม่ได้ฝึก"]],
+["ขอคำแนะนำ","ขอคำแนะนำจากคนที่เก่งกว่า 3 คน แล้วแตะว่าได้อะไรกลับมา",100,"🤝","tally",3,["💡 ได้คำแนะนำที่ใช้ได้","🤔 ยังไม่ชัดเจน","🙅 ไม่ตอบ"]],
+["เลือกนิสัย","แตะนิสัยที่จะทำให้ได้ทุกวัน 1 อย่าง",80,"🌱","chips",["ลงมือวันละ 1 งาน","ทบทวนก่อนนอน","คุยกับลูกค้า 1 คน","เรียนรู้ 15 นาที","จดรายรับ-จ่าย","ออกกำลังกายเบาๆ"],1,1],
+["ติดตาม 5 วัน","ทำนิสัยที่เลือกจริง 5 วัน แล้วแตะผลแต่ละวัน",120,"📅","tally",5,["✅ ทำครบ","🤔 ทำบางส่วน","🙅 ไม่ได้ทำ"]],
+["ปิดเกม: เป้าหมายถัดไป","แตะเป้าหมายใหญ่ที่จะไปต่อหลังเกมนี้ 1 อย่าง",150,"🏁","chips",["เปิดร้านจริง","ขยายกลุ่มลูกค้า","เพิ่มรายได้เสริม","เรียนทักษะใหม่","หาที่ปรึกษา","สอนคนอื่น"],1,1]];
+
+const NK=["คลังอาวุธ","ถามคนรอบตัว","สนามรบ","นักสืบปัญหา","สัมภาษณ์ลูกค้าจริง","ปัญหาที่เจ็บที่สุด","คิดต้นทุน","สร้างข้อเสนอ","ซ้อมขาย","เสนอขายครั้งแรก","BOSS","ทบทวนศึก","ลูกค้ากลับมา","ฟังลูกค้าเก่า","แผนรักษาลูกค้า","มองตัวเอง","ฝึกจริง","ฟังคนเก่งกว่า","เลือกนิสัย","ติดตามผล","ปิดเกม"];
+const EN=["Assets","Feedback","Target Customer","Problem","Customer Interview","Pain Point","Cost","Offer","Pitch","Test Sale","Closing","Review","Follow-up","Feedback Loop","Retention Plan","Self Review","Practice","Mentor Advice","Habit","Habit Tracking","Next Goal"];
+const IM=[6,5,8,8,10,8,9,9,4,10,9,9,8,7,7,7,8,7,6,8,9];
+const RS=["เป็นฐานของการเลือกเส้นทาง แต่ถ้ารู้ตัวดีอยู่แล้ว แก้ภายหลังได้ง่าย","ได้ข้อมูลเร็วและฟรี แต่คนใกล้ตัวมักเกรงใจ จึงยังไม่ใช่เสียงของตลาดจริง","เลือกผิดกลุ่ม ทุกด่านหลังจากนี้จะเดินผิดทางทั้งหมด","ปัญหาที่ไม่มีใครเจอจริง คือสินค้าที่ไม่มีคนซื้อ","หลักฐานชิ้นแรกจากตลาดจริง ทุกการตัดสินใจหลังจากนี้ต้องพึ่งมัน","ทำให้ไม่เสียแรงแก้ปัญหาที่ไม่มีใครยอมจ่าย","คิดผิดคือขาดทุนโดยไม่รู้ตัว และเป็นเงินจริงของคุณ","ราคาและกำไรคือหัวใจของธุรกิจ ผิดแล้วทำต่อไปก็ไม่รอด","ช่วยให้มั่นใจ แต่เป็นการฝึก ไม่ใช่ผลจากตลาดจริง","หลักฐานเดียวที่พิสูจน์ว่ามีคนต้องการจริง","เป็นผลจริงของการเสนอ ทั้งซื้อและไม่ซื้อให้ข้อมูลสำคัญ","ถ้าไม่ทบทวน ทุกอย่างที่ทำมาไม่ถูกแปลงเป็นการตัดสินใจครั้งต่อไป","ขายซ้ำคือสัญญาณว่าปัญหาที่แก้มีค่าจริง ไม่ใช่แค่ขายได้ครั้งเดียว","ทำให้ปรับสิ่งที่ลูกค้ารู้สึกจริง แทนการเดาเอาเอง","แผนที่ลงมือได้จริงทำให้ธุรกิจเดินต่อได้โดยไม่ต้องหาลูกค้าใหม่ทุกครั้ง","รู้จุดอ่อนของตัวเองก่อน จึงเลือกพัฒนาสิ่งที่ส่งผลจริง","ทักษะเกิดจากการฝึกจริง ไม่ใช่การรู้ว่าควรฝึก","คนที่เก่งกว่าช่วยชี้จุดบอดที่เรามองไม่เห็นเอง","นิสัยเล็กที่ทำได้จริงดีกว่าแผนใหญ่ที่ไม่เริ่ม","ผลที่ติดตามจริงบอกว่านิสัยนี้เหมาะกับคุณหรือไม่","เป้าหมายที่ชัดทำให้สิ่งที่เรียนในเกมไม่จบแค่หน้าจอ"];
+const W=[
+["ธุรกิจเริ่มจากสิ่งที่คุณมีจริง รู้ทุนตัวเองก่อนวางแผน","วางแผนขายสิ่งที่ตัวเองทำไม่ได้ แล้วเสียเวลาหลายสัปดาห์","ใส่ทักษะที่ไม่มีจริง ระบบก็พาไปเส้นทางที่คุณทำไม่ได้"],
+["ถามคนใกล้ตัวคือวิธีเร็วและฟรีที่สุดที่จะรู้ว่าคุณช่วยอะไรได้","เดาเองว่าตัวเองเก่งอะไร ทั้งที่คนอื่นอาจมองต่าง","แตะผลตามที่เขาตอบจริง ไม่ใช่ที่อยากได้ยิน"],
+["ธุรกิจที่พยายามขายทุกคน มักขายไม่ได้สักคน","ทุกด่านหลังจากนี้เดินผิดทาง เพราะไปคุยกับคนที่ไม่ใช่ลูกค้า","เลือกกลุ่มที่เข้าถึงได้จริง ไม่ใช่กลุ่มที่ฟังดูเท่"],
+["ลูกค้าจ่ายเงินแก้ปัญหา ไม่ได้จ่ายให้ไอเดียที่เราชอบ","สร้างสินค้าที่ไม่มีใครต้องการ","เลือกปัญหาที่คนเจอจริง ไม่ใช่ปัญหาที่เราอยากแก้"],
+["คำตอบของคนจริงคือข้อมูลตลาดชิ้นแรกของคุณ","ตัดสินใจจากความรู้สึกตัวเอง แล้วลงทุนผิดทาง","ต้องคุยกับคนจริง ถ้าแต่งคำตอบเอง คุณกำลังสร้างธุรกิจจากเสียงตัวเอง"],
+["คนยอมจ่ายเงินให้ปัญหาที่เจ็บที่สุดก่อน","แก้ปัญหาที่ไม่เจ็บ แล้วไม่มีใครยอมจ่าย","จัดอันดับตามคำตอบจริงของลูกค้า ไม่ใช่ตามที่เราอยากทำ"],
+["ต้องรู้ต้นทุนจริงก่อนตั้งราคา ไม่งั้นไม่รู้ว่ากำไรหรือขาดทุน","ตั้งราคาต่ำกว่าต้นทุนโดยไม่รู้ตัว ขายยิ่งมากยิ่งขาดทุน","ใช้ราคาจริงจากใบเสร็จ ตัวเลขที่ปัดให้สวยทำให้กำไรเป็นภาพลวง"],
+["ข้อเสนอที่ดีต้องคุ้มทั้งลูกค้าและคุณ","ขายในราคาที่ไม่เหลือกำไร ทำไปเหนื่อยฟรี","ตั้งราคาที่จะขายจริง ไม่ใช่ราคาที่ฟังดูดี"],
+["ซ้อมพูดให้ชัดก่อนเจอลูกค้าจริง ลดความตื่นเต้น","เจอลูกค้าครั้งแรกแล้วพูดไม่ออก เสียโอกาสโดยไม่จำเป็น","ให้คะแนนตามจริง ภารกิจนี้เป็นการฝึก ไม่นับ XP และไม่ใช่ผลจากตลาดจริง"],
+["ยอดขายจริงคือหลักฐานเดียวที่พิสูจน์ว่ามีคนต้องการ","ลงทุนทำต่อโดยไม่รู้ว่ามีคนซื้อหรือไม่","แตะผลตามที่ลูกค้าตอบจริง คำชมของเพื่อนไม่ใช่ยอดขาย"],
+["ผลสุดท้ายของการเสนอ ทั้งซื้อและไม่ซื้อให้ข้อมูลสำคัญ","ไม่รู้เหตุผลจริงว่าทำไมเขาซื้อหรือไม่ซื้อ","รายงานผลตามจริง ผลลบพร้อมบทเรียนก็ได้ XP"],
+["เปลี่ยนสิ่งที่เกิดขึ้นให้เป็นการตัดสินใจครั้งต่อไป","ทำซ้ำความผิดพลาดเดิมโดยไม่รู้ตัว","ถ้าผลไม่ดี ให้บันทึกตามจริง นั่นคือข้อมูลที่มีค่าที่สุด"],
+["ลูกค้าที่กลับมาซื้อซ้ำคือหลักฐานว่าสินค้าแก้ปัญหาได้จริง และถูกกว่าการหาลูกค้าใหม่","นับคำชมว่าเป็นยอดซื้อซ้ำ แล้วเข้าใจผิดว่าธุรกิจนิ่งแล้ว","แตะตามที่ลูกค้าทำจริง ไม่ใช่ที่เขาพูดว่าจะกลับมา"],
+["คำบอกของลูกค้าเก่าบอกได้ว่าต้องปรับอะไร โดยไม่ต้องเดา","ปรับสิ่งที่ลูกค้าไม่ได้เดือดร้อน เสียแรงและเงินเปล่า","เลือกตามที่ลูกค้าพูดจริง ไม่ใช่ตามที่เราอยากแก้"],
+["แผนรักษาลูกค้าที่ชัดทำให้ขายซ้ำได้ ไม่ต้องไล่หาลูกค้าใหม่ทุกครั้ง","เลือกวิธีที่ไม่เหมาะกับลูกค้า เสียเวลาและต้นทุน","เลือกวิธีที่ลองทำได้จริงสัปดาห์หน้า ไม่ใช่วิธีที่ฟังดูเท่"],
+["รู้ด้านที่ต้องพัฒนาก่อน จะได้ใช้แรงกับสิ่งที่ส่งผลจริง","เลือกด้านที่ฟังดูเท่ แต่ไม่ใช่จุดอ่อนจริง เสียเวลาฝึกผิดจุด","ตอบตามที่รู้สึกจริง ไม่ใช่ที่อยากให้คนอื่นเห็น"],
+["ทักษะเกิดจากการฝึกจริงซ้ำๆ ไม่ใช่การอ่านหรือตั้งใจ","รู้ว่าควรฝึกแต่ไม่ลงมือ ทักษะก็ไม่ขยับ","แตะผลตามที่ฝึกจริง ผลที่ไม่ครบก็คือข้อมูลให้ปรับแผน"],
+["คนที่เก่งกว่าชี้จุดบอดที่เรามองไม่เห็นเอง","พัฒนาเองคนเดียว วนกับมุมมองเดิม","แตะตามที่ได้รับจริง ถ้าเขาไม่ตอบ ก็บันทึกว่าไม่ตอบ"],
+["นิสัยเล็กที่ทำได้จริงเปลี่ยนชีวิตได้มากกว่าแผนใหญ่ที่ไม่เริ่ม","เลือกนิสัยใหญ่เกินกำลัง แล้วเลิกภายในไม่กี่วัน","เลือกสิ่งที่ทำได้จริงทุกวัน ไม่ใช่สิ่งที่ฟังดูดี"],
+["ผลที่ติดตามจริงบอกว่านิสัยนี้เหมาะกับคุณหรือไม่","เดาเอาว่าทำได้ แล้วไม่รู้ว่าพลาดตรงไหน","วันที่ไม่ได้ทำก็แตะตามจริง นั่นคือข้อมูลที่ช่วยปรับนิสัย"],
+["เป้าหมายที่ชัดทำให้สิ่งที่เรียนในเกมไม่จบแค่หน้าจอ","จบเกมแล้วไม่มีทางไปต่อ ทุกอย่างหายไปกับเวลา","เลือกเป้าหมายที่จะทำจริง ไม่ใช่เป้าหมายที่ดูยิ่งใหญ่"]];
+const IT=["ทำไมต้องทำ","ถ้าข้ามหรือทำผิด","ทำไมต้องซื่อสัตย์"];
+function intro(i){const k=S.c.intro,last=k==2;return `<div style="padding:8px 16px"><button class="ic" onclick="S.open=null;R()">‹</button></div>
+<div class="stage"><div style="text-align:center">${MF(100,null,"smile")}<div class="plat"></div></div><div class="bub"><b style="color:#b02a30">${IT[k]}</b><br>${W[i][k]}</div></div>
+<div class="qc"><div class="row"><b style="font-size:20px">${M[i][0]}</b><span class="mu">${EN[i]}</span></div><div style="margin-top:8px">${mtr(IM[i])} <span class="mu">ระดับความสำคัญ</span></div><div class="mu" style="margin-top:6px">${RS[i]}</div></div>
+<div class="mu" style="text-align:center;padding:4px">${[0,1,2].map(x=>x<=k?"●":"○").join(" ")}</div>
+<button class="btn" style="margin:10px 16px 0" onclick="${last?`S.seen[${i}]=1;S.c.intro=-1;save()`:`S.c.intro++;R()`}">${last?"เข้าใจแล้ว เริ่มเลย!":"ต่อไป ›"}</button>`}
+const S={ltr:null,ltd:"",pz:0,ob:0,obi:0,pf:null,pfd:null,cls:null,fsel:"",shop:{},ans:{},ps:0,ip:{},cr:3500,cl:[],bk:0,bs:0,bc:[],bm:[],bq:null,rst:0,rp:{},fu:{},sk:{},run:1,t0:0,tr:{},fin:{},hist:[],rr:null,seen:{},tab:"home",open:null,xp:0,done:0,c:{},tl:null,mk:"รับ",mc:"ขายของ"};
+const D={n:[],t:[]},NEED=[0,100,250,450,700,1000,1400,1900],$=s=>document.querySelector(s),B=n=>n.toLocaleString('th-TH',{maximumFractionDigits:2});
+const lv=()=>{let l=1;NEED.forEach((n,i)=>{if(S.xp>=n)l=i+1});return l};
+const T='<div class="tag">ต้นแบบทดลอง · ข้อมูลทั้งหมดเป็นตัวอย่าง ไม่ใช่ผลธุรกิจจริง</div>';
+function TT(){return S.on?'<div class="tag">'+(S.acct?'บันทึกในบัญชีออนไลน์ของคุณแล้ว · เล่นข้ามเครื่องได้':S.guest?'โหมดทดลอง · บันทึกในเบราว์เซอร์นี้ สมัครเพื่อเล่นข้ามเครื่อง':S.loc?'บันทึกในเบราว์เซอร์เครื่องนี้ · ไม่ข้ามเครื่อง':'บันทึกความก้าวหน้าของคุณแล้ว · เป็นข้อมูลส่วนตัว')+(S.err?' · ⚠ บันทึกล่าสุดไม่สำเร็จ':'')+'</div>':S.off?'<div class="tag" style="color:#FF3030">โหมดทดลอง: ยังไม่ได้เชื่อมต่อการบันทึก ข้อมูลจะหายเมื่อรีเฟรช</div>':T}
+const AVC=[
+{sk:["#ffe0c2","#f7c196","#e9a373"],hr:["#5a3d33","#2b1b17"],sh:"#ec5b52",bg:["#cdeef5","#8fd3e0"],lg:0},
+{sk:["#f6d2ae","#e8b184","#d4946a"],hr:["#2f2f34","#121214"],sh:"#ffcc00",bg:["#f7dd9a","#ecc063"],lg:1},
+{sk:["#fde7d3","#f8cfae","#eebb92"],hr:["#b0532e","#6e2e18"],sh:"#00b4d8",bg:["#f6cfc0","#eaa994"],lg:0},
+{sk:["#d9a066","#c68642","#a96c30"],hr:["#2f2f34","#121214"],sh:"#f8f8f6",bg:["#d3eadf","#9ed3bd"],lg:1},
+{sk:["#a9704a","#8d5524","#734319"],hr:["#2a1b14","#120a07"],sh:"#ec5b52",bg:["#e6e6e0","#c9c9c2"],lg:0},
+{sk:["#f2c7a0","#e2a77a","#cf8d5f"],hr:["#443f3f","#1b1a1a"],sh:"#4a4a48",bg:["#fbd978","#f1b93f"],lg:1}];
+function VX(v){return v==null?((S.pf&&S.pf.av)||0):v}
+function CF(v){return AVC[VX(v)]||AVC[0]}
+function SHD(h,f){const m=/^#?([0-9a-f]{6})$/i.exec(h||"");if(!m)return"#d6d6d2";const n=parseInt(m[1],16),k=x=>Math.max(0,Math.round(x*f)).toString(16).padStart(2,"0");return"#"+k(n>>16&255)+k(n>>8&255)+k(n&255)}
+function HB(c,vv){const h=c.hr[1],s=vv%6;if(s==1)return `<path d="M23 46C14 70 20 90 36 92L43 58zM77 46C86 70 80 90 64 92L57 58z" fill="${h}"/>`;if(s==2){const q='<circle cx="29" cy="32" r="13"/><circle cx="50" cy="22" r="15"/><circle cx="71" cy="32" r="13"/><circle cx="21" cy="48" r="9"/><circle cx="79" cy="48" r="9"/>';return `<g fill="${h}" stroke-width="6">${q}</g><g fill="${h}" stroke="none">${q}</g>`}if(s==3)return `<circle cx="50" cy="12" r="10" fill="${h}"/>`;if(s==4)return `<path d="M24 38C16 64 22 78 36 76L38 46zM76 38C84 64 78 78 64 76L62 46z" fill="${h}"/>`;return ""}
+function HR(h,s){return [`<path d="M26 44C24 38 27 32 31 29L33 45zM74 44C76 38 73 32 69 29L67 45z" fill="${h}"/>`,`<path d="M26 46C20 22 36 11 54 12c17 1 29 12 22 34-3-9-8-15-16-18-8 5-20 7-30 6-2 4-2 8-4 12z" fill="${h}"/>`,`<path d="M29 38C30 26 70 26 71 38Q64 31 57 35Q50 29 43 35Q36 31 29 38z" fill="${h}"/>`,`<path d="M27 44C23 22 36 13 50 13s27 9 23 31c-2-8-6-13-12-16-7 4-21 5-30 4z" fill="${h}"/>`,`<path d="M26 44C22 22 36 11 50 11s28 11 24 33c-3-6-6-10-8-12-10 6-28 6-38 0-1 4-1 8-2 12z" fill="${h}"/>`,`<path d="M27 42C25 20 36 14 50 14s25 6 23 28c-4-6-10-10-23-10S31 36 27 42z" fill="${h}"/>`][s]}
+function HF(c,mm,vv){const sk=c.sk[1],K="#1c1c1c",EY={smile:`<path d="M35 50q5-7 10 0M55 50q5-7 10 0"/>`,grin:`<path d="M34 50q6-9 12 0M54 50q6-9 12 0"/>`,wow:`<circle cx="41" cy="49" r="4" fill="${K}"/><circle cx="59" cy="49" r="4" fill="${K}"/>`,sad:`<circle cx="41" cy="50" r="3.2" fill="${K}"/><circle cx="59" cy="50" r="3.2" fill="${K}"/><path d="M34 43l11-4M66 43l-11-4" stroke-width="2.8"/>`}[mm]||"",MO={smile:`<path d="M40 58q10 11 20 0z" fill="#fff"/>`,grin:`<path d="M36 56q14 19 28 0z" fill="#fff"/>`,wow:`<ellipse cx="50" cy="62" rx="4.5" ry="6" fill="#7a2f35"/>`,sad:`<path d="M42 64q8-7 16 0"/>`}[mm]||"";return `<circle cx="28" cy="50" r="5" fill="${sk}"/><circle cx="72" cy="50" r="5" fill="${sk}"/><ellipse cx="50" cy="46" rx="22" ry="25" fill="${sk}"/>${HR(c.hr[1],vv%6)}<ellipse cx="35" cy="58" rx="4.6" ry="3" fill="#ef8a78" stroke="none" opacity=".55"/><ellipse cx="65" cy="58" rx="4.6" ry="3" fill="#ef8a78" stroke="none" opacity=".55"/>${EY}${MO}`}
+function AC(vv){const s=vv%6,Y="#1c1c1c",cy="#00b4d8",co="#ef8a78";if(s==0)return `<path d="M25 40C23 14 77 12 75 40C58 33 40 33 25 40Z" fill="${cy}"/><path d="M52 34C64 30 86 32 90 40C78 46 62 42 54 40Z" fill="${SHD(cy,.8)}"/><circle cx="50" cy="15" r="3" fill="${SHD(cy,.8)}"/>`;if(s==1||s==4){const C=s==1?co:cy;return `<path d="M24 50C20 14 80 14 76 50" stroke-width="4.5"/><rect x="18" y="44" width="11" height="20" rx="5" fill="${C}"/><rect x="71" y="44" width="11" height="20" rx="5" fill="${C}"/>`}if(s==2)return `<circle cx="41" cy="50" r="8" fill="#fff" fill-opacity=".35" stroke-width="2.6"/><circle cx="59" cy="50" r="8" fill="#fff" fill-opacity=".35" stroke-width="2.6"/><path d="M49 49h2" stroke-width="2.6"/>`;if(s==3)return `<path d="M26 36Q50 24 74 36" stroke-width="7"/><path d="M26 36Q50 24 74 36" stroke="#ffcc00" stroke-width="3.6"/>`;return `<path d="M25 38C30 22 70 22 75 38Q50 32 25 38z" fill="${co}"/><path d="M72 33l11-5-3 12z" fill="${co}"/>`}
+const DOO='fill="none" stroke="#1c1c1c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"';
+function MS(s,v,m){const c=CF(v),vv=VX(v),mm=m||"smile",H=SHD(c.sh,.86);return `<svg width="${s}" height="${s}" viewBox="0 0 100 100" ${DOO}><defs><clipPath id="mcl"><circle cx="50" cy="50" r="50"/></clipPath></defs><circle cx="50" cy="50" r="50" fill="${c.bg[0]}" stroke="none"/><g clip-path="url(#mcl)">${HB(c,vv)}<path d="M2 106C4 86 24 78 50 78s46 8 48 28z" fill="${c.sh}"/><rect x="43" y="58" width="14" height="22" rx="6" fill="${c.sk[1]}"/><path d="M28 84C30 68 40 66 50 66s20 2 22 18C62 92 38 92 28 84z" fill="${H}"/><path d="M45 87v11M55 87v11" stroke-width="2.6"/><circle cx="45" cy="99" r="2.2" fill="#fff"/><circle cx="55" cy="99" r="2.2" fill="#fff"/>${HF(c,mm,vv)}${AC(vv)}</g><circle cx="50" cy="50" r="48.4"/></svg>`}
+function MF(w,v,m){const c=CF(v),vv=VX(v),mm=m||"smile",sk=c.sk[1],J="#00b4d8",K="#1c1c1c",BP=["#ef8a78","#00b4d8","#ffcc00"][(vv+1)%3],H=SHD(c.sh,.86),tube=(d,col,t)=>`<path d="${d}" stroke="${K}" stroke-width="${t+6.4}"/><path d="${d}" stroke="${col}" stroke-width="${t}"/>`,PS={smile:{al:"M40 80Q24 96 26 112",ar:"M80 80Q100 70 98 52",ll:"M52 118L48 154",lr:"M68 118L72 154",hl:[26,114],hr:[98,49],sl:[44,159],sr:[76,159]},grin:{al:"M40 80Q10 80 10 44",ar:"M80 80Q110 80 110 44",ll:"M52 118L42 146",lr:"M68 118L84 142",hl:[10,40],hr:[110,40],sl:[38,151],sr:[88,147]},wow:{al:"M40 80Q18 82 34 62",ar:"M80 80Q102 82 86 62",ll:"M52 118L48 154",lr:"M68 118L72 154",hl:[34,60],hr:[86,60],sl:[44,159],sr:[76,159]},sad:{al:"M40 82Q32 100 34 116",ar:"M80 82Q88 100 86 116",ll:"M52 120L50 154",lr:"M68 120L70 154",hl:[34,119],hr:[86,119],sl:[46,159],sr:[74,159]}},P=PS[mm]||PS.smile,shoe=p=>`<ellipse cx="${p[0]}" cy="${p[1]}" rx="13" ry="7" fill="#fff"/><path d="M${p[0]-8} ${p[1]+2}h16" stroke="${BP}" stroke-width="2.8"/>`,hand=p=>`<circle cx="${p[0]}" cy="${p[1]}" r="8.5" fill="${sk}"/>`,book=mm=="smile"?`<g transform="rotate(-12 26 114)"><rect x="13" y="102" width="19" height="24" rx="3" fill="#ffcc00"/><path d="M17 109h11M17 115h11" stroke-width="2"/></g>`:"",coin=mm=="grin"?`<circle cx="108" cy="14" r="8" fill="#ffcc00"/><path d="M108 9v10" stroke-width="2.4"/><path d="M10 22l7-7M8 40h9M106 38h9" stroke-width="2.4"/>`:"",HD=`<g transform="translate(60 42) scale(1) translate(-50 -46)">`;return `<svg class="mf ${mm}" width="${w}" height="${Math.round(w*170/120)}" viewBox="0 0 120 170" ${DOO}>${HD}${HB(c,vv)}</g><rect x="28" y="70" width="64" height="56" rx="18" fill="${BP}"/>${tube(P.ll,J,17)}${tube(P.lr,J,17)}${shoe(P.sl)}${shoe(P.sr)}<path d="M36 76C44 68 76 68 84 76L88 118C72 124 48 124 32 118Z" fill="${c.sh}"/><path d="M44 102Q60 108 76 102L80 116Q60 122 40 116Z" fill="${H}" stroke-width="2.6"/>${tube("M46 70Q43 96 46 118",BP,5)}${tube("M74 70Q77 96 74 118",BP,5)}${tube(P.al,c.sh,15)}${tube(P.ar,c.sh,15)}${book}${hand(P.hl)}${hand(P.hr)}${coin}<rect x="54" y="62" width="12" height="16" rx="5" fill="${sk}"/><path d="M45 66Q60 80 75 66L79 76Q60 88 41 76Z" fill="${H}"/><path d="M55 80v11M65 80v11" stroke-width="2.6"/><circle cx="55" cy="92" r="2.2" fill="#fff"/><circle cx="65" cy="92" r="2.2" fill="#fff"/>${HD}${HF(c,mm,vv)}${AC(vv)}</g></svg>`}
+const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),PST=["นักเรียน/นักศึกษา","พนักงานประจำ","ฟรีแลนซ์","เจ้าของกิจการ","กำลังหางาน","อื่นๆ"],PTM=["15 นาที","30 นาที","1 ชั่วโมงขึ้นไป"];
+function editPf(){S.pfd=Object.assign({name:"",st:"",tm:"",goal:"",av:0},S.pf||{});S.tab="pfe";S.open=null;R()}
+function setPf(k,v){S.pfd[k]=S.pfd[k]===v&&k!="av"?"":v;R()}
+async function savePf(){const d=S.pfd;S.pf={name:(d.name||"").trim().slice(0,20),st:d.st||"",tm:d.tm||"",goal:(d.goal||"").trim().slice(0,60),av:d.av||0};S.pfd=null;S.tab="me";await save()}
+function pfe(){const d=S.pfd||{};return `<div style="padding:8px 16px"><button class="ic" onclick="go('me')">‹</button></div><h2 style="margin-top:0">👤 โปรไฟล์ผู้เล่น</h2>
+<div class="box"><b>เลือกตัวละคร</b><div class="avg">${AVC.map((_,v)=>`<button class="avb ${d.av==v?"on":""}" onclick="setPf('av',${v})">${MS(64,v)}</button>`).join("")}</div></div>
+<div class="box"><b>ชื่อที่ให้เกมเรียก</b><input maxlength="20" value="${esc(d.name)}" placeholder="เช่น มด" oninput="S.pfd.name=this.value" style="width:100%;margin-top:8px;padding:14px 16px;font:inherit;box-sizing:border-box"></div>
+<div class="box"><b>ตอนนี้คุณคือ</b><div style="margin-top:8px">${PST.map(x=>`<button class="ch ${d.st==x?"on":""}" onclick="setPf('st','${x}')">${x}</button>`).join("")}</div></div>
+<div class="box"><b>มีเวลาให้เกมต่อวัน</b><div style="margin-top:8px">${PTM.map(x=>`<button class="ch ${d.tm==x?"on":""}" onclick="setPf('tm','${x}')">${x}</button>`).join("")}</div></div>
+<div class="box"><b>เป้าหมายใหญ่ของคุณ <span class="mu" style="font-weight:400">(ไม่บังคับ)</span></b><input maxlength="60" value="${esc(d.goal)}" placeholder="เช่น มีรายได้เสริมจากร้านออนไลน์" oninput="S.pfd.goal=this.value" style="width:100%;margin-top:8px;padding:14px 16px;font:inherit;box-sizing:border-box"></div>
+<div class="mu" style="padding:0 24px 12px;font-size:13px;line-height:1.5">ข้อมูลนี้เก็บเฉพาะบัญชีของคุณ ใช้เรียกชื่อและปรับข้อความในเกมเท่านั้น ไม่ต้องใส่ข้อมูลส่วนตัวที่ละเอียดอ่อน</div>
+<button class="btn" style="margin:0 16px" onclick="savePf()">บันทึกโปรไฟล์</button><div style="height:24px"></div>`}
+const NAV=()=>`<nav>${[["home","🏠","หลัก"],["map","🗺️","แผนที่"]].map(t=>`<button class="${S.tab==t[0]?"on":""}" onclick="go('${t[0]}')">${t[1]}<small>${t[2]}</small></button>`).join("")}<button class="c" onclick="op(Math.min(S.done,M.length-1))">▶</button><button class="${S.tab=="tools"?"on":""}" onclick="go('tools')">🧰<small>เครื่องมือ</small></button><button class="${S.tab=="me"?"on":""}" onclick="go('me')">${MS(26)}<small>ฉัน</small></button></nav>`;
+function lgo(){if(S.acct)return logout();if(S.guest)return leaveGuest();const l=document.getElementById("lp");if(l){l.classList.remove("lp-out");S.tab="home";window.scrollTo(0,0);return}location.href="./"}
+const HUD=()=>{const l=lv(),a=NEED[l-1],b=NEED[l]||a+500,p=Math.min(100,(S.xp-a)/(b-a)*100);return `<div class="hud"><div class="lvb">${l}</div><div class="xpw"><div class="t"><span>เลเวล ${l}</span><span>${S.xp}/${b} XP</span></div><div class="xb"><i style="width:${p}%"></i></div></div><div class="pc" style="cursor:pointer" onclick="go('cr')">🪙 ${B(S.cr)}</div><button class="hlo" onclick="lgo()" aria-label="ออกจากระบบ"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button></div>`};
+function go(t){S.rs=0;S.tab=t;S.open=null;S.tl=null;R()}
+function op(i){if(S.ps)endPause();if(i>=S.done){const n=Date.now(),t=S.tr[i]||{o:0,f:n};S.tr[i]={o:t.o+1,f:t.f,l:n};if(!S.t0)S.t0=n;persist()}S.open=i;S.c={sel:[],t:[],p:50,c:0,touched:0,res:null,ls:[],pit:-1,rate:null,intro:(S.seen[i]||i<S.done)?-1:0};R()}
+function R(){R0();PH()}
+function PH(){const a=$("#app");if(!a||S.auth||a.querySelector(".ph"))return;const mk=(...e)=>{const w=document.createElement("div");w.className="ph";e[0].before(w);e.forEach(x=>w.appendChild(x));return w},av=m=>{const d=document.createElement("div");d.className="ph-av";d.innerHTML=MS(56,null,m);return d},ic=a.querySelector(".ic");if(ic){const row=ic.parentElement,n=row.nextElementSibling;if(!n)return;if(n.classList.contains("stage")||n.classList.contains("card"))mk(row,n);else if(n.tagName=="H2"){const l=[row,n],x=n.nextElementSibling;if(x&&x.classList.contains("mu"))l.push(x);mk(...l).appendChild(av(S.tl=="n"?"smile":S.tl=="m"?"grin":"wow"))}return}if(S.tab=="tools"&&S.open===null&&!S.tl&&!S.bk){const h=a.querySelector("h2");if(h){const l=[h],x=h.nextElementSibling;if(x&&x.classList.contains("mu"))l.push(x);const w=mk(...l);w.classList.add("ph0");w.appendChild(av("grin"))}}}
+function R0(){if(S.auth){$("#app").innerHTML=authH();return}if(S.bk){clearTimeout(S._pt);S._pt=setTimeout(persist,400)}$("#app").innerHTML=(S.ps?PB():"")+TT()+(S.bk?bk():S.open!==null?mission(S.open):{home,map,tools,me,guide,rv,shop,pfe,prv,cr:crp}[S.tab]())+(S.bk?"":NAV())+((S.on||S.off)&&!S.ob?OB():"");if(S.open===null&&S.tab=="map"&&!S.bk){const e=$(".nd.now");e?e.scrollIntoView({block:"center"}):window.scrollTo(0,document.body.scrollHeight)}else window.scrollTo(0,0)}
+function OB(){const T=[["ยินดีต้อนรับสู่ Mitty 90 Day","เกมฝึกคิดและลงมือทำจริง 7 ด่าน 21 เควสต์ ตั้งแต่รู้จักตัวเอง หาปัญหา เสนอ ขาย ไปจนสร้างนิสัยที่ยั่งยืน"],["เครดิตคือทุนฝึก ไม่ใช่เงินจริง","คุณเริ่มด้วย 3,500 เครดิต ตัดสินใจให้คุ้ม ภารกิจที่ข้ามหรือปล่อยค้างนานจะเสียเครดิต ถ้าหมดต้องทบทวนก่อนเริ่มใหม่"],["รายงานตามจริงเท่านั้น","แตะผลตามที่ทำจริง ผลที่ไม่ดีคือข้อมูลที่มีค่า เกมวัดการลงมือทำ ไม่รับประกันรายได้"]],i=S.obi||0,o=T[i],last=i==2;return `<div class="lx"><div class="lx-c lx-ob" style="background:${["#e8ab45","#5fc3d6","#ef8a78"][i]}"><div class="obk" onclick="obx()">ข้าม</div><div class="lx-top" aria-hidden="true">${LXCHAR}</div><svg class="lx-w" viewBox="0 0 390 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C70 20 130 0 210 4 C290 8 345 12 390 0 V60 H0Z" fill="#3b3b3b"/></svg><div class="lx-f"><h1 class="sm">${o[0]}</h1><p class="ld">${o[1]}</p><div class="obd">${[0,1,2].map(k=>`<i class="${k==i?"on":""}"></i>`).join("")}</div><button class="btn" onclick="${last?"obx()":"S.obi="+(i+1)+";R()"}">${last?"เริ่มเลย":"ต่อไป"}</button></div></div></div>`}
+function obx(){S.ob=1;S.obi=0;save()}
+const LRO=["ทำสำเร็จแล้ว","กำลังทำอยู่","ยังไม่ได้เริ่ม","เปลี่ยนเป้าหมายแล้ว"];
+function lform(){return `<div class="box"><b>✉ จดหมายถึงตัวคุณใน 30 วัน</b><div class="mu" style="margin:6px 0 10px;line-height:1.5">เขียนสั้นๆ ถึงตัวเองวันนี้ เกมจะปิดผนึกไว้ เมื่อครบ 30 วันและคุณเปิดเกมกลับมา จะเห็นจดหมายพร้อมคำถามว่าเป้าหมายไปถึงไหน (เกมยังไม่มีระบบแจ้งเตือน ต้องเปิดกลับมาเอง)</div><textarea maxlength="200" placeholder="เช่น อีก 30 วัน ฉันอยากมีลูกค้าซื้อซ้ำอย่างน้อย 3 คน" oninput="S.ltd=this.value" style="width:100%;min-height:96px;padding:14px 16px;font:inherit;box-sizing:border-box;resize:none">${esc(S.ltd)}</textarea><button class="btn" style="margin:12px 0 0;width:100%" onclick="sealLtr()">ปิดผนึกจดหมาย</button></div>`}
+function ltrH(){const L=S.ltr;if(!L)return "";if(L.res)return `<div class="box"><b>✉ จดหมายถึงตัวคุณ</b><div style="margin:8px 0;font-weight:600">“${esc(L.text)}”</div><div class="mu">เขียนเมื่อ ${dt(L.at)} · ผลหลัง 30 วัน: ${esc(L.res)}</div></div>`;if(Date.now()>=L.due)return `<div class="card" style="margin:10px 16px"><span class="chip">✉ จดหมายจากตัวคุณเมื่อ ${dt(L.at)}</span><h1 style="font-size:22px;margin:12px 0;line-height:1.3">“${esc(L.text)}”</h1><b>ตอนนี้เป้าหมายนี้ไปถึงไหนแล้ว</b><div style="margin-top:8px">${LRO.map(x=>`<button class="ch" onclick="setLr('${x}')">${x}</button>`).join("")}</div></div>`;return `<div class="box"><b>✉ ปิดผนึกจดหมายแล้ว</b><div class="mu" style="margin-top:6px">เปิดได้ตั้งแต่ ${dt(L.due)} (ครบ 30 วัน) เปิดเกมกลับมาตอนนั้นเพื่ออ่านจดหมาย</div></div>`}
+const ltrBlock=()=>S.ltr?ltrH():lform();
+async function sealLtr(){const t=(S.ltd||"").trim().slice(0,200);if(!t)return;S.ltr={text:t,at:Date.now(),due:Date.now()+30*864e5,res:""};S.ltd="";await save()}
+async function setLr(r){if(S.ltr){S.ltr.res=r;await save()}}
+function prv(){const P=(t,l)=>`<div class="box"><b>${t}</b><div class="mu" style="margin-top:8px;line-height:1.7">${l.map(x=>"• "+x).join("<br>")}</div></div>`;return `<div style="padding:8px 16px"><button class="ic" onclick="go('me')">‹</button></div><h2 style="margin-top:0">🔒 ข้อมูลและความเป็นส่วนตัว</h2>`+P("เราเก็บอะไร",["โปรไฟล์: ชื่อ ตัวละคร สถานะ เวลาต่อวัน เป้าหมาย","ความก้าวหน้า: เควสต์ที่ผ่าน คำตอบที่คุณแตะ จำนวนคนที่คุยหรือทดลองขาย","เครดิต XP เลเวล และประวัติรอบ","จดหมายถึงตัวเองและก้าวแรกนอกเกม","วันที่เริ่มเล่นและช่วงที่พักเกม"])+P("เก็บที่ไหน",(S.acct?["ในเซิร์ฟเวอร์ของผู้จัดทำเกม ผูกกับบัญชีของคุณ เล่นข้ามเครื่องได้","ผู้ดูแลระบบของเกมอาจเข้าถึงข้อมูลที่บันทึกได้ จึงไม่ควรกรอกข้อมูลที่ละเอียดอ่อน","ลบบัญชีและข้อมูลทั้งหมดได้ด้วยปุ่มด้านล่างของหน้านี้"]:S.loc?["ในเบราว์เซอร์ของเครื่องนี้เท่านั้น (localStorage) ไม่ถูกส่งไปเซิร์ฟเวอร์ใด","ข้อมูลไม่ข้ามเครื่องหรือข้ามเบราว์เซอร์ และหายถ้าล้างข้อมูลเบราว์เซอร์","คนที่ใช้เครื่องและเบราว์เซอร์เดียวกันจะเห็นข้อมูลชุดเดียวกัน จึงไม่ควรกรอกข้อมูลที่ละเอียดอ่อน"]:["ในพื้นที่เก็บข้อมูลของหน้าเกมนี้ แยกตามผู้เล่น","ผู้เล่นคนอื่นในเกมไม่เห็นข้อมูลของคุณ","เจ้าของเกมอาจเข้าถึงข้อมูลที่บันทึกได้ผ่านระบบของแพลตฟอร์ม จึงไม่ควรกรอกข้อมูลที่ละเอียดอ่อน เช่น เลขบัตร รหัสผ่าน หรือข้อมูลสุขภาพ"]))+P("ใช้ทำอะไร",["เรียกชื่อคุณ ปรับข้อความ และแสดงสรุปความก้าวหน้า","เกมนี้ไม่มีโฆษณา และไม่ส่งข้อมูลของคุณไปยังเว็บอื่น"])+P("ลบข้อมูลได้ที่ไหน",["ปุ่ม “ลบทุกอย่าง” อยู่ท้ายหน้าทบทวนรอบ ลบโปรไฟล์ ความก้าวหน้า จดหมาย และประวัติทั้งหมดของคุณ"])+`<button class="btn d" style="margin:0 16px" onclick="go('rv')">ไปหน้าทบทวนรอบ</button>${S.acct?`<button class="btn d" style="margin:12px 16px 0;color:var(--r)" onclick="delAcct()">ลบบัญชีและข้อมูลทั้งหมด</button>`:""}<div class="mu" style="padding:14px 24px;line-height:1.6">เกมวัดการลงมือทำ ไม่รับประกันรายได้ และข้อมูลทั้งหมดเป็นการรายงานด้วยตัวผู้เล่นเอง ถ้ามีคำถามเรื่องข้อมูล ติดต่อผู้จัดทำเกม</div><div style="height:20px"></div>`}
+const STEPS=["คุยกับลูกค้าจริง 1 คน ภายในวันนี้","ตั้งเวลาทำนิสัยที่เลือก 5 นาทีในวันพรุ่งนี้","เขียนเป้าหมายแปะไว้ในที่ที่เห็นทุกวัน","นัดคนที่เก่งกว่า 1 คนมาคุยเรื่องเป้าหมาย","เสนอขายหรือลงสินค้าชิ้นแรกในโลกจริง"];
+function fin12(){const a=D.t.filter(x=>x[0]=="รับ").reduce((q,x)=>q+x[1],0),b=D.t.filter(x=>x[0]=="จ่าย").reduce((q,x)=>q+x[1],0),sk=Object.keys(S.sk).length,A=S.ans,row=(k,v)=>`<div class="row" style="padding:5px 0;gap:10px"><span class="mu">${k}</span><b style="text-align:right">${v}</b></div>`,n=(i,j)=>(A[i]||[]).filter(x=>x==j).length,L=i=>(A[i]||[]).length,R3=["ปิดการขายได้","เขาขอเวลา","ถูกปฏิเสธ"];
+const ev=[];if(L(4))ev.push(row("คุยกับลูกค้าจริง",L(4)+" คน · สนใจหรือเคยจ่าย "+(n(4,0)+n(4,1))));if(L(9))ev.push(row("ทดลองขายจริง",L(9)+" คน · ซื้อ "+n(9,0)));if(A[10]&&A[10][0]!=null)ev.push(row("ผลศึกบอส",R3[A[10][0]]));if(L(12))ev.push(row("ลูกค้าที่กลับมาซื้อซ้ำ",n(12,0)+"/"+L(12)));if(L(16))ev.push(row("ฝึกทักษะครบตามแผน",n(16,0)+"/"+L(16)+" ครั้ง"));if(L(19))ev.push(row("ทำนิสัยครบ",n(19,0)+"/"+L(19)+" วัน"));
+const top=HUD()+`<div class="stage"><div style="text-align:center">${MF(100,null,"grin")}<div class="plat"></div></div><div class="bub">${S.cls?"เกมจบตรงนี้ ที่เหลืออยู่ในโลกจริง ไปลงมือเลย!":"ครบทุกด่านแล้ว! ก่อนออกไป เลือกก้าวแรกที่จะทำจริงในสัปดาห์นี้"}</div></div>`;
+const sum=`<div class="card"><span class="chip">สิ่งที่${S.pf&&S.pf.name?" "+esc(S.pf.name)+" ":"คุณ"}ทำจริงในรอบที่ ${S.run}</span><h1>🏆 จบครบทุกด่าน</h1><div style="margin-top:10px;color:#1e1e1e">${row("ผ่านภารกิจ",(M.length-sk)+"/"+M.length+(sk?" · ข้าม "+sk:""))}${ev.join("")}${S.t0?row("ใช้เวลา",dayN()+" วัน จาก 90"):""}${row("รายรับ-จ่ายสุทธิ",B(a-b)+" บาท")}${A[18]?row("นิสัยที่สร้าง",A[18][0]):""}${A[20]?row("เป้าหมายถัดไป",A[20][0]):""}</div></div>`;
+const fine='<div class="mu" style="padding:16px 24px;text-align:center;line-height:1.6">เกมนี้วัดการลงมือทำ ไม่รับประกันรายได้ และข้อมูลทั้งหมดเป็นการรายงานด้วยตัวคุณเอง</div>';
+if(!S.cls)return top+sum+`<div class="qc"><span class="tagq">ก้าวแรกนอกเกม</span><h3 style="font-size:20px">สัปดาห์นี้ คุณจะทำอะไรเป็นอย่างแรก</h3><div class="mu">เลือก 1 อย่างที่ทำได้จริงภายใน 7 วัน</div><div style="margin-top:8px">${STEPS.map(x=>`<button class="ch ${S.fsel==x?"on":""}" style="display:block;width:100%;text-align:left;margin-top:8px" onclick="S.fsel='${x}';R()">${x}</button>`).join("")}</div></div><button class="btn ${S.fsel?"":"dis"}" style="margin:0 16px" onclick="if(S.fsel){S.cls={step:S.fsel,at:Date.now()};save()}">ยืนยัน แล้วออกไปลงมือ 🚀</button>`+fine;
+return top+`<div class="card"><span class="chip">ภารกิจนอกเกมของคุณ · ภายใน 7 วัน</span><h1 style="font-size:26px">🚀 ${S.cls.step}</h1><div class="mu">เลือกไว้เมื่อ ${dt(S.cls.at)}</div></div>`+ltrBlock()+sum+`<button class="btn d" style="margin:0 16px" onclick="S.cls=null;S.fsel='';save()">✎ เปลี่ยนก้าวแรก</button><button class="btn d" style="margin:12px 16px 0" onclick="go('rv')">📊 ทบทวนและเริ่มรอบใหม่</button><button class="btn d" style="margin:12px 16px 0" onclick="go('map')">🗺️ ดูแผนที่ที่ผ่านมา</button>`+fine}
+function home(){if(S.done>=M.length)return fin12();const n=Math.min(S.done,M.length-1),m=M[n],msg=S.done==0?(S.pf&&S.pf.name?"สวัสดี "+esc(S.pf.name)+"! ":"")+"ทุนฝึกของคุณคือ 3,500 เครดิต (ไม่ใช่เงินจริง) ตัดสินใจให้คุ้ม เริ่มเควสต์แรกกัน!":S.done<4?"เยี่ยม! ไปต่อด่านนี้เลย":S.done<10?"ใกล้ถึงการขายจริงแล้ว!":S.done==10?"ถึงเวลาบอส! ของจริงเท่านั้นนะ":S.done==11?"จบด่านแรกแล้ว! ด่านขายซ้ำรออยู่":S.done<15?"มีลูกค้าแล้ว ทำให้เขากลับมาซื้อซ้ำ!":S.done<18?"ธุรกิจโตได้เท่าที่ตัวคุณโต มองกลับมาที่ตัวเองบ้าง":"ใกล้ปิดเกมแล้ว สร้างนิสัยที่อยู่กับคุณต่อไป",st=Math.floor(n/3);
+return HUD()+`<div class="brand">Mitty <b>90 Day</b></div><div class="stage"><div style="text-align:center">${MF(104,null,"smile")}<div class="plat"></div></div><div class="bub">${msg}</div></div>
+${S.ltr&&!S.ltr.res&&Date.now()>=S.ltr.due?ltrH():""}${dayH()}<div class="qc"><span class="tagq">${n==10?"BOSS":"เควสต์ที่ "+(n+1)}</span><div class="row"><div><h3>${m[0]}</h3><div class="mu">${m[1]}</div></div><div class="ibadge">${m[3]}</div></div><div class="mu" style="margin-top:10px">${m[2]?"+"+m[2]+" XP":"ฝึกซ้อม ไม่นับ XP"}</div></div>
+${idleH(n)}${S.pf?"":`<div class="it" onclick="editPf()"><div class="i">👤</div><div><b>ตั้งชื่อและตัวละครของคุณ</b><span class="mu">ใช้เวลาไม่ถึงนาที ไม่บังคับ</span></div><em>›</em></div>`}<button class="btn" style="margin:0 16px" onclick="op(${n})">เล่นเลย!</button><button class="btn d" style="margin:12px 16px 0" onclick="go('guide')">📖 คู่มือการใช้งาน</button><button class="btn d" style="margin:12px 16px 0" onclick="go('shop')">🛒 ร้านตัวช่วย</button>
+<div class="mu" style="padding:16px 24px;text-align:center">ความก้าวหน้าวัดการลงมือทำจริง ไม่ใช่การรับประกันรายได้</div>`}
+function map(){const nm=["ด่าน 1 · ค้นหาตัวเอง","ด่าน 2 · ค้นหาปัญหา","ด่าน 3 · สร้างข้อเสนอ","ด่าน 4 · ขายจริง","ด่าน 5 · ขายซ้ำ","ด่าน 6 · พัฒนาตน","ด่าน 7 · ยั่งยืน"],off=[0,48,72,48,0,-48,-72,-48];let h=HUD()+dayH()+'<div class="bn">🏁 เป้าหมาย: ลงมือทำจริงและพัฒนาตนครบ 7 ด่าน</div>';
+for(let g=6;g>=0;g--){h+='<div class="path">';for(let i=g*3+2;i>=g*3;i--){const m=M[i],c=i<S.done?"done":i==S.done?"now":"lock";
+h+=`<div class="nd ${c}${i==10?" boss":""}" style="transform:translateX(${off[i%8]}px)" onclick="${i<=S.done?`op(${i})`:"void 0"}"><div class="cir">${i<S.done?(S.sk[i]?"⏭":"✓"):i>S.done?"🔒":m[3]}</div><div class="lb">${m[0]}</div><div style="margin-top:4px;font-size:12px">${mtr(IM[i])}</div><small>${i<S.done?(S.sk[i]?"ข้ามแล้ว":"ผ่านแล้ว"):m[2]?"+"+m[2]+" XP":"ฝึกซ้อม ไม่นับ XP"}</small></div>`}
+h+=`</div><div class="bn">${g==0?"🚩 จุดเริ่มต้น · ":""}${nm[g]}</div>`}
+return h+'<div style="height:30px"></div>'}
+const chipH=(o,sel,rank)=>o.map(x=>{const k=sel.indexOf(x);return `<button class="ch ${k>=0?"on":""}" onclick="pick('${x}')">${x}${rank&&k>=0?`<sup>${k+1}</sup>`:""}</button>`}).join("");
+function pick(x){const m=M[S.open],s=S.c.sel,k=s.indexOf(x),mx=m[4]=="rank"?m[6]:(m[7]||99);if(k>=0)s.splice(k,1);else if(mx==1){s.length=0;s.push(x)}else if(s.length<mx)s.push(x);R()}
+function tap(j){S.c.t.push(j);R()}
+function undo(){S.c.t.pop();R()}
+function sl(k,v){S.c[k]=+v;S.c.touched=1;$('#pv').innerHTML=prof();$('#mt').style.width=Math.max(0,Math.min(100,(S.c.p-S.c.c)/Math.max(S.c.p,1)*100))+'%';$('#ng').disabled=false}
+const prof=()=>{const u=S.c.p-S.c.c;return u>0?`กำไร ${B(u)} บาท/ชิ้น · มาร์จิน ${B(u/S.c.p*100)}%`:`ยังขาดทุน ${B(-u)} บาท/ชิ้น ปรับราคาหรือลดต้นทุน`};
+function ok(i){const m=M[i],c=S.c;switch(m[4]){case"chips":case"rank":return c.sel.length>=m[m[4]=="rank"?6:6]&&true;case"tally":return c.t.length>=m[5];case"cost":return c.touched&&c.p>0;case"offer":return c.p>c.c;case"pitch":return c.rate!==null;case"boss":return c.res!==null;case"review":return c.ls.length>=1}}
+function need(m){return m[4]=="chips"?m[6]:m[4]=="rank"?m[6]:0}
+function okk(i){const m=M[i],c=S.c;if(m[4]=="chips"||m[4]=="rank")return c.sel.length>=m[6];return ok(i)}
+function play(i){const m=M[i],c=S.c;
+const SP=["เขียนโค้ด","บัญชี/การเงิน","ออกแบบกราฟิก","ยิงโฆษณาออนไลน์","ถ่ายทำวิดีโอ","แปลภาษา","ช่างไฟฟ้า","ช่างยนต์","ตัดเย็บ","ทำขนม/เบเกอรี่","นวด/สปา","ดูแลสัตว์","เกษตร/ปลูกผัก","ติวหนังสือ"];if(i==0)return `<b>ทักษะทั่วไป</b><div style="margin-top:6px">${chipH(m[5],c.sel,0)}</div><b style="display:block;margin-top:18px">🛠️ ทักษะเฉพาะทาง</b><div class="mu">ทักษะที่เรียนมา ฝึกมา หรือทำงานด้านนี้จริง</div><div>${chipH(SP,c.sel,0)}</div><div class="mu" style="margin-top:12px">เลือกแล้ว ${c.sel.length}/${m[6]}</div>`;
+if(m[4]=="chips"||m[4]=="rank")return `<div>${chipH((m[4]=="rank"&&S.ans[3]&&S.ans[3].length?S.ans[3]:m[5]),c.sel,m[4]=="rank")}</div><div class="mu" style="margin-top:12px">เลือกแล้ว ${c.sel.length}/${m[6]}</div>`;
+if(m[4]=="tally"){const lb=m[6];return `<div class="mu">ทำจริงแล้วค่อยแตะ · ${c.t.length}/${m[5]} คน</div><div class="dots">${Array.from({length:m[5]},(_,k)=>`<span class="${c.t[k]!=null?"f":""}">${c.t[k]!=null?lb[c.t[k]].split(" ")[0]:""}</span>`).join("")}</div>
+${c.t.length<m[5]?`<div class="big3">${lb.map((l,j)=>`<button onclick="tap(${j})">${l}</button>`).join("")}</div>`:""}${c.t.length?`<button class="ch" style="margin-top:12px" onclick="undo()">↶ ย้อนกลับ</button>`:""}`}
+if(m[4]=="cost")return `<div class="mu">ต้นทุนต่อชิ้น</div><h1 style="margin:4px 0">${B(c.c)} บาท</h1><input type="range" min="0" max="500" step="5" value="${c.c}" oninput="S.c.c=+this.value;S.c.p=1;S.c.touched=1;this.previousElementSibling.innerHTML=B(S.c.c)+' บาท';$('#ng').disabled=!(S.c.c>0)">`;
+if(m[4]=="offer"){if(!c.touched){c.p=100;c.c=40}return `<div class="mu">ราคาขาย <b id="pp"></b></div><input type="range" min="10" max="1000" step="10" value="${c.p}" oninput="sl('p',this.value);$('#pp').innerHTML=this.value+' บาท'"><div class="mu">ต้นทุน</div><input type="range" min="0" max="800" step="5" value="${c.c}" oninput="sl('c',this.value)"><div class="mt"><i id="mt" style="width:${Math.max(0,(c.p-c.c)/c.p*100)}%;background:var(--y)"></i></div><div id="pv" style="margin-top:10px;font-weight:600">${prof()}</div>`}
+if(m[4]=="pitch")return c.pit<0?`<button class="btn y" style="width:100%;margin:0" onclick="pit()">▶ เริ่มซ้อม 30 วินาที</button>`:c.pit>0?`<h1 style="font-size:64px;text-align:center;margin:10px 0">${c.pit}</h1><div class="mu" style="text-align:center">พูดเลย! ข้อเสนอ ราคา และเหตุผลที่ควรซื้อ</div>`:`<div class="mu">ให้คะแนนตัวเอง</div><div class="rt">${["😬","🙂","🔥"].map((e,j)=>`<button class="${c.rate==j?"on":""}" onclick="S.c.rate=${j};R()">${e}</button>`).join("")}</div>`;
+if(m[4]=="boss")return `<div class="mu">ผลลัพธ์จริงของศึกนี้</div><div class="big3">${["🛒 ปิดการขายได้","🤔 เขาขอเวลา","🙅 ถูกปฏิเสธ"].map((l,j)=>`<button style="${c.res==j?"background:var(--y);color:#1e1e1e":""}" onclick="S.c.res=${j};R()">${l}</button>`).join("")}</div>`;
+if(m[4]=="review"){const a=D.t.filter(x=>x[0]=="รับ").reduce((s,x)=>s+x[1],0),b=D.t.filter(x=>x[0]=="จ่าย").reduce((s,x)=>s+x[1],0);return `<div class="mu">ตัวเลขจริงจากเครื่องมือรายรับ-รายจ่าย</div><h1>${B(a-b)} บาท</h1><div class="mu">รับ ${B(a)} · จ่าย ${B(b)}</div>`}}
+function pit(){S.c.pit=30;R();const iv=setInterval(()=>{if(S.open!==8){clearInterval(iv);return}S.c.pit--;R();if(S.c.pit<=0)clearInterval(iv)},1000)}
+function mission(i){if(S.c.intro>=0&&i>=S.done)return intro(i);const m=M[i],c=S.c,d=i<S.done,showL=["tally","offer","pitch","boss","review","cost"].includes(m[4]);
+return `<div style="padding:8px 16px"><button class="ic" onclick="S.open=null;R()">‹</button></div>
+<div class="card"><span class="chip">${i==10?"BOSS":"เควสต์ "+(i+1)}</span><h1>${m[0]}</h1><div class="mu">${EN[i]} · ชื่อเล่นเกม: ${NK[i]}</div><div style="background:#1e1e1e;border-radius:12px;padding:8px 10px;display:inline-block;margin:8px 0;color:#fff">${mtr(IM[i])} <span style="font-size:12px">ระดับความสำคัญ</span></div><div class="mu">${RS[i]}</div><div class="mu" style="margin-top:8px;color:#4a5a1a">${m[1]}</div><button class="chip" style="border:0;margin-top:10px;font-family:inherit" onclick="S.c.intro=0;R()">💡 ทำไมต้องทำ?</button></div>
+${d?'<div class="box"><h3>ทำแล้ว ✓</h3></div>':`${ctx(i)}${shopH(i)}<div class="box">${play(i)}</div>${showL?`<div class="box"><h3 style="font-size:17px">เรียนรู้อะไร (ไม่บังคับ +10 XP)</h3>${L.map(x=>`<button class="ch ${c.ls.includes(x)?"on":""}" onclick="lrn('${x}')">${x}</button>`).join("")}</div>`:""}
+${c.oath?oathH(i):""}<button id="ng" style="${c.oath?"display:none":""}" class="btn y ${okk(i)?"":"dis"}" onclick="oath(${i})" ${m[4]=="cost"&&!c.touched?"disabled":""}>ส่งภารกิจ</button>${skipH(i)}`}`}
+function ctx(i){const A=S.ans,t=A[2]&&A[2][0],pr=A[3]||[],top=A[5]&&A[5][0],sk=A[0]||[],r=[];if(i==1&&sk.length)r.push("ทักษะที่คุณเลือก: "+sk.join(" · "));if(i==3&&t)r.push("กลุ่มลูกค้าของคุณ: "+t);if(i==4){if(t)r.push("คุยกับ: "+t);if(pr.length)r.push("ถามเรื่อง: "+pr.join(" · "))}if(i>=7&&i<=10){if(t)r.push("ขายให้: "+t);if(top)r.push("แก้ปัญหา: "+top)}if(i==14&&A[13]&&A[13].length)r.push("ลูกค้าอยากให้ปรับ: "+A[13].join(" · "));if(i==16&&A[15])r.push("ด้านที่อยากพัฒนา: "+A[15].join(" · "));if(i==17&&A[15])r.push("ด้านที่ฝึก: "+A[15].join(" · "));if(i==19&&A[18])r.push("นิสัยที่เลือก: "+A[18][0]);if(i==20){if(A[15])r.push("ด้านที่พัฒนา: "+A[15].join(" · "));if(A[18])r.push("นิสัยที่สร้าง: "+A[18][0])}return r.length?`<div class="box" style="border-color:var(--y)"><b>🎯 จากเควสต์ที่คุณทำไว้</b><div class="mu" style="margin-top:6px;line-height:1.6">${r.join("<br>")}</div></div>`:""}
+const SH=[
+{id:"q",ic:"🎤",n:"ชุดคำถามสัมภาษณ์",c:150,at:[4],d:"ถามให้ได้ข้อมูลจริง ไม่ถามนำ",b:["ครั้งล่าสุดที่เจอปัญหานี้ เกิดอะไรขึ้น","ตอนนั้นแก้ยังไง","เสียเงินหรือเวลาไปเท่าไหร่","อะไรที่ทำให้หงุดหงิดที่สุด","เคยลองจ่ายเงินแก้ปัญหานี้ไหม","ขอแนะนำคนอื่นที่เจอเหมือนกันได้ไหม","เลี่ยงคำถามนำ เช่น ‘ถ้าฉันทำ คุณจะซื้อไหม’"]},
+{id:"c",ic:"🧾",n:"เช็กลิสต์ต้นทุน",c:150,at:[6,7],d:"ต้นทุนที่มักตกหล่น",b:["วัตถุดิบหรือสินค้า","บรรจุภัณฑ์","ค่าส่งและค่าเก็บเงินปลายทาง","ค่าธรรมเนียมแพลตฟอร์ม","ค่าโฆษณา","ของเสียหายหรือสินค้าคืน","ค่าแรงตัวเอง (บันทึกแยกไว้)"]},
+{id:"p",ic:"🗣️",n:"โครงสคริปต์เสนอขาย 30 วินาที",c:200,at:[8,9],d:"โครงให้เอาไปปรับเป็นภาษาของตัวเอง",b:["1) เปิดด้วยปัญหาของเขา (5 วิ)","2) บอกสิ่งที่คุณแก้ให้ (10 วิ)","3) ราคาและเหตุผลที่คุ้ม (10 วิ)","4) ปิดด้วยคำถามง่ายๆ เช่น ‘สะดวกเริ่มเมื่อไหร่’ (5 วิ)"]},
+{id:"r",ic:"🔁",n:"ไอเดียรักษาลูกค้า",c:200,at:[12,13,14],d:"วิธีทำให้ลูกค้ากลับมา",b:["ข้อความขอบคุณหลังซื้อ","ถามผลลัพธ์หลังใช้ 3-7 วัน","เตือนเมื่อสินค้าใกล้หมด","ของแถมเล็กๆ ในครั้งต่อไป","ขอรีวิวจากคนที่พอใจ"]},
+{id:"t",ic:"⏳",n:"ต่อเวลาภารกิจ",c:100,use:1,d:"รีเซ็ตการนับ 5 วันของภารกิจที่ค้างอยู่ ใช้แล้วหมด ซื้อซ้ำได้"}];
+const MINCR=500,lst=it=>`<div class="mu" style="margin-top:8px;line-height:1.7">${it.b.map(x=>"• "+x).join("<br>")}</div>`;
+function shopH(i){return SH.filter(x=>S.shop[x.id]&&x.at&&x.at.includes(i)).map(x=>`<details class="box" style="padding:14px"><summary style="font-weight:700;cursor:pointer">${x.ic} ${x.n}</summary>${lst(x)}</details>`).join("")}
+function buy(id){const it=SH.find(x=>x.id==id);if(!it||S.cr-it.c<MINCR)return;if(it.use){if(S.done>=M.length)return;if(S.tr[S.done])S.tr[S.done].l=Date.now();delete S.ip[S.done];cr(-it.c,"ซื้อ: "+it.n)}else{if(S.shop[id]||S.done<it.at[0])return;S.shop[id]=1;cr(-it.c,"ซื้อตัวช่วย: "+it.n)}save()}
+function shop(){return HUD()+`<div style="padding:8px 16px"><button class="ic" onclick="go('cr')">‹</button></div><h2 style="margin-top:0">🛒 ร้านตัวช่วย</h2><div class="mu" style="padding:0 24px 8px;line-height:1.5">ใช้เครดิตที่หามาได้จากการเล่น ไม่ใช้เงินจริง ปลดล็อกเมื่อเล่นถึงเควสต์ที่เกี่ยวข้อง ซื้อครั้งเดียวใช้ได้ทุกรอบ ต้องเหลือทุนอย่างน้อย ${B(MINCR)} หลังซื้อ ตัวช่วยไม่ใช่ทางลัด เป็นแค่ตัวกระตุ้นให้ลงมือทำจริงได้ง่ายขึ้น</div>`+SH.map(x=>{const own=!x.use&&S.shop[x.id],lk=!x.use&&!own&&S.done<x.at[0],can=!lk&&S.cr-x.c>=MINCR;return `<div class="box"><div class="row"><b>${x.ic} ${x.n}</b><span class="mu">${own?"✓ มีแล้ว":"🪙 "+B(x.c)}</span></div><div class="mu" style="margin:4px 0">${x.d}</div>${own?`<details><summary style="cursor:pointer;color:var(--y)">ดูเนื้อหา</summary>${lst(x)}</details>`:`<button class="btn ${can?"":"dis"}" style="margin:8px 0 0;width:100%;padding:12px" onclick="buy('${x.id}')">${lk?"🔒 ปลดล็อกเมื่อถึงเควสต์ "+(x.at[0]+1):can?"ซื้อ":"เครดิตไม่พอ"}</button>`}</div>`}).join("")+'<div style="height:20px"></div>'}
+function lrn(x){const l=S.c.ls,k=l.indexOf(x);k>=0?l.splice(k,1):l.push(x);R()}
+function oath(i){if(!okk(i))return;S.c.oath=1;R();window.scrollTo(0,document.body.scrollHeight)}
+function oathH(i){return `<div class="box" style="border-color:var(--y)"><b>🤝 คำสัตย์ (แตะครั้งที่ 2)</b><div class="mu" style="margin:8px 0;line-height:1.5">ฉันทำภารกิจนี้จริง และแตะผลตามที่เกิดขึ้นจริง ${IM[i]>=7?"ภารกิจนี้สำคัญ "+IM[i]+"/10 ข้อมูลที่ผิดจะพาการตัดสินใจครั้งต่อไปผิดตาม":""}</div><div class="row" style="gap:8px"><button class="btn d" style="margin:0;width:50%" onclick="S.c.oath=0;R()">ยังไม่แน่ใจ</button><button class="btn" style="margin:0;width:50%" onclick="sub(${i})">ยืนยันคำสัตย์ ✔</button></div></div>`}
+function skipH(i){if(IM[i]>=9)return `<div class="mu" style="padding:14px 24px;text-align:center">🔒 ภารกิจนี้ข้ามไม่ได้ เพราะระดับความสำคัญ ${IM[i]}/10</div>`;
+return S.c.sk?`<div class="box" style="border-color:var(--r)"><b>ข้ามภารกิจนี้?</b><div class="mu" style="margin:8px 0;line-height:1.5">สำคัญ ${IM[i]}/10 · ${RS[i]}<br>ข้ามแล้วจะไม่ได้ XP ของภารกิจนี้ เสียทุนฝึก ${IM[i]*5} เครดิต และจะบันทึกว่าข้าม</div><div class="row" style="gap:8px"><button class="btn d" style="margin:0;width:50%" onclick="S.c.sk=0;R()">ไม่ข้าม</button><button class="btn" style="margin:0;width:50%;background:var(--r);border-bottom-color:#b02a30;color:#fff" onclick="skipM(${i})">ข้ามเลย</button></div></div>`:`<button class="btn d" style="margin-top:10px" onclick="S.c.sk=1;R()">ข้ามภารกิจนี้ (ระดับ ${IM[i]}/10)</button>`}
+function skipM(i){S.sk[i]=1;S.done=Math.max(S.done,i+1);S.fin[i]=Date.now();S.open=null;S.tab='map';cr(-IM[i]*5,"ข้ามภารกิจ "+M[i][0]);save()}
+function sub(i){if(!okk(i))return;const o=lv(),a=M[i][2],l=S.c.ls.length?10:0;if(M[i][4]=="chips"||M[i][4]=="rank")S.ans[i]=[...S.c.sel];else if(M[i][4]=="tally")S.ans[i]=[...S.c.t];else if(M[i][4]=="boss")S.ans[i]=[S.c.res];S.xp+=a+l;const kk=succ(i),cb=M[i][4]=="pitch"?0:IM[i]*10,cg=cb+(kk=="full"?cb*.5:kk=="part"?cb*.25:0);cr(cg,"ผ่านภารกิจ "+M[i][0]+(kk=="full"?" (ผลสำเร็จ)":kk=="part"?" (ผลบางส่วน)":""));S.done=Math.max(S.done,i+1);S.fin[i]=Date.now();save();const up=lv()>o;
+$("#ovc").innerHTML=`${MF(112,null,"grin")}<h1 style="font-size:32px;margin:8px 0">${up?"เลเวลอัป! "+lv():i==10?"ผ่านบอส!":"สำเร็จ!"}</h1><div class="mu" style="color:#5b4713">+${a} Action · +${l} Learning XP<br>🪙 +${B(cg)} ทุนฝึก</div><button class="btn d" style="width:100%;margin:18px 0 0" onclick="$('#ov').classList.remove('on');S.open=null;S.tab='map';R()">ไปต่อ</button>`;$("#ov").classList.add("on")}
+function tools(){const t=S.tl,bk='<div style="padding:8px 16px"><button class="ic" onclick="S.tl=null;R()">‹</button></div>',nt='<div class="mu" style="padding:12px 24px">การคำนวณเป็นเบื้องต้น ไม่รวมค่าแรงตัวเอง ภาษี หรือค่าเสียโอกาส</div>';
+if(t=="n"){const c=[0,1,2].map(j=>D.n.filter(x=>x==j).length);return bk+`<h2 style="margin-top:0">ตัวนับสัมภาษณ์</h2><div class="mu" style="padding:0 24px">คุยกับลูกค้าจริงเสร็จแล้วแตะผล 1 ครั้งต่อ 1 คน</div><div class="box"><div class="big3">${TL.map((l,j)=>`<button onclick="D.n.push(${j});save();">${l}<br><b style="font-size:26px">${c[j]}</b></button>`).join("")}</div><button class="ch" style="margin-top:12px" onclick="D.n.pop();save()">↶ ย้อนกลับ</button></div>`}
+if(t=="m"){const a=D.t.filter(x=>x[0]=="รับ").reduce((s,x)=>s+x[1],0),b=D.t.filter(x=>x[0]=="จ่าย").reduce((s,x)=>s+x[1],0);return bk+`<h2 style="margin-top:0">รายรับ-รายจ่าย</h2><div class="card"><span class="chip">กำไรสุทธิเบื้องต้น</span><h1>${B(a-b)} บาท</h1><div class="mu">รับ ${B(a)} · จ่าย ${B(b)}</div><div class="mt"><i style="width:${Math.min(100,b/35)}%;background:${b>=2800?"#FF5A5F":"#3DB8FF"}"></i></div><div class="mu" style="margin-top:4px">ใช้เงินจริงไปแล้ว ${B(b)} จากเพดานเตือน 3,500 บาท${b>=2800?" ⚠ ใกล้เต็มแล้ว":""}</div></div><div class="box"><div>${["รับ","จ่าย"].map(k=>`<button class="ch ${S.mk==k?"on":""}" onclick="S.mk='${k}';R()">${k}</button>`).join("")}</div><div style="margin-top:8px">${["ขายของ","วัตถุดิบ","ค่าส่ง","โฆษณา","อื่นๆ"].map(k=>`<button class="ch ${S.mc==k?"on":""}" onclick="S.mc='${k}';R()">${k}</button>`).join("")}</div><div class="mu" style="margin-top:14px">แตะจำนวนเงินเพื่อบันทึก</div><div class="big3" style="flex-wrap:wrap">${[20,50,100,200,500,1000].map(v=>`<button style="flex:1 0 28%" onclick="D.t.unshift([S.mk,${v},S.mc]);save()">${v}</button>`).join("")}</div></div>`+D.t.slice(0,6).map(x=>`<div class="it"><div class="i" style="background:${x[0]=="รับ"?"var(--y)":"var(--r)"}">${x[0]=="รับ"?"+":"−"}</div><div><b>${x[2]}</b></div><em>${B(x[1])}</em></div>`).join("")+`<button class="btn d" onclick="D.t.shift();save()">↶ ลบรายการล่าสุด</button>`+nt}
+if(t=="o"){if(!S.c.touched){S.c={...S.c,p:100,c:40,touched:1}}const c=S.c;return bk+`<h2 style="margin-top:0">เครื่องคิดกำไร</h2><div class="box"><div class="mu">ราคาขาย <b id="pp">${c.p} บาท</b></div><input type="range" min="10" max="1000" step="10" value="${c.p}" oninput="sl('p',this.value);$('#pp').innerHTML=this.value+' บาท'"><div class="mu">ต้นทุน</div><input type="range" min="0" max="800" step="5" value="${c.c}" oninput="sl('c',this.value)"><div class="mt"><i id="mt" style="width:${Math.max(0,(c.p-c.c)/c.p*100)}%;background:var(--y)"></i></div><div id="pv" style="margin-top:10px;font-weight:600">${prof()}</div></div><span id="ng" hidden></span>`+nt}
+return `<h2 style="margin-top:6px">เครื่องมือธุรกิจ</h2>`+[["n","🎤","ตัวนับสัมภาษณ์","แตะผลลูกค้าแต่ละคน"],["o","📦","เครื่องคิดกำไร","เลื่อนราคาและต้นทุน"],["m","💰","รายรับ-รายจ่าย","แตะจำนวนเงินเดียวจบ"]].map(x=>`<div class="it" onclick="S.tl='${x[0]}';S.c={sel:[],t:[],p:100,c:40,touched:1,ls:[]};R()"><div class="i">${x[1]}</div><div><b>${x[2]}</b><span class="mu">${x[3]}</span></div><em>›</em></div>`).join("")}
+
+const SG=[
+["ด่าน 1 · รู้ตัว","ธุรกิจเริ่มจากสิ่งที่คุณมีจริง ไม่ใช่สิ่งที่อยากมี ถ้าไม่รู้ทุนของตัวเอง จะวางแผนเกินกำลัง","ถ้าใส่ทักษะที่ไม่มีจริง ระบบจะแนะนำเส้นทางที่คุณทำไม่ได้ และคุณจะเสียเวลากับสิ่งที่ไม่เหมาะ",[["ทุนที่มี (Assets)","คลังอาวุธ",6,"เป็นฐานของการเลือกเส้นทาง แต่ถ้ารู้ตัวดีอยู่แล้ว แก้ภายหลังได้ง่าย"],["เสียงรอบตัว (Feedback)","ถามคนรอบตัว",5,"ได้ข้อมูลเร็วและฟรี แต่คนใกล้ตัวมักเกรงใจ จึงยังไม่ใช่เสียงของตลาดจริง"],["กลุ่มเป้าหมาย (Target Customer)","เลือกสนามรบ",8,"เลือกผิดกลุ่ม ทุกด่านหลังจากนี้จะเดินผิดทางทั้งหมด"]]],
+["ด่าน 2 · หาปัญหา","ลูกค้าจ่ายเงินเพื่อแก้ ปัญหาที่เจ็บ ไม่ใช่ซื้อไอเดียที่เราชอบ ถ้าเข้าใจปัญหาผิด สินค้าที่ทำก็ไม่มีคนซื้อ","การสัมภาษณ์ต้องเป็นคนจริง ถ้าแต่งคำตอบเอง คุณกำลังสร้างธุรกิจจากเสียงของตัวเอง ไม่ใช่เสียงตลาด",[["ปัญหา (Problem)","นักสืบปัญหา",8,"ปัญหาที่ไม่มีใครเจอจริง คือสินค้าที่ไม่มีคนซื้อ"],["สัมภาษณ์ลูกค้า (Customer Interview)","สัมภาษณ์ลูกค้าจริง",10,"หลักฐานชิ้นแรกจากตลาดจริง ทุกการตัดสินใจหลังจากนี้ต้องพึ่งมัน"],["ปัญหาเร่งด่วน (Pain Point)","ปัญหาที่เจ็บที่สุด",8,"ทำให้ไม่เสียแรงแก้ปัญหาที่ไม่มีใครยอมจ่าย"]]],
+["ด่าน 3 · เสนอ","ข้อเสนอที่ดีต้องคุ้มทั้งลูกค้าและคุณ ถ้าต้นทุนต่ำเกินจริง จะตั้งราคาผิดและขาดทุนโดยไม่รู้ตัว","ตัวเลขต้นทุนต้องมาจากราคาจริง ตัวเลขที่ปัดให้สวยทำให้การคำนวณกำไรเป็นภาพลวง",[["ต้นทุน (Cost)","คิดต้นทุน",9,"คิดผิดคือขาดทุนโดยไม่รู้ตัว และเป็นเงินจริงของคุณ"],["ข้อเสนอ (Offer)","สร้างข้อเสนอ",9,"ราคาและกำไรคือหัวใจของธุรกิจ ผิดแล้วทำต่อไปก็ไม่รอด"],["การนำเสนอ (Pitch)","ซ้อมขาย",4,"ช่วยให้มั่นใจ แต่เป็นการฝึก ไม่ใช่ผลจากตลาดจริง"]]],
+["ด่าน 4 · ขายจริง","การขายจริงเป็นหลักฐานเดียวที่พิสูจน์ว่าธุรกิจมีคนต้องการ คำชมของเพื่อนไม่ใช่ยอดขาย","ถ้ารายงานผลดีกว่าความจริง คุณจะตัดสินใจลงทุนต่อบนข้อมูลผิด และเสียเงินจริง",[["ทดลองขาย (Test Sale)","เสนอขายครั้งแรก",10,"หลักฐานเดียวที่พิสูจน์ว่ามีคนต้องการจริง"],["ปิดการขาย (Closing)","BOSS",9,"เป็นผลจริงของการเสนอ ทั้งซื้อและไม่ซื้อให้ข้อมูลสำคัญ"],["ทบทวนผล (Review)","ทบทวนศึก",9,"ถ้าไม่ทบทวน ทุกอย่างที่ทำมาไม่ถูกแปลงเป็นการตัดสินใจครั้งต่อไป"]]],
+["ด่าน 5 · ขายซ้ำ","ธุรกิจที่อยู่ได้คือธุรกิจที่ลูกค้ากลับมา ไม่ใช่ขายได้ครั้งเดียวแล้วหายไป","ถ้ารายงานว่าลูกค้ากลับมาทั้งที่ไม่จริง คุณจะขยายธุรกิจบนฐานที่ไม่มีอยู่",[["ติดตามลูกค้า (Follow-up)","ลูกค้ากลับมา",8,"ขายซ้ำคือสัญญาณว่าปัญหาที่แก้มีค่าจริง"],["ฟังลูกค้าเก่า (Feedback Loop)","ฟังลูกค้าเก่า",7,"ทำให้ปรับสิ่งที่ลูกค้ารู้สึกจริง แทนการเดา"],["แผนรักษาลูกค้า (Retention Plan)","แผนรักษาลูกค้า",7,"ทำให้ธุรกิจเดินต่อได้โดยไม่ต้องหาลูกค้าใหม่ทุกครั้ง"]]],
+["ด่าน 6 · พัฒนาตน","ธุรกิจโตได้เท่าที่ตัวคุณโต การรู้จุดอ่อนและฝึกจริงทำให้ทักษะไปต่อได้","ถ้าแตะว่าฝึกแล้วทั้งที่ไม่ได้ฝึก คุณกำลังหลอกตัวเองเรื่องความก้าวหน้า",[["ประเมินตัวเอง (Self Review)","มองตัวเอง",7,"รู้จุดอ่อนก่อน จึงเลือกพัฒนาสิ่งที่ส่งผลจริง"],["ฝึกทักษะจริง (Practice)","ฝึกจริง",8,"ทักษะเกิดจากการฝึกจริง ไม่ใช่การรู้ว่าควรฝึก"],["ขอคำแนะนำ (Mentor Advice)","ฟังคนเก่งกว่า",7,"คนที่เก่งกว่าช่วยชี้จุดบอดที่เรามองไม่เห็น"]]],
+["ด่าน 7 · ยั่งยืน","การเปลี่ยนแปลงที่อยู่ได้ต้องมาจากนิสัยเล็กๆ ที่ทำซ้ำ และเป้าหมายที่ชัดหลังจบเกม","ถ้ารายงานนิสัยเกินจริง คุณจะไม่รู้เลยว่าตัวเองเปลี่ยนไปจริงหรือไม่",[["เลือกนิสัย (Habit)","เลือกนิสัย",6,"นิสัยเล็กที่ทำได้จริงดีกว่าแผนใหญ่ที่ไม่เริ่ม"],["ติดตาม 5 วัน (Habit Tracking)","ติดตามผล",8,"ผลที่ติดตามจริงบอกว่านิสัยนี้เหมาะกับคุณหรือไม่"],["เป้าหมายถัดไป (Next Goal)","ปิดเกม",9,"เป้าหมายที่ชัดทำให้สิ่งที่เรียนไม่จบแค่หน้าจอ"]]]];
+const mtr=n=>{const c=n>=9?"#ec5b52":n>=7?"#ffcc00":n>=5?"#00b4d8":"#d8d8d2";return `<span style="display:inline-flex;gap:2px;vertical-align:middle">${Array.from({length:10},(_,k)=>`<i style="width:7px;height:14px;border-radius:2px;background:${k<n?c:"#4a4a48"}"></i>`).join("")}</span> <b style="color:${c}">${n}/10</b>`};
+function guide(){const P=t=>`<div class="box"><h3 style="margin:0 0 8px">${t[0]}</h3><div class="mu" style="font-size:14px;line-height:1.6">${t[1]}</div></div>`;
+return `<div style="padding:8px 16px"><button class="ic" onclick="go('me')">‹</button></div><h2 style="margin-top:0">📖 คู่มือการใช้งาน</h2>
+${P(["วิธีเล่น","1) ไปทำภารกิจจริงนอกแอป แล้วกลับมาแตะผล ไม่ต้องพิมพ์<br>2) ทำจากด่านล่างขึ้นบน ทีละภารกิจ<br>3) ได้ XP จากการลงมือทำและจากบทเรียน แม้ผลจะไม่ดี<br>4) ความก้าวหน้าวัดการลงมือทำ ไม่ใช่การรับประกันรายได้"])}
+${P(["ทุนฝึก (เครดิต)","เริ่มต้นทุกคน 3,500 เครดิต เป็นคะแนนการตัดสินใจ ไม่ใช่เงินจริง และถอนไม่ได้<br>• เพิ่มเมื่อทำภารกิจสำเร็จตามจริง (ผลดีได้โบนัส)<br>• ลดเมื่อข้ามภารกิจ เล่นซ้ำ หรือเริ่มรอบใหม่ (ค่าเสียโอกาส)<br>• ผลไม่ดีแต่รายงานตามจริง ไม่ถูกหัก<br>• ไม่เล่น = ทุนไม่เปลี่ยน<br>• ใช้ซื้อตัวช่วยในร้านได้ (ไม่ใช้เงินจริง ต้องเหลือทุนอย่างน้อย 500 หลังซื้อ)<br>• เปิดภารกิจแล้วไม่ส่งเกิน 5 วัน เสียค่าเสียโอกาส (ครั้งเดียวต่อภารกิจ) กด ‘พักเกม’ ได้สูงสุด 30 วันโดยไม่เสียทุน<br>• ทุนหมด = เข้าโหมดทบทวน ผ่านแบบทดสอบแล้วได้ทุนเริ่มใหม่ (ลดลงทุกครั้งที่หมด)<br>ตัวเลขทั้งหมดเป็นข้อเสนอเริ่มต้น จะปรับหลังทดลองใช้"])}${P(["ทำไมต้องซื่อสัตย์","แอปนี้ช่วยให้คุณตัดสินใจจากข้อมูลจริง ถ้าใส่ผลที่ไม่จริง คนที่เสียหายคือคุณเอง<br>• โกหกแอป = โกหกตัวเอง ไม่มีใครเสียเปรียบนอกจากคุณ<br>• ล้มเหลวพร้อมบทเรียนก็ได้ XP จึงไม่มีเหตุผลต้องโกหก<br>• ลูกค้าจริงต้องไว้ใจคุณ ความซื่อสัตย์ฝึกได้ตั้งแต่ตรงนี้<br><b>ข้อจำกัด:</b> เวอร์ชันนี้ตรวจไม่ได้ว่าคุณซื่อสัตย์หรือไม่ ทุกอย่างเป็นการรายงานเอง จึงต้องพึ่งคำสัตย์ของคุณ"])}
+<div class="box"><h3 style="margin:0 0 8px">ระดับความสำคัญ 0–10</h3><div class="mu" style="font-size:14px;line-height:1.7">${mtr(2)} 0–2 เสริม ข้ามได้<br>${mtr(4)} 3–4 ช่วยให้ดีขึ้น<br>${mtr(6)} 5–6 สำคัญ ควรทำ<br>${mtr(8)} 7–8 จำเป็น ข้ามแล้วเสี่ยงเดินผิดทาง<br>${mtr(10)} 9–10 หัวใจ ห้ามข้าม<br>คะแนนเป็นการประเมินเชิงออกแบบ ยังไม่ได้มาจากข้อมูลผู้ใช้จริง และจะปรับหลังทดลองใช้</div></div>
+<h2>คลังคำศัพท์ตามด่าน</h2>
+${SG.map(g=>`<details class="box" style="padding:14px"><summary style="font-weight:700;font-size:18px;cursor:pointer">${g[0]}</summary><div class="mu" style="margin-top:10px;font-size:14px;line-height:1.6"><b style="color:#1e1e1e">ทำไมต้องทำ:</b> ${g[1]}<br><b style="color:#1e1e1e">ซื่อสัตย์เพราะ:</b> ${g[2]}</div>${g[3].map(m=>`<div style="margin-top:12px;border-top:2px solid #4a3dad;padding-top:10px"><b>${m[0]}</b> <span class="mu">· ${m[1]}</span><br>${mtr(m[2])}<div class="mu" style="font-size:13px;margin-top:4px">${m[3]}</div></div>`).join("")}</details>`).join("")}
+<div style="height:20px"></div>`}
+const dt=t=>new Date(t).toLocaleDateString('th-TH',{day:'numeric',month:'short'}),SD=["ด่าน 1 · รู้ตัว","ด่าน 2 · หาปัญหา","ด่าน 3 · เสนอ","ด่าน 4 · ขายจริง","ด่าน 5 · ขายซ้ำ","ด่าน 6 · พัฒนาตน","ด่าน 7 · ยั่งยืน"];
+const RR=["ติดขัดที่ภารกิจนี้","เปลี่ยนไอเดียธุรกิจ","กรอกผิด อยากแก้","อยากลองซ้ำให้ดีขึ้น"];
+function replay(){const c=Math.min(S.done,M.length-1);S.rp[c]=(S.rp[c]||0)+1;if(S.rp[c]>1)cr(-IM[c]*2,"เล่นภารกิจ "+M[c][0]+" ซ้ำ");S.tr[c]={o:0,f:Date.now(),l:Date.now()};S.seen[c]=0;op(c)}
+async function newRun(){if(!S.rr)return;const f=feeNew();if(f==0)S.fu[S.run]=1;const why=S.rr;archive(why);if(f>0)cr(-f,"ค่าเสียโอกาสของการเริ่มรอบใหม่ ("+why+")");else S.cl.unshift({v:0,why:"เริ่มรอบใหม่เพราะกรอกผิด (ฟรี 1 ครั้งต่อรอบ)",at:Date.now()});S.rr=null;S.tab='home';S.open=null;await save();window.scrollTo(0,0)}
+function rv(){const now=Date.now(),cur=Math.min(S.done,M.length-1),fin=S.done>=M.length,t=S.tr[cur]||{o:0},days=t.f?Math.floor((now-t.f)/864e5):0,stuck=!fin&&(t.o>=3||days>=3);
+let lg=null;for(let i=0;i<S.done;i++){const a=i?S.fin[i-1]:S.t0,b=S.fin[i];if(a&&b&&(!lg||b-a>lg[1]))lg=[i,b-a]}
+const H=S.hist,pat=H.length>=2&&Math.floor(H[H.length-1].d/3)==Math.floor(H[H.length-2].d/3)?Math.floor(H[H.length-1].d/3):-1;
+const a=D.t.filter(x=>x[0]=="รับ").reduce((q,x)=>q+x[1],0),b=D.t.filter(x=>x[0]=="จ่าย").reduce((q,x)=>q+x[1],0);
+const bar=`<div style="display:flex;gap:4px;margin:10px 0">${M.map((m,i)=>`<i style="flex:1;height:14px;border-radius:5px;background:${i<S.done?"#00b4d8":i==S.done?"#ffcc00":"#4a4a48"}"></i>`).join("")}</div>`;
+const row=(k,v)=>`<div class="row" style="padding:4px 0"><span class="mu">${k}</span><b>${v}</b></div>`;
+return `<div style="padding:8px 16px"><button class="ic" onclick="go('me')">‹</button></div><h2 style="margin-top:0">📊 ทบทวนรอบที่ ${S.run}</h2>
+<div class="qc"><span class="tagq">${fin?"จบครบแล้ว":"ตอนนี้อยู่ที่"}</span><h3>${fin?"ผ่านครบทุกภารกิจ":`ภารกิจ ${cur+1}/${M.length} · ${M[cur][0]}`}</h3>${bar}
+${row("ผ่านแล้ว",S.done+"/"+M.length)}${Object.keys(S.sk).length?row("ข้ามไป",Object.keys(S.sk).length+" ภารกิจ"):""}${row("XP รวม",S.xp)}${!fin&&t.f?row("เปิดภารกิจนี้",t.o+" ครั้ง · ผ่านมา "+days+" วัน"):""}${S.t0?row("เริ่มรอบนี้",dt(S.t0)):""}${row("สัมภาษณ์/ทดลองขายที่แตะ",D.n.length+" คน")}${row("รายรับ-จ่ายสุทธิ",B(a-b)+" บาท")}
+${lg?row("ภารกิจที่ใช้เวลานานที่สุด",M[lg[0]][0]+" ("+Math.max(1,Math.round(lg[1]/864e5))+" วัน)"):""}</div>
+<div class="box" style="border-color:${stuck?"var(--y)":"#4a3dad"}"><b>${stuck?"ดูเหมือนคุณติดที่ภารกิจนี้":fin?"คุณมาถึงปลายทางของรอบนี้แล้ว":"ยังไม่พบสัญญาณว่าติด"}</b><div class="mu" style="margin-top:6px;line-height:1.5">${stuck?`ภารกิจนี้ระดับความสำคัญ ${IM[cur]}/10 ${IM[cur]>=9?"ข้ามไม่ได้ ถ้าจะเริ่มใหม่ ควรทำให้ถึงภารกิจนี้ครั้งหน้า":"ลองเล่นภารกิจนี้ใหม่ก่อนจะลบอะไร"}`:fin?"เริ่มรอบใหม่เพื่อทดลองไอเดียถัดไปโดยเก็บ XP ไว้":"ลองเล่นต่ออาจดีกว่ารีเซ็ต"}<br><span style="font-size:12px">ระบบนับจากจำนวนครั้งที่เปิดและจำนวนวัน ไม่ได้รู้ว่าคุณคิดอะไรอยู่ คุณเป็นคนตัดสินเอง</span></div></div>
+${pat>=0?`<div class="box" style="border-color:var(--r)"><b>พบรูปแบบ</b><div class="mu" style="margin-top:6px">2 รอบล่าสุดหยุดที่ ${SD[pat]} เหมือนกัน ลองดูว่าอะไรทำให้ติดซ้ำก่อนเริ่มใหม่</div></div>`:""}
+<h2>ทำไมถึงอยากเริ่มใหม่?</h2><div style="padding:0 16px">${RR.map(r=>`<button class="ch ${S.rr==r?"on":""}" onclick="S.rr='${r}';R()">${r}</button>`).join("")}</div>
+<h2>เลือกวิธี</h2>
+<div class="box"><b>1 · เล่นภารกิจนี้ใหม่</b><div class="mu" style="margin:6px 0">ไม่ลบอะไร เริ่มนับครั้งที่เปิดใหม่และดูคำอธิบายซ้ำ เหมาะกับ "ติดขัด" ครั้งแรกฟรี ครั้งต่อไปเสีย 2×ระดับความสำคัญ เครดิต</div><button class="btn d" style="margin:0;width:100%" ${fin?"disabled":""} onclick="replay()">เล่นใหม่</button></div>
+<div class="box"><b>2 · เริ่มรอบใหม่ (เก็บ XP และประวัติ)</b><div class="mu" style="margin:6px 0">ล้างข้อมูลของไอเดียเก่า (ภารกิจ ตัวนับ รายรับ-จ่าย) แต่เก็บ XP และบันทึกรอบนี้ไว้ในประวัติ เหมาะกับ "เปลี่ยนไอเดีย"<br><b style="color:var(--y)">ค่าเสียโอกาส ${feeNew()} เครดิต</b> ทุนฝึกเหลือ ${Math.max(0,S.cr-feeNew())} ${S.rr?"":"<br><b style='color:var(--y)'>เลือกเหตุผลด้านบนก่อน</b>"}</div><button class="btn ${S.rr?"":"dis"}" style="margin:0;width:100%" onclick="newRun()">เริ่มรอบที่ ${S.run+1}</button></div>
+<div class="box" style="border-color:#6b2a2e"><b>3 · ลบทุกอย่าง</b><div class="mu" style="margin:6px 0">ล้างทุกอย่าง ทุนฝึกเหลือ 0 และต้องผ่านโหมดทบทวนก่อนเริ่มใหม่ ย้อนกลับไม่ได้</div>${S.rs?`<div class="row" style="gap:8px"><button class="btn d" style="margin:0;width:50%" onclick="S.rs=0;R()">ยกเลิก</button><button class="btn" style="margin:0;width:50%;background:var(--r);border-bottom-color:#b02a30;color:#fff" onclick="resetAll()">ยืนยันลบ</button></div>`:`<button class="btn d" style="margin:0;width:100%" onclick="S.rs=1;R()">ลบทุกอย่าง</button>`}</div>
+${H.length?`<h2>ประวัติรอบ</h2>${H.map(h=>`<div class="it"><div class="i">${h.r}</div><div><b>รอบ ${h.r} · ถึงภารกิจ ${Math.min(h.d+1,M.length)}/${M.length}</b><span class="mu">${h.why} · ${dt(h.at)} · ${h.iv} คน</span></div></div>`).join("")}`:""}
+<div class="box"><b>การเริ่มใหม่สื่อว่าอะไร</b><div class="mu" style="margin-top:6px;line-height:1.6">• ไม่ใช่การแพ้ ธุรกิจจริงต้องปรับเปลี่ยนไอเดียได้ นี่คือทักษะ<br>• สิ่งที่ลบคือข้อมูลของไอเดียเก่า สิ่งที่เก็บคือ XP และสิ่งที่คุณเรียนรู้<br>• ถ้าเริ่มใหม่ซ้ำที่จุดเดิม แปลว่าควรแก้ที่ต้นเหตุ ไม่ใช่เปลี่ยนไอเดียต่อ</div></div><div style="height:20px"></div>`}
+
+function cr(v,why){S.cr=Math.max(0,S.cr+v);S.cl.unshift({v,why,at:Date.now()});S.cl=S.cl.slice(0,40);if(S.cr<=0&&!S.bk)enterBk()}
+function enterBk(){if(S.done>0)archive("หมดทุน");S.bk=1;S.bs=0;S.bc=[];S.bm=[];S.bq=null;S.rst++}
+function archive(why){const a=D.t.filter(x=>x[0]=="รับ").reduce((q,x)=>q+x[1],0),b=D.t.filter(x=>x[0]=="จ่าย").reduce((q,x)=>q+x[1],0);S.hist.push({r:S.run,d:S.done,why:why||"ไม่ระบุ",at:Date.now(),iv:D.n.length,net:a-b});S.run++;S.done=0;D.n=[];D.t=[];S.tr={};S.fin={};S.sk={};S.rp={};S.ip={};S.ans={};S.cls=null;S.pz=0;S.t0=Date.now()}
+const feeNew=()=>(S.rr=="กรอกผิด อยากแก้"&&!S.fu[S.run])?0:Math.min(600,150+20*S.done);
+function succ(i){const m=M[i],c=S.c,t=m[4];
+if(t=="tally"){const a=c.t.filter(x=>x==0).length,b=c.t.filter(x=>x==1).length;return a?"full":b?"part":"fail"}
+if(t=="boss")return c.res==0?"full":c.res==1?"part":"fail";
+if(t=="offer"){const mg=c.p?(c.p-c.c)/c.p:0;return mg>=.2?"full":"part"}
+return "full"}
+const rc=()=>Math.max(1000,2500-500*S.rst);
+const QB=[
+["ลูกค้าจ่ายเงินให้กับอะไรเป็นหลัก",["ไอเดียที่เราชอบ","การแก้ปัญหาที่เขาเจ็บจริง","โลโก้สวย","จำนวนผู้ติดตาม"],1,"ลูกค้าจ่ายเพื่อแก้ปัญหาของเขา ไม่ใช่เพื่อไอเดียที่เราชอบ"],
+["ขายราคา 100 บาท ต้นทุน 120 บาท ถ้าขายมากขึ้นจะเกิดอะไร",["กำไรมากขึ้น","ขาดทุนมากขึ้น","เท่าเดิม","ต้นทุนลดลงเอง"],1,"ขายต่ำกว่าต้นทุน ยิ่งขายมากยิ่งขาดทุนมาก"],
+["หลักฐานใดพิสูจน์ได้ดีที่สุดว่ามีคนต้องการสินค้า",["คำชมของเพื่อน","คนจริงซื้อหรือตอบรับจริง","ยอดไลก์","ความมั่นใจของเรา"],1,"ผลจากลูกค้าจริงที่ยอมจ่ายหรือตอบรับ คือหลักฐานของตลาด"],
+["ทำไมต้องสัมภาษณ์ลูกค้าจริงก่อนสร้างสินค้า",["เพื่อให้ดูมืออาชีพ","เพื่อรู้ปัญหาจริงของตลาด","เพื่อลดต้นทุนโฆษณา","เพื่อให้ได้ XP"],1,"ข้อมูลจากคนจริงทำให้ไม่สร้างสิ่งที่ไม่มีใครต้องการ"],
+["กลุ่มเป้าหมายกว้างเกินไปมีผลอย่างไร",["ขายง่ายขึ้น","ไม่รู้ว่าใครคือลูกค้า ทุกขั้นถัดไปเดินผิดทาง","ต้นทุนลดลง","ไม่มีผล"],1,"ธุรกิจที่ขายทุกคนมักขายไม่ได้สักคน"],
+["ต้นทุนควรมาจากอะไร",["ที่คิดว่าน่าจะประมาณนี้","ใบเสร็จหรือราคาจริงที่หามา","ตัวเลขที่ปัดให้สวย","ราคาของคู่แข่ง"],1,"ต้นทุนจริงทำให้คำนวณกำไรได้ตรง"],
+["ลูกค้าปฏิเสธข้อเสนอพร้อมบอกเหตุผล ควรทำอย่างไร",["ซ่อนผลไว้","รายงานตามจริงและเรียนรู้จากเหตุผลนั้น","เปลี่ยนเป็นบอกว่าเขาซื้อ","เลิกทำทันที"],1,"ผลที่ไม่ดีพร้อมบทเรียนคือข้อมูลที่มีค่า"],
+["เปลี่ยนไอเดียบ่อยโดยยังไม่ทดลองขายจริงมีความเสี่ยงอะไร",["ไม่มีความเสี่ยง","เสียเวลาและทุนโดยไม่ได้ข้อมูลจากตลาด","ได้ XP มากขึ้น","ต้นทุนลดลง"],1,"การเปลี่ยนซ้ำโดยไม่มีข้อมูลตลาดคือการเริ่มจากศูนย์ซ้ำๆ"],
+["ค่าเสียโอกาสคืออะไร",["ค่าโฆษณา","สิ่งที่ต้องเสียไปเมื่อเลือกทางหนึ่งแทนอีกทางหนึ่ง","ภาษี","กำไรที่ได้"],1,"เวลาและเงินที่ใช้กับไอเดียเก่า คือสิ่งที่เสียไปแล้ว"],
+["ปัญหาเร่งด่วน (Pain Point) คือปัญหาแบบไหน",["ปัญหาที่เราอยากแก้","ปัญหาที่ลูกค้าเจ็บพอจะยอมจ่ายเพื่อแก้","ปัญหาที่ใหญ่ที่สุดในโลก","ปัญหาของคู่แข่ง"],1,"คนยอมจ่ายให้ปัญหาที่เจ็บที่สุดก่อน"],
+["มาร์จินกำไรคืออะไร",["กำไรต่อชิ้นหารด้วยราคาขาย","ราคาขายลบค่าโฆษณา","ต้นทุนหารด้วยราคา","จำนวนชิ้นที่ขายได้"],0,"มาร์จิน = กำไรต่อชิ้น ÷ ราคาขาย"],
+["ทำไมต้องรายงานตามจริงแม้ผลไม่ดี",["เพราะเป็นกฎของแอป","เพราะข้อมูลผิดพาให้ตัดสินใจครั้งต่อไปผิดตาม","เพราะได้ XP เพิ่ม","เพราะคนอื่นจะเห็น"],1,"คนที่เสียหายจากข้อมูลปลอมคือตัวเราเอง"],
+["ข้ามภารกิจที่สำคัญ 9–10 จากระดับ 10 อาจเกิดอะไรขึ้น",["ไม่มีผล","ตัดสินใจต่อโดยไม่มีข้อมูลจริง เสี่ยงเสียเงินจริง","ได้ทุนเพิ่ม","ผ่านด่านเร็วขึ้นและปลอดภัย"],1,"ภารกิจสำคัญคือฐานของการตัดสินใจครั้งต่อไป"],
+["เพื่อนสนิทบอกว่าไอเดียของคุณดีมาก ข้อมูลนี้ควรใช้อย่างไร",["เชื่อได้เต็มที่","ใช้ประกอบได้ แต่คนใกล้ตัวมักเกรงใจ ต้องคุยกับตลาดจริงด้วย","ไม่มีประโยชน์เลย","ดีกว่าสัมภาษณ์ลูกค้า"],1,"เสียงคนใกล้ตัวช่วยได้ แต่ไม่ใช่หลักฐานจากตลาดจริง"],
+["ลูกค้าบอกว่าสนใจ แต่ยังไม่ซื้อ ควรนับเป็นอะไร",["ยอดขาย","สัญญาณเบื้องต้น ยังไม่ใช่หลักฐานการซื้อ","ลูกค้าประจำ","ไม่ต้องบันทึก"],1,"ความสนใจต่างจากการจ่ายเงินจริง"],
+["ต้นทุน 40 บาท อยากได้มาร์จิน 40% ควรตั้งราคาขายประมาณเท่าไร",["50 บาท","67 บาท","40 บาท","45 บาท"],1,"ราคา = ต้นทุน ÷ (1 − มาร์จิน) = 40 ÷ 0.6 ≈ 67 บาท"],
+["ซ้อมเสนอขายกับกระจก นับเป็นผลจากตลาดจริงไหม",["นับ เพราะได้ฝึก","ไม่นับ เป็นการฝึก ไม่ใช่เสียงตลาด","นับครึ่งหนึ่ง","นับถ้าพูดได้ดี"],1,"การซ้อมช่วยความมั่นใจ แต่ไม่ใช่หลักฐานว่ามีคนต้องการ"],
+["ทดลองขาย 5 คน ไม่มีใครซื้อ แต่ได้เหตุผลชัดเจน ควรทำอย่างไร",["ซ่อนผลไว้","รายงานตามจริงและเอาเหตุผลไปปรับข้อเสนอ","บันทึกว่ามีคนซื้อ","เลิกทันทีโดยไม่ทบทวน"],1,"ผลลบพร้อมเหตุผลคือข้อมูลที่ใช้ปรับต่อได้"]];
+const BC=["เลือกกลุ่มลูกค้ากว้างเกินไป","ไม่ได้คุยกับลูกค้าจริง","ตั้งราคาไม่คุ้มต้นทุน","ข้ามขั้นที่สำคัญ","เปลี่ยนไอเดียบ่อยเกินไป","ทำไม่ต่อเนื่อง"];
+const CM=["คุยกับลูกค้าจริงก่อนลงทุน","คิดต้นทุนจากใบเสร็จจริง","ไม่ข้ามภารกิจสำคัญ","เลือกกลุ่มเป้าหมายให้แคบลง"];
+function tg(k,x){const a=S[k],i=a.indexOf(x);i>=0?a.splice(i,1):a.push(x);R()}
+function bkq(){const qs=[...QB.keys()].sort(()=>Math.random()-.5).slice(0,5);S.bq={qs,qd:qs.map(k=>{const q=QB[k],o=q[1].map((t,j)=>[t,j]).sort(()=>Math.random()-.5);return[q[0],o.map(x=>x[0]),o.findIndex(x=>x[1]==q[2]),q[3]]}),i:0,ans:null,score:0,fin:0}}
+function ansQ(j){if(S.bq.ans!=null)return;S.bq.ans=j;if(j==S.bq.qd[S.bq.i][2])S.bq.score++;R();window.scrollTo(0,document.body.scrollHeight)}
+function nxQ(){S.bq.i++;S.bq.ans=null;if(S.bq.i>=5)S.bq.fin=1;R()}
+function grant(){const g=rc();S.cr=g;S.cl.unshift({v:g,why:"ทุนเริ่มใหม่หลังผ่านการทบทวน",at:Date.now()});S.bk=0;S.bs=0;S.bq=null;S.bc=[];S.bm=[];S.tab='home';S.open=null;save()}
+function bk(){const st=S.bs,h=S.hist[S.hist.length-1];
+const msg=["ทุนฝึกของคุณหมดแล้ว ธุรกิจจริงก็เจอแบบนี้ ถ้าไม่ไหวก็ต้องยอมรับความจริง แล้วเริ่มใหม่ให้ฉลาดขึ้น","อะไรทำให้ทุนหมด เลือกอย่างน้อย 1 ข้อ ตอบตามจริง","ทดสอบความเข้าใจ 5 ข้อ ต้องตอบถูกอย่างน้อย 4 ข้อ","ตั้งใจสำหรับรอบใหม่ แล้วรับทุนเริ่มใหม่"][st];
+let b="";
+if(st==0)b=`<div class="qc"><span class="tagq">โหมดทบทวน</span><h3>🪙 0 เครดิต</h3><div class="mu" style="line-height:1.6">รอบที่ผ่านมา${h?`: ไปถึงภารกิจ ${Math.min(h.d+1,M.length)}/${M.length} · ${h.why}`:""}<br>ต้องผ่านการทบทวนและแบบทดสอบก่อนจึงจะเริ่มใหม่ได้ ทุนเริ่มใหม่ครั้งนี้ ${B(rc())} เครดิต (น้อยกว่าทุนตั้งต้น เพราะเป็นการเริ่มใหม่ครั้งที่ ${S.rst})</div></div><button class="btn" style="margin:0 16px" onclick="S.bs=1;R()">ยอมรับความจริง ไปต่อ</button>`;
+if(st==1)b=`<div style="padding:0 16px">${BC.map(x=>`<button class="ch ${S.bc.includes(x)?"on":""}" onclick="tg('bc','${x}')">${x}</button>`).join("")}</div><button class="btn ${S.bc.length?"":"dis"}" style="margin:16px 16px 0" onclick="if(S.bc.length){S.bs=2;bkq();R()}">ต่อไป</button>`;
+if(st==2){if(!S.bq||!S.bq.qd)bkq();const Q=S.bq;if(Q.fin){const ok=Q.score>=4;b=`<div class="qc"><h3>ได้ ${Q.score}/5 ${ok?"ผ่านแล้ว ✓":"ยังไม่ผ่าน"}</h3><div class="mu">${ok?"คุณเข้าใจพอที่จะเริ่มใหม่":"ต้องได้อย่างน้อย 4/5 ลองชุดคำถามใหม่ได้ไม่จำกัด ไม่เสียเครดิต"}</div></div><button class="btn" style="margin:0 16px" onclick="${ok?"S.bs=3;R()":"bkq();R()"}">${ok?"ไปต่อ":"ลองชุดใหม่"}</button>`}else{const q=Q.qd[Q.i];b=`<div class="qc"><span class="tagq">ข้อ ${Q.i+1}/5</span><h3 style="font-size:20px">${q[0]}</h3>${q[1].map((o,j)=>`<button class="ch" style="display:block;width:100%;text-align:left;margin-top:8px;${Q.ans!=null?(j==q[2]?"background:var(--g);color:#1e1e1e":j==Q.ans?"background:var(--r)":"opacity:.5"):""}" onclick="ansQ(${j})">${o}</button>`).join("")}${Q.ans!=null?`<div class="mu" style="margin-top:10px">${Q.ans==q[2]?"ถูกต้อง":"ยังไม่ถูก"} · ${q[3]}</div><button class="btn" style="margin:12px 0 0;width:100%" onclick="nxQ()">ต่อไป</button>`:""}</div>`}}
+if(st==3)b=`<div style="padding:0 16px">${CM.map(x=>`<button class="ch ${S.bm.includes(x)?"on":""}" onclick="tg('bm','${x}')">${x}</button>`).join("")}</div><div class="mu" style="padding:12px 24px">เลือกอย่างน้อย 1 ข้อ ที่จะทำต่างไปในรอบใหม่</div><button class="btn ${S.bm.length?"":"dis"}" style="margin:0 16px" onclick="if(S.bm.length)grant()">รับทุนเริ่มใหม่ ${B(rc())} เครดิต</button>`;
+return `<div class="stage"><div style="text-align:center">${MF(96,null,"sad")}<div class="plat"></div></div><div class="bub">${msg}</div></div>${b}<div style="height:30px"></div>`}
+function crp(){return HUD()+`<div style="padding:8px 16px"><button class="ic" onclick="go('home')">‹</button></div><div class="card"><span class="chip">ทุนฝึก · ไม่ใช่เงินจริง</span><h1>🪙 ${B(S.cr)} เครดิต</h1><div class="mu">เริ่มต้น 3,500 เพิ่มเมื่อทำภารกิจสำเร็จตามจริง ลดเมื่อข้าม เล่นซ้ำ หรือเริ่มรอบใหม่ ไม่ลดเมื่อไม่ได้เล่น</div></div><button class="btn d" style="margin:0 16px" onclick="go('shop')">🛒 ไปร้านตัวช่วย</button><h2>ประวัติทุน</h2>`+(S.cl.length?S.cl.map(x=>`<div class="it"><div class="i" style="background:${x.v>0?"var(--g)":x.v<0?"var(--r)":"#4a4a48"};color:#1e1e1e">${x.v>0?"+":x.v<0?"−":"•"}</div><div><b>${x.why}</b><span class="mu">${dt(x.at)}</span></div><em style="color:${x.v<0?"#FF5A5F":"#58E08A"}">${x.v>0?"+":""}${B(x.v)}</em></div>`).join(""):'<div class="mu" style="padding:0 24px">ยังไม่มีรายการ</div>')+'<div style="height:20px"></div>'}
+const PB=()=>`<div class="tag" style="color:#ffcc00">⏸ พักเกมอยู่ · ไม่เสียทุนระหว่างพัก</div>`;
+function idleH(n){if(S.ps||S.done>=M.length)return"";const t=S.tr[n];if(!t||!t.o||S.ip[n])return"";const left=5-Math.floor((Date.now()-t.l)/864e5);return `<div class="mu" style="padding:0 24px 8px;color:${left<=1?"#ec5b52":"#ffcc00"}">⏳ เหลือ ${Math.max(0,left)} วันก่อนเสียค่าเสียโอกาส ${IM[n]*3} เครดิต (ภารกิจที่เปิดไว้แต่ยังไม่ส่ง)</div>`}
+function dayN(){if(!S.t0)return 0;const n=S.done>=M.length?(S.fin[M.length-1]||Date.now()):(S.ps||Date.now());return Math.max(1,Math.floor((n-S.t0-(S.pz||0))/864e5)+1)}
+function dayH(){const d=dayN(),dn=S.done>=M.length,L=M.length;if(!S.t0)return `<div class="dayc"><div class="row"><b>วันที่ 0 <span class="mu" style="font-weight:500">จาก 90</span></b><span class="dtag">${S.done}/${L}</span></div><div class="dbar"><i style="width:0"></i></div><div class="mu">เริ่มนับวันเมื่อคุณเปิดเควสต์แรก</div></div>`;const sh=Math.min(d,90),tg=Math.min(L,Math.floor(d*L/90)),df=S.done-tg,msg=dn?"จบครบทุกด่านใน "+d+" วัน":S.ps?"พักเกมอยู่ ไม่นับวัน":d>90?"ครบ 90 วันแล้ว ยังเล่นต่อได้ตามจังหวะของคุณ":df>=1?"นำแผน ทำต่อได้เลย":df>=-1?"ตามแผน":"ช้ากว่าแผนเล็กน้อย ไม่เสียเครดิต เริ่มจากเควสต์เล็กๆ ได้";return `<div class="dayc"><div class="row"><b>วันที่ ${sh} <span class="mu" style="font-weight:500">จาก 90</span></b><span class="dtag">ทำแล้ว ${S.done}/${L}</span></div><div class="dbar"><i style="width:${S.done/L*100}%"></i>${dn?"":`<u style="left:${tg/L*100}%"></u>`}</div><div class="mu">${msg}${dn?"":" · แผนวันนี้ควรถึงเควสต์ "+Math.min(L,tg+1)}</div></div>`}
+function startPause(){S.ps=Date.now();save()}
+function endPause(at){const c=S.done;if(S.tr[c])S.tr[c].l=at||Date.now();if(S.ps)S.pz=(S.pz||0)+Math.max(0,(at||Date.now())-S.ps);S.ps=0;persist()}
+function chkIdle(){if(S.bk||S.done>=M.length)return;const n=Date.now();if(S.ps){if(n>=S.ps+30*864e5)endPause(S.ps+30*864e5);else return}const c=S.done,t=S.tr[c];if(t&&t.o>0&&!S.ip[c]&&n-t.l>5*864e5){S.ip[c]=1;cr(-IM[c]*3,"ภารกิจ "+M[c][0]+" ค้างเกิน 5 วัน (ค่าเสียโอกาส)");persist()}}
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){chkIdle();R()}});
+function me(){return HUD()+`<div class="pf"><div class="av">${MS(88)}</div><b style="font-size:22px">${S.pf&&S.pf.name?esc(S.pf.name):"ผู้เล่นใหม่"}</b><div class="mu">รอบที่ ${S.run} · เลเวล ${lv()} · ${S.xp} XP</div>${S.pf&&(S.pf.st||S.pf.tm)?`<div class="mu" style="margin-top:4px">${[S.pf.st,S.pf.tm&&"เวลา "+S.pf.tm+"/วัน"].filter(Boolean).map(esc).join(" · ")}</div>`:""}${S.pf&&S.pf.goal?`<div style="margin-top:10px;font-weight:600;color:#1e1e1e">🎯 ${esc(S.pf.goal)}</div>`:""}<button class="btn" style="margin:14px 0 0;padding:12px 24px;width:auto" onclick="editPf()">✎ ${S.pf?"แก้ไขโปรไฟล์":"ตั้งค่าโปรไฟล์"}</button></div>
+<div class="it" onclick="go('guide')"><div class="i">📖</div><div><b>คู่มือการใช้งาน</b><span class="mu">วิธีเล่น ความสำคัญ และคำศัพท์</span></div><em>›</em></div>
+
+<div class="it" onclick="go('prv')"><div class="i">🔒</div><div><b>ข้อมูลและความเป็นส่วนตัว</b><span class="mu">เราเก็บอะไร และลบได้ที่ไหน</span></div><em>›</em></div>
+<div class="it" onclick="go('rv')"><div class="i">📊</div><div><b>ทบทวนรอบ / เริ่มใหม่</b><span class="mu">ดูว่าติดตรงไหน แล้วเลือกวิธีเริ่มใหม่</span></div><em>›</em></div>
+${S.ps?`<div class="box" style="border-color:var(--y)"><b>⏸ กำลังพักเกม</b><div class="mu" style="margin:6px 0">พักตั้งแต่ ${dt(S.ps)} สิ้นสุดอัตโนมัติ ${dt(S.ps+30*864e5)} ไม่เสียทุนระหว่างพัก</div><button class="btn" style="margin:0;width:100%" onclick="endPause();R()">กลับมาเล่น</button></div>`:`<div class="it" onclick="startPause()"><div class="i">⏸</div><div><b>พักเกม</b><span class="mu">สูงสุด 30 วัน ไม่เสียทุนระหว่างพัก</span></div><em>›</em></div>`}<button class="lo2" onclick="lgo()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>${S.guest&&!S.acct?"สมัคร / เข้าสู่ระบบ":"ออกจากระบบ"}</button><div class="mu" style="padding:12px 24px">ป้ายตรวจสอบแล้วต้องมีแอดมิน ซึ่งยังไม่มีในเวอร์ชันนี้ ทุกอย่างจึงเป็นการรายงานเอง</div><div class="pwb">Powered by Kapsulep &amp; Co</div>`}
+async function resetAll(){S.xp=0;S.done=0;D.n=[];D.t=[];S.seen={};S.sk={};S.run=1;S.t0=0;S.pz=0;S.ltr=null;S.ltd="";S.tr={};S.fin={};S.ans={};S.cls=null;S.pf=null;S.shop={};S.hist=[];S.rr=null;S.rp={};S.ip={};S.ps=0;S.fu={};S.cr=0;S.cl=[{v:0,why:"รีเซ็ตทั้งหมด ทุนเหลือ 0",at:Date.now()}];S.rs=0;S.open=null;S.tab='home';enterBk();await save();window.scrollTo(0,0)}
+let DOC=null;
+const BL=()=>JSON.stringify({xp:S.xp,done:S.done,n:D.n,t:D.t,seen:S.seen,sk:S.sk,ps:S.ps,ip:S.ip,cr:S.cr,cl:S.cl,bk:S.bk,rst:S.rst,rp:S.rp,fu:S.fu,run:S.run,t0:S.t0,tr:S.tr,fin:S.fin,hist:S.hist,ltr:S.ltr,pz:S.pz,ob:S.ob,pf:S.pf,cls:S.cls,shop:S.shop,ans:S.ans,bs:S.bs,bc:S.bc,bm:S.bm,bq:S.bq});
+async function persist(){if(DOC){try{await DOC.set({blob:BL(),at:Date.now()});S.err=0}catch(e){S.err=1}}}
+async function save(){await persist();const y=window.scrollY;R();window.scrollTo(0,y)}
+const API=async(m,u,b)=>{const r=await fetch(u,{method:m,credentials:"same-origin",headers:{"X-Requested-With":"m90","Content-Type":"application/json"},body:b?JSON.stringify(b):undefined});let j={};try{j=await r.json()}catch(e){}return{ok:r.ok,status:r.status,j}};
+const ADOC={get:async()=>{const r=await API("GET","api/state");if(r.status==401){location.reload();return{exists:false,data:()=>({})}}return{exists:!!r.j.exists,data:()=>({blob:r.j.blob})}},set:async o=>{const r=await API("PUT","api/state",{blob:o.blob});if(r.status==401){location.reload();return}if(!r.ok)throw new Error("save")}};
+function addFont(){const l=document.createElement("link");l.rel="stylesheet";l.href="fonts/fonts.css";document.head.appendChild(l)}
+async function tryApi(){if(!/^https?:/.test(location.protocol))return;try{const c=await API("GET","api/config");if(!(c.ok&&typeof c.j.local=="boolean"))return;if(c.j.fonts)addFont();const m=await API("GET","api/me");if(!m.ok){let g=false;try{g=c.j.guest&&localStorage.getItem('m90g')==='1'}catch(e){}if(g){S.guest=1;return}S.auth=c.j;if(/autherr=1/.test(location.search))S.aerr="เข้าสู่ระบบผ่าน 500 Windows ไม่สำเร็จ ลองอีกครั้ง";R();return}S.acct=m.j;DOC=ADOC}catch(e){}}
+const LXCHAR=`<svg class="lx-ill" viewBox="-4 0 128 170" fill="none" stroke="#1c1c1c" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(60 42) scale(1) translate(-50 -46)"></g><rect x="28" y="70" width="64" height="56" rx="18" fill="#00b4d8"/><path d="M52 118L42 146" stroke="#1c1c1c" stroke-width="23.4"/><path d="M52 118L42 146" stroke="#00b4d8" stroke-width="17"/><path d="M68 118L84 142" stroke="#1c1c1c" stroke-width="23.4"/><path d="M68 118L84 142" stroke="#00b4d8" stroke-width="17"/><ellipse cx="38" cy="151" rx="13" ry="7" fill="#fff"/><path d="M30 153h16" stroke="#00b4d8" stroke-width="2.8"/><ellipse cx="88" cy="147" rx="13" ry="7" fill="#fff"/><path d="M80 149h16" stroke="#00b4d8" stroke-width="2.8"/><path d="M36 76C44 68 76 68 84 76L88 118C72 124 48 124 32 118Z" fill="#ec5b52"/><path d="M44 102Q60 108 76 102L80 116Q60 122 40 116Z" fill="#cb4e47" stroke-width="2.6"/><path d="M46 70Q43 96 46 118" stroke="#1c1c1c" stroke-width="11.4"/><path d="M46 70Q43 96 46 118" stroke="#00b4d8" stroke-width="5"/><path d="M74 70Q77 96 74 118" stroke="#1c1c1c" stroke-width="11.4"/><path d="M74 70Q77 96 74 118" stroke="#00b4d8" stroke-width="5"/><path d="M40 80Q10 80 10 44" stroke="#1c1c1c" stroke-width="21.4"/><path d="M40 80Q10 80 10 44" stroke="#ec5b52" stroke-width="15"/><path d="M80 80Q110 80 110 44" stroke="#1c1c1c" stroke-width="21.4"/><path d="M80 80Q110 80 110 44" stroke="#ec5b52" stroke-width="15"/><circle cx="10" cy="40" r="8.5" fill="#f7c196"/><circle cx="110" cy="40" r="8.5" fill="#f7c196"/><circle cx="108" cy="14" r="8" fill="#ffcc00"/><path d="M108 9v10" stroke-width="2.4"/><path d="M10 22l7-7M8 40h9M106 38h9" stroke-width="2.4"/><rect x="54" y="62" width="12" height="16" rx="5" fill="#f7c196"/><path d="M45 66Q60 80 75 66L79 76Q60 88 41 76Z" fill="#cb4e47"/><path d="M55 80v11M65 80v11" stroke-width="2.6"/><circle cx="55" cy="92" r="2.2" fill="#fff"/><circle cx="65" cy="92" r="2.2" fill="#fff"/><g transform="translate(60 42) scale(1) translate(-50 -46)"><circle cx="28" cy="50" r="5" fill="#f7c196"/><circle cx="72" cy="50" r="5" fill="#f7c196"/><ellipse cx="50" cy="46" rx="22" ry="25" fill="#f7c196"/><path d="M26 44C24 38 27 32 31 29L33 45zM74 44C76 38 73 32 69 29L67 45z" fill="#2b1b17"/><ellipse cx="35" cy="58" rx="4.6" ry="3" fill="#ef8a78" stroke="none" opacity=".55"/><ellipse cx="65" cy="58" rx="4.6" ry="3" fill="#ef8a78" stroke="none" opacity=".55"/><path d="M34 50q6-9 12 0M54 50q6-9 12 0"/><path d="M36 56q14 19 28 0z" fill="#fff"/><path d="M25 40C23 14 77 12 75 40C58 33 40 33 25 40Z" fill="#00b4d8"/><path d="M52 34C64 30 86 32 90 40C78 46 62 42 54 40Z" fill="#0090ad"/><circle cx="50" cy="15" r="3" fill="#0090ad"/></g></svg>`;
+function authH(){const c=S.auth;S.af=S.af||{};const rg=S.amode=="register",k=rg?"register":"login";let h=`<div class="lx"><div class="lx-c"><div class="lx-top" aria-hidden="true">${LXCHAR}</div><svg class="lx-w" viewBox="0 0 390 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C70 20 130 0 210 4 C290 8 345 12 390 0 V60 H0Z" fill="#3b3b3b"/></svg><div class="lx-f"><p class="lx-k">${rg?"เริ่มต้นง่ายๆ":"ยินดีต้อนรับ"}</p><h1>${rg?"สมัครสมาชิก":"เข้าสู่ระบบ"}</h1>${S.aerr?`<div class="aerr">${esc(S.aerr)}</div>`:""}`;if(c.sso)h+=`<button class="lx-btn ${c.local?"lx-sso":""}" onclick="location.href='auth/500w/login'">เข้าสู่ระบบผ่าน 500 Windows Thailand</button>`;if(c.sso&&c.local)h+=`<p class="lx-n" style="margin:12px 0">หรือ</p>`;if(c.local)h+=`${rg?`<input placeholder="ชื่อที่ให้เกมเรียก" maxlength="40" value="${esc(S.af.name)}" oninput="S.af.name=this.value">`:""}<input type="email" placeholder="อีเมล" autocomplete="email" value="${esc(S.af.email)}" oninput="S.af.email=this.value"><input type="password" placeholder="รหัสผ่าน (อย่างน้อย 8 ตัว)" autocomplete="${rg?"new-password":"current-password"}" oninput="S.af.pw=this.value" onkeydown="if(event.key=='Enter')doAuth('${k}')"><button class="lx-btn ${c.sso?"lx-alt":""}" onclick="doAuth('${k}')">${rg?"สมัครสมาชิก":"เข้าสู่ระบบ"}</button><div class="lx-t" onclick="S.amode='${rg?"login":"register"}';S.aerr='';R()">${rg?"มีบัญชีแล้ว? เข้าสู่ระบบ":"ยังไม่มีบัญชี? สมัครสมาชิก"}</div>`;if(c.guest)h+=`<button class="lx-g" onclick="goGuest()">ลองเล่นก่อน (ไม่ต้องสมัคร)</button><p class="lx-n">โหมดทดลองบันทึกในเบราว์เซอร์เครื่องนี้ ไม่ข้ามเครื่อง</p>`;h+=`<p class="lx-pw">Powered by Kapsulep &amp; Co</p>`;return h+`</div></div></div>`}
+function goGuest(){try{localStorage.setItem('m90g','1')}catch(e){}location.reload()}
+function leaveGuest(){try{localStorage.removeItem('m90g')}catch(e){}location.reload()}
+async function doAuth(k){const r=await API("POST","api/"+k,S.af||{});if(r.ok){location.reload();return}S.aerr=(r.j&&r.j.error)||"ไม่สำเร็จ ลองอีกครั้ง";R()}
+async function logout(){try{await API("POST","api/logout")}catch(e){}location.reload()}
+async function delAcct(){if(!confirm("ลบบัญชีและข้อมูลทั้งหมด? กู้คืนไม่ได้"))return;try{await API("DELETE","api/account")}catch(e){}location.reload()}
+const LDOC={get:async()=>{let v=null;try{v=localStorage.getItem('m90')}catch(e){}return{exists:!!v,data:()=>JSON.parse(v)}},set:async o=>{localStorage.setItem('m90',JSON.stringify(o))}};
+async function boot(){R();try{let db=null,id=null;try{db=await claude.use('db');const us=await claude.use('user');id=us&&await us.id()}catch(e){}if(db&&id)DOC=db.doc('data/users/'+id+'/state');else{await tryApi();if(S.auth)return;if(!DOC){try{localStorage.setItem('m90t','1');localStorage.removeItem('m90t')}catch(e){S.off=1;R();return}S.loc=1;DOC=LDOC}}const s=await DOC.get();if(s.exists){const d=JSON.parse(s.data().blob||'{}');S.xp=d.xp||0;S.done=d.done||0;D.n=(d.n||[]).filter(x=>typeof x=="number");D.t=d.t||[];S.seen=d.seen||{};S.sk=d.sk||{};S.ps=d.ps||0;S.ip=d.ip||{};S.cr=d.cr==null?3500:d.cr;S.cl=d.cl||[];S.bk=d.bk||0;S.rst=d.rst||0;S.rp=d.rp||{};S.fu=d.fu||{};S.run=d.run||1;S.t0=d.t0||0;S.tr=d.tr||{};S.fin=d.fin||{};S.hist=d.hist||[];S.ans=d.ans||{};S.shop=d.shop||{};S.cls=d.cls||null;S.pf=d.pf||null;S.ob=d.ob||0;S.pz=d.pz||0;S.ltr=d.ltr||null;S.bs=d.bs||0;S.bc=d.bc||[];S.bm=d.bm||[];S.bq=d.bq||null}S.on=1;chkIdle();R()}catch(e){S.off=1;R()}}
+boot();
+/* ===== SVG icon set (replaces emoji everywhere) ===== */
+const _c=(x,y,r)=>`M${x-r} ${y}a${r} ${r} 0 1 0 ${2*r} 0a${r} ${r} 0 1 0 ${-2*r} 0`,_r=(x,y,w,h,r)=>`M${x+r} ${y}h${w-2*r}a${r} ${r} 0 0 1 ${r} ${r}v${h-2*r}a${r} ${r} 0 0 1 ${-r} ${r}h${-(w-2*r)}a${r} ${r} 0 0 1 ${-r} ${-r}v${-(h-2*r)}a${r} ${r} 0 0 1 ${r} ${-r}z`;
+const ICO={
+"🏠":["~M3.5 11.2 12 4l8.5 7.2V19a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 19z","M9.5 20.5v-5.5h5v5.5"],
+"🗺":["~M9 4 3.5 6.3v13.2L9 17.2l6 2.5 5.5-2.3V4.1L15 6.5z","M9 4v13.2M15 6.5v13.2"],
+"▶":["!M8 5.2v13.6a.6.6 0 0 0 .9.5l10.6-6.8a.6.6 0 0 0 0-1L8.9 4.7a.6.6 0 0 0-.9.5z"],
+"🧰":["~"+_r(3,8,18,12,3),"M9 8V6.6A1.6 1.6 0 0 1 10.6 5h2.8A1.6 1.6 0 0 1 15 6.6V8","M3 13.2h18","M10.5 11.5h3v3.4h-3z"],
+"🔒":["~"+_r(5,10.5,14,10,2.8),"M8 10.5V8a4 4 0 0 1 8 0v2.5","M12 14.8v2"],
+"✓":["#M5 12.8l4.6 4.6L19 7.6"],"✔":["#M5 12.8l4.6 4.6L19 7.6"],
+"⏭":["!M5 5.6v12.8L13.5 12z","M17 5.5v13"],
+"🪙":["~"+_c(12,12,9),"M9.6 10.3c.3-1 1.3-1.6 2.4-1.6 1.4 0 2.4.7 2.4 1.9 0 1.1-1 1.6-2.4 1.9-1.4.3-2.4.9-2.4 2 0 1.2 1 2 2.4 2 1.1 0 2.1-.6 2.4-1.6","M12 6.8v1.9M12 15.4v1.9"],
+"🎤":["~"+_r(9,3,6,11,3),"M5.5 11a6.5 6.5 0 0 0 13 0","M12 17.5V21M9 21h6"],
+"🚀":["~M12 2.8c3.2 2.1 5 5.4 5 9.4l-2.1 3.3H9.1L7 12.2c0-4 1.8-7.3 5-9.4z","M12 8.6a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4z","M7 12.5l-3 3.2 3.6.3M17 12.5l3 3.2-3.6.3","M10.2 18.5c.4 1.2 1 2 1.8 2.7.8-.7 1.4-1.5 1.8-2.7"],
+"🔁":["M17 3.2l3 3-3 3","M4 11.2V9.2a3 3 0 0 1 3-3h13","M7 20.8l-3-3 3-3","M20 12.8v2a3 3 0 0 1-3 3H4"],
+"📊":["#M5.5 20V12.5M12 20V4.5M18.5 20V9"],
+"📖":["~M12 6.6C10 5 7 4.5 4 5v13c3-.5 6 0 8 1.6 2-1.6 5-2.1 8-1.6V5c-3-.5-6 0-8 1.6z","M12 6.6v13"],
+"🛒":["M3 4.2h2.5l2.1 10.8h10.6l1.8-7.8H6","~"+_c(9.5,19.2,1.5),"~"+_c(17,19.2,1.5)],
+"⏸":["#M8.2 5.5v13M15.8 5.5v13"],
+"😍":["~M12 20.2s-7.6-4.6-7.6-10.3A4.4 4.4 0 0 1 12 7.1a4.4 4.4 0 0 1 7.6 2.8c0 5.7-7.6 10.3-7.6 10.3z"],
+"🤔":["~"+_c(12,12,9),"M9.4 9.7a2.7 2.7 0 0 1 5.2.9c0 1.8-2.6 2.2-2.6 3.8","M12 17.2v.1"],
+"🙅":["~"+_c(12,12,9),"M9 9l6 6M15 9l-6 6"],
+"💬":["~M5 4.8h14a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5h-7.3L7 20.6V16.8H5a1.5 1.5 0 0 1-1.5-1.5v-9A1.5 1.5 0 0 1 5 4.8z","M8.5 10.8h.01M12 10.8h.01M15.5 10.8h.01"],
+"🎯":["~"+_c(12,12,9),_c(12,12,5.2),"!"+_c(12,12,1.6)],
+"📦":["~M12 3.2 4 7.2v9.6l8 4 8-4V7.2z","M4 7.2l8 4 8-4M12 11.2v9.6"],
+"🤝":["~"+_c(9,7.8,3.3),"M3 20c0-3.4 2.7-5.6 6-5.6s6 2.2 6 5.6","M16 4.7a3.1 3.1 0 0 1 0 6.1M17.5 14.6c2 .7 3.5 2.5 3.5 5.4"],
+"💡":["~M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.3 1.1 2.2h5c0-.9.5-1.7 1.1-2.2A6 6 0 0 0 12 3z","M9.5 18.5h5M10.5 21h3"],
+"🏁":["~M5 4.5h13.5l-2.7 4 2.7 4H5z","M5 21V4"],"🚩":["~M5 4.5h13.5l-2.7 4 2.7 4H5z","M5 21V4"],
+"⚠":["~M12 4 2.7 19.8h18.6z","M12 10.2v4.2M12 17.2v.1"],
+"⏳":["M6.5 3h11M6.5 21h11","~M7.5 3c0 4.8 3 6 4.5 9-1.5 3-4.5 4.2-4.5 9h9c0-4.8-3-6-4.5-9 1.5-3 4.5-4.2 4.5-9z"],
+"🔍":["~"+_c(10.5,10.5,6.5),"M15.4 15.4 20.5 20.5"],
+"💸":["~"+_r(2.5,6.5,19,11,2.8),_c(12,12,2.6),"M6 12h.01M18 12h.01"],
+"📌":["~M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z",_c(12,10,2.4)],
+"🧮":["~"+_r(5,3,14,18,3),"M8.5 6.5h7V10h-7z","M9 14h.01M12 14h.01M15 14h.01M9 17.4h.01M12 17.4h.01M15 17.4h.01"],
+"🎭":["~"+_c(12,12,9),"M9 10.3h.01M15 10.3h.01","M8.5 14c1 1.8 2.2 2.6 3.5 2.6s2.5-.8 3.5-2.6"],
+"🙂":["~"+_c(12,12,9),"M9 10.3h.01M15 10.3h.01","M8.5 14c1 1.8 2.2 2.6 3.5 2.6s2.5-.8 3.5-2.6"],
+"👑":["~M3.5 8.2l4.6 4 3.9-7 3.9 7 4.6-4-1.7 10.6H5.2z","M5.5 21h13"],
+"📈":["M3 17l6-6 4 4 8-8","M15.5 7H21v5.5"],
+"🪞":["~M12 2.8c3.3 0 6 3.6 6 8s-2.7 8-6 8-6-3.6-6-8 2.7-8 6-8z","M12 18.8V21.3M8.8 21.3h6.4","M9.2 8.6a3.2 3.2 0 0 1 2-2.2"],
+"🏋":["#M6.5 7v10M17.5 7v10","M3.5 9.8v4.4M20.5 9.8v4.4M6.5 12h11"],
+"💪":["~M13.2 2.6 5.3 13.6h6l-.9 7.8 8.3-11.2h-6z"],
+"🌱":["M12 21v-8","~M12 13c0-4.2-3-6.6-7.2-6.6 0 4.2 2.6 6.6 7.2 6.6z","~M12 15.4c0-3.6 2.6-5.7 7.2-5.7 0 3.6-2.6 5.7-7.2 5.7z"],
+"📅":["~"+_r(3.5,5,17,16,3),"M3.5 10.2h17M8 3v4M16 3v4"],
+"✅":["~"+_c(12,12,9),"M8 12.5l3 3 5.2-6"],
+"🏆":["~M7.5 4h9v6.4a4.5 4.5 0 0 1-9 0z","M7.5 6H4.4c0 3 1 4.6 3.2 5.2M16.5 6h3.1c0 3-1 4.6-3.2 5.2","M12 15v3.6M8.5 20.6h7"],
+"✎":["~M4 20.2l1-4.4L16.4 4.4a2.1 2.1 0 0 1 3 3L8 18.9z","M14.4 6.4l3.2 3.2"],
+"🛠":["~M14.2 5.4a4.2 4.2 0 0 0-5.2 5.4L3.6 16.2a2 2 0 0 0 2.9 2.9l5.4-5.4a4.2 4.2 0 0 0 5.4-5.2l-2.7 2.7-2.4-.6-.6-2.4z"],
+"😬":["~"+_c(12,12,9),"M12 7.8v5M12 16.2v.1"],
+"🔥":["~M12 21c4 0 6.5-2.7 6.5-6.3 0-3.2-2-4.9-3.2-7.9-.4-1.1-.4-2.1-.3-2.8C12.2 5.2 10.3 7.4 9.8 9.9 9.3 9 9.1 8.2 9.1 7.4 6.8 9.4 5.5 11.9 5.5 14.7 5.5 18.3 8 21 12 21z"],
+"🧾":["~M6 3h12v18l-3-2-3 2-3-2-3 2z","M9 8h6M9 12h6"],
+"🗣":["~M3.8 10.2v3.6h3.2l8.2 4.2V6L7 10.2z","M18.2 9.3a4 4 0 0 1 0 5.4"],
+"💰":["~M9 3.4h6l-1.6 3.2h-2.8z","~M7.2 21C5 19 4 16.6 4 14.2c0-3 3-6 5.2-7.6h5.6c2.2 1.6 5.2 4.6 5.2 7.6 0 2.4-1 4.8-3.2 6.8z","M12 11v6"]};
+ICO["✉"]=["~"+_r(3,5.5,18,13,3),"M4 8.5l8 5.5 8-5.5"];
+ICO["🚪"]=["M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3","M16 8l4 4-4 4","M20 12H9"];
+ICO["👤"]=["~"+_c(12,8.2,3.8),"~M4.5 20c0-4 3.4-6.4 7.5-6.4s7.5 2.4 7.5 6.4z"];
+const icoSvg=k=>{let h="";for(let x of ICO[k]){let w="";if(x[0]=="#"){x=x.slice(1);w=' stroke-width="3.4"'}if(x[0]=="!")h+=`<path d="${x.slice(1)}" fill="currentColor"/>`;else if(x[0]=="~")h+=`<path class="f" d="${x.slice(1)}"/><path d="${x.slice(1)}"/>`;else h+=`<path d="${x}"${w}/>`}return `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${h}</svg>`};
+const ICRE=new RegExp("("+Object.keys(ICO).join("|")+")\uFE0F?","g"),ICSKIP=new Set(["TEXTAREA","SELECT","OPTION","SCRIPT","STYLE","TITLE"]);
+function ico(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),L=[];let n;while(n=w.nextNode()){if(!ICSKIP.has(n.parentNode.nodeName)&&(ICRE.lastIndex=0,ICRE.test(n.nodeValue)))L.push(n)}for(const t of L){const f=document.createElement("template");f.innerHTML=t.nodeValue.replace(/[&<]/g,c=>c=="&"?"&amp;":"&lt;").replace(ICRE,(m,k)=>icoSvg(k));t.replaceWith(f.content)}}
+const ICOBS=new MutationObserver(()=>icoSweep());function icoSweep(){ICOBS.disconnect();ico(document.getElementById("app"));ico(document.getElementById("ovc"));["app","ovc"].forEach(i=>{const e=document.getElementById(i);if(e)ICOBS.observe(e,{childList:true,subtree:true,characterData:true})})}
+icoSweep();
+</script></body></html>

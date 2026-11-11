@@ -1,0 +1,10 @@
+{
+  "name": "yaydang-games",
+  "version": "1.0.0",
+  "private": true,
+  "description": "รวมเกมทั้งหมดของ games.yaydang.com ในแอป Node เดียว",
+  "main": "app.js",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node app.js" },
+  "dependencies": { "ws": "^8.18.0" }
+}

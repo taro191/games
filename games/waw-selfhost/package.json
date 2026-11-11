@@ -1,0 +1,11 @@
+{
+  "name": "waw-selfhost",
+  "version": "1.0.0",
+  "description": "ตอบผิดคือชนะ – เซิร์ฟเวอร์ห้องออนไลน์ของตัวเอง (ไม่ต้องใช้ Claude)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "ws": "^8.18.0" },
+  "license": "UNLICENSED",
+  "private": true
+}
